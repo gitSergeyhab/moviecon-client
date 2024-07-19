@@ -6,7 +6,9 @@ import LoginIcon from "@/components/icons/login";
 import appRoutes from "@/lib/configs/routes/routes";
 import { logout } from "@/lib/utils/user";
 
-const { about, auth, game, main, profile, stats } = appRoutes;
+const { about, auth, gameSelection, main, profile, stats } = appRoutes;
+
+const itemMenuClass = "w-4 h-4 ml-auto";
 export interface MenuItem {
   title: string;
   href: string;
@@ -20,12 +22,12 @@ export interface UserMenuItem extends MenuItem {
 export const userMenuItems: UserMenuItem[] = [
   {
     href: profile,
-    icon: <ProfileIcon className="w-4 h-4 ml-auto" />,
+    icon: <ProfileIcon className={itemMenuClass} />,
     title: "Профиль",
   },
   {
     href: "#",
-    icon: <LogoutIcon className="w-4 h-4 ml-auto" />,
+    icon: <LogoutIcon className={itemMenuClass} />,
     title: "Выйти",
     onClick: logout,
   },
@@ -34,12 +36,12 @@ export const userMenuItems: UserMenuItem[] = [
 export const noAuthUserMenuItems: UserMenuItem[] = [
   {
     href: auth.register,
-    icon: <RegisterIcon className="w-4 h-4 ml-auto" />,
+    icon: <RegisterIcon className={itemMenuClass} />,
     title: "Регистрация",
   },
   {
     href: auth.login,
-    icon: <LoginIcon className="w-4 h-4 ml-auto" />,
+    icon: <LoginIcon className={itemMenuClass} />,
     title: "Вход",
   },
 ];
@@ -47,8 +49,8 @@ export const noAuthUserMenuItems: UserMenuItem[] = [
 export const navMenuItems: MenuItem[] = [
   { href: main, title: "Главная" },
   {
-    href: game,
-    title: "Играть",
+    href: gameSelection,
+    title: "Игра",
   },
   {
     href: stats,

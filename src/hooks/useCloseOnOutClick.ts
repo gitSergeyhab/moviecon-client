@@ -11,7 +11,6 @@ export const useCloseOnOutClick = ({
 }: UseCloseOnOutClick) => {
   useEffect(() => {
     const onBodyClick = (e: MouseEvent) => {
-      // console.log("CLICK");
       if (
         !(e.target as HTMLElement).closest(`[data-no-close=${noCloseDataId}]`)
       ) {

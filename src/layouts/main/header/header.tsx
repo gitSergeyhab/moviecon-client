@@ -1,16 +1,13 @@
-"use client";
-
 import { MouseEventHandler, useState } from "react";
+import { Link } from "react-router-dom";
 import { HeaderNav } from "./_ui/header-nav";
 import { navMenuItems } from "./constants";
-// import { classes } from "@/app/shared/config/styles";
 import { NavMenuLink } from "./_ui/nav-menu-link";
 import { UserMenu } from "./_ui/user-menu";
 import MenuIcon from "@/components/icons/menu";
 import PopcornIcon from "@/components/icons/popcorn";
 import { useCloseOnOutClick } from "@/hooks/useCloseOnOutClick";
 import { cn } from "@/lib/utils/styles";
-import { Link } from "react-router-dom";
 import { ToggleTheme } from "@/components/ToggleTheme";
 
 const Header = () => {

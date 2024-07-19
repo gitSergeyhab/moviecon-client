@@ -1,13 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserState } from "./types";
 import { UserInfo } from "@/type/user";
 import { fetchUser } from "./thunks";
-
-const initialState: UserState = {
-  user: null,
-  status: "idle",
-  error: null,
-};
+import { initialState } from "./const";
 
 const authSlice = createSlice({
   name: "auth",

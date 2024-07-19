@@ -6,7 +6,8 @@ const appRoutes = {
   },
   profile: "/profile",
   about: "/about",
-  game: "/game",
+  gameSelection: "/game",
+  game: "/game/:gameId",
   stats: "/stats",
   admin: "/admin",
 } as const;

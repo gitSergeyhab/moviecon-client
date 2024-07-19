@@ -1,9 +1,7 @@
-import { UIState } from './types';
+import { UserState } from "./types";
 
-export const uiInitialState: UIState = {
+export const initialState: UserState = {
   user: null,
-  isSidebarExpanded: false,
-  breadcrumbs: [],
-  layoutTitle: '',
-  requests: {},
+  status: "idle",
+  error: null,
 };

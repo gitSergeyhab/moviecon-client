@@ -3,7 +3,6 @@ import appRoutes from "./routes";
 import LoginPage from "@/modules/auth/LoginPage/LoginPage";
 import RegisterPage from "@/modules/auth/RegisterPage/RegisterPage";
 import AboutPage from "@/modules/AboutPage/AboutPage";
-// import { ProtectedRoute } from "@/components/ProtectedRoute";
 import MainLayout from "@/layouts/main/MainLayout";
 import { ErrorElement } from "@/components/ErrorElement";
 import MainPage from "@/modules/MainPage/MainPage";

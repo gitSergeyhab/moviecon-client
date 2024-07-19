@@ -1,3 +1,5 @@
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import { Form } from "@/components/ui/form/form";
 import { FormInput } from "@/components/ui/form/form-input";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
@@ -9,8 +11,6 @@ import { RegisterSchema, RegisterSchemaType } from "@/schemas/register";
 import { setUser } from "@/store/user/store";
 import { ApiError } from "@/type/api";
 import { AnyDict } from "@/type/dict";
-import { FC } from "react";
-import { useNavigate } from "react-router-dom";
 
 const RegisterPage: FC = () => {
   const form = useAppForm(RegisterSchema);
@@ -18,15 +18,12 @@ const RegisterPage: FC = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: AnyDict) => {
-    console.log("onSubmit");
-
     try {
       const response = await requestRegister(data as RegisterSchemaType);
       const { tokens, ...user } = response;
       dispatch(setUser(user));
       TokenService.accessToken = tokens.access;
       TokenService.refreshToken = tokens.refresh;
-      console.log({ response });
       navigate("/");
     } catch (e) {
       setFormErrors(e as ApiError, form.setError);

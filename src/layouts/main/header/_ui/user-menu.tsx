@@ -1,7 +1,8 @@
 import { FC } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { noAuthUserMenuItems, userMenuItems } from "../constants";
 import ProfileIcon from "@/components/icons/profile";
-import { useSelector } from "react-redux";
 import { getUser } from "@/store/user/selectors";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -12,7 +13,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useNavigate } from "react-router-dom";
 
 export const UserMenu: FC = () => {
   const user = useSelector(getUser);

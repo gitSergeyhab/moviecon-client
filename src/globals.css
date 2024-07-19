@@ -38,6 +38,7 @@
     --base-gradient: linear-gradient(to bottom left, #696363, #cecfce);
     --dark: #696363;
     --light: #cecfce;
+    --text-input: rgb(32, 32, 32);
   }
 
   .dark {
@@ -73,6 +74,7 @@
     --base-gradient: linear-gradient(to bottom left, #696363, #202120);
     --dark: #202120;
     --light: #696363;
+    --text-input: rgb(10, 177, 24);
   }
 }
 

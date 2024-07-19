@@ -1,17 +1,3 @@
-// export interface BaseUser {
-//   name: string;
-//   email: string;
-//   password: string;
-// }
-
-// export type UserNoPassword = Omit<BaseUser, "password">;
-// export type UserNoName = Omit<BaseUser, "name">;
-
-// export interface UserWithTokens extends UserNoPassword {
-//   access: string;
-//   refresh: string;
-// }
-
 export type UserRole = "USER" | "ADMIN";
 
 export interface UserTokens {

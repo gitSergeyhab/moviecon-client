@@ -1,9 +1,9 @@
 import { FC, PropsWithChildren, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { ProtectedRolesRoute } from "./ProtectedRoleRoute";
 import { UserRole } from "@/type/user";
-import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { useNavigate } from "react-router-dom";
 import { fetchUser } from "@/store/user/thunks";
 import { getUser, getUserStatus } from "@/store/user/selectors";
 

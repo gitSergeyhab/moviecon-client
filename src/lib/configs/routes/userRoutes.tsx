@@ -5,11 +5,16 @@ import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { ErrorElement } from "@/components/ErrorElement";
 import MainLayout from "@/layouts/main/MainLayout";
 import GamePage from "@/modules/GamePage/GamePage";
+import GameSelectionPage from "@/modules/GameSelectionPage/GameSelectionPage";
 
 const userRoutes: RouteObject[] = [
   {
     path: appRoutes.game,
     element: <GamePage />,
+  },
+  {
+    path: appRoutes.gameSelection,
+    element: <GameSelectionPage />,
   },
   {
     path: appRoutes.stats,

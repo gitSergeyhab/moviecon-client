@@ -5,7 +5,7 @@ import Footer from "./footer/footer";
 
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className="bg-[url('/img/CityLights.jpg')] bg-no-repeat bg-cover bg-top  h-dvh hide-scrollbar">
+    <div className="bg-neutral-400 bg-[url('/img/CityLights.jpg')] bg-no-repeat bg-cover bg-top overflow-y-auto  h-dvh hide-scrollbar">
       <Header />
       <main>{children || <Outlet />}</main>
       <Footer />

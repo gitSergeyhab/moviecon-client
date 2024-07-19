@@ -1,14 +1,13 @@
 import { FC } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { MenuItem } from "../constants";
 import { cn } from "@/lib/utils/styles";
-import { Link, useLocation } from "react-router-dom";
 export interface UserMenuLinkProps {
   item: MenuItem;
 }
 export const NavMenuLink: FC<UserMenuLinkProps> = ({ item }) => {
   const { href, title } = item;
   const { pathname } = useLocation();
-  // console.log({ pathname, href }, pathname === href);
 
   return (
     <Link

@@ -1,6 +1,5 @@
 import axios, { AxiosError } from "axios";
 import { ApiError, ApiErrorField, AppApi } from "@type/api";
-// import AppRoutes from '@lib/configs/routes';
 import { ENV } from "@/lib/configs/environment";
 import TokenService from "@lib/utils/tokenService";
 

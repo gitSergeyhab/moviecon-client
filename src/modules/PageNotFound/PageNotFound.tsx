@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 const PageNotFound = () => {
   const navigate = useNavigate();
 
-  console.log({ location });
   return (
     <div>
       <p>404</p>

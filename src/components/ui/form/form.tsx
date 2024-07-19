@@ -5,9 +5,6 @@ import { PropsWithChildren } from "react";
 import { Button } from "../button";
 import { cn } from "@/lib/utils/styles";
 import { AnyDict } from "@/type/dict";
-// import { ZodString } from "zod";
-
-// type Dict = Record<string, ZodString>;
 
 interface FormProps<T extends AnyDict> extends PropsWithChildren {
   form: UseFormReturn<T>;
@@ -16,13 +13,6 @@ interface FormProps<T extends AnyDict> extends PropsWithChildren {
   className?: string;
   submitTitle?: string;
 }
-
-// const form: UseFormReturn<{
-//   name: string;
-//   email: string;
-//   password: string;
-//   repeatPassword: string;
-// }, any, undefined>
 
 export const Form = <T extends AnyDict>({
   form,
@@ -38,10 +28,6 @@ export const Form = <T extends AnyDict>({
     <form
       noValidate
       onSubmit={handleSubmit(onSubmit)}
-      // onSubmit={handleSubmit(
-      //   (d) => console.log({ d }),
-      //   (e) => console.log({ e })
-      // )}
       className={cn(
         "max-w-md mx-auto bg-white p-6 rounded-md shadow-[0_35px_80px_15px_rgba(0,0,0,0.9)]",
         className
@@ -56,6 +42,7 @@ export const Form = <T extends AnyDict>({
         //  disabled={!isValid || isSubmitting}
         disabled={isSubmitting}
         className="w-full font-bold"
+        variant={"outline"}
       >
         {submitTitle || "Отправить"}
       </Button>

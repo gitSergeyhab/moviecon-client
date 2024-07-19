@@ -21,6 +21,7 @@ const conf  = {
     },
     extend: {
       colors: {
+        "text-input": "var(--text-input)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -72,10 +73,20 @@ const conf  = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "rotate-back": {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(-360deg)' },
+        },
+        fadeIn: {
+          '0%': { opacity: 0, transform: 'translateY(20px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "spin-back": "rotate-back 0.8s linear infinite",
+        fadeIn: 'fadeIn 0.5s ease-out forwards',
       },
       backgroundImage: {
         "basic-gradient": "linear-gradient(to bottom left, #696363, #202120)",

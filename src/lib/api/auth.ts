@@ -1,5 +1,5 @@
 import { UserLoginData, UserRegisterData, UserWithTokens } from "@type/user";
-import { request } from ".";
+import { request } from "./";
 
 const url = "/auth/";
 const getUrl = (path: string) => `${url}${path}`;
@@ -14,13 +14,11 @@ export const requestRegister = async (
 export const requestLogin = async (
   userData: UserLoginData
 ): Promise<UserWithTokens> => {
-  console.log("login");
   const response = await request.post(getUrl(`login/`), userData);
   return response;
 };
 
 export const requestUser = async (): Promise<UserWithTokens> => {
-  console.log("requestUser");
   const response = await request.get(url);
   return response;
 };
