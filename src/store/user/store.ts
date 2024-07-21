@@ -24,7 +24,7 @@ const authSlice = createSlice({
         state.error = action.payload || "Ошибка загрузки данных пользователя";
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.status = "success";
         state.user = action.payload;
         state.error = null;
       });

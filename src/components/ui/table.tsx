@@ -7,7 +7,10 @@ export interface TableProps extends PropsWithChildren {
 
 export const Table: FC<TableProps> = ({ children, className }) => (
   <table
-    className={cn("border-collapse border-4 border-neutral-200", className)}
+    className={cn(
+      "border-collapse border-4 border-neutral-200 lg:text-base sm:text-sm text-xs",
+      className
+    )}
   >
     {children}
   </table>

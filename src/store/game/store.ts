@@ -33,7 +33,7 @@ const gameSlice = createSlice({
       state.infoLoadingStatus = "failed";
     });
     builder.addCase(fetchLevelInfo.fulfilled, (state, { payload }) => {
-      state.infoLoadingStatus = "succeeded";
+      state.infoLoadingStatus = "success";
       const {
         level,
         prevLvlResult,
@@ -57,7 +57,7 @@ const gameSlice = createSlice({
       state.loadingStatus = "failed";
     });
     builder.addCase(fetchStartLevel.fulfilled, (state, { payload }) => {
-      state.loadingStatus = "succeeded";
+      state.loadingStatus = "success";
       const { gameStatus } = payload;
       state.gameStatus = gameStatus;
       state.levelErrors = 0;
@@ -75,7 +75,7 @@ const gameSlice = createSlice({
       state.loadingStatus = "failed";
     });
     builder.addCase(fetchAnswerQuestion.fulfilled, (state, { payload }) => {
-      state.loadingStatus = "succeeded";
+      state.loadingStatus = "success";
       const { answerStatus, correctId, gameStatus } = payload;
       const index = state.currentTestIndex;
       if (state.answerStatuses) {
@@ -97,7 +97,7 @@ const gameSlice = createSlice({
     });
     builder.addCase(fetchSkipQuestion.fulfilled, (state, { payload }) => {
       const { gameStatus } = payload;
-      state.loadingStatus = "succeeded";
+      state.loadingStatus = "success";
       const index = state.currentTestIndex;
       const questionsCount = state.levelInfo?.questions;
       if (!questionsCount) {
@@ -121,7 +121,7 @@ const gameSlice = createSlice({
       state.loadingStatus = "failed";
     });
     builder.addCase(fetchExitGame.fulfilled, (state) => {
-      state.loadingStatus = "succeeded";
+      state.loadingStatus = "success";
       state.gameStatus = "ENDED";
       state.isDelayBeforeInfo = false;
     });

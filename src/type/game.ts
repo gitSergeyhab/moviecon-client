@@ -69,3 +69,4 @@ export type GameStatus =
 
 export type AnswerStatus = "correct" | "wrong" | "skipped" | "none";
 export type NexGameAction = "NEXT_TEST" | "NEXT_LEVEL" | "GAME_OVER";
+export type GameType = "SINGLE" | "MULTI";

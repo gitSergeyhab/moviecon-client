@@ -6,6 +6,7 @@ import { ErrorElement } from "@/components/ErrorElement";
 import MainLayout from "@/layouts/main/MainLayout";
 import GamePage from "@/modules/GamePage/GamePage";
 import GameSelectionPage from "@/modules/GameSelectionPage/GameSelectionPage";
+import { ProfilePage } from "@/modules/ProfilePage/ProfilePage";
 
 const userRoutes: RouteObject[] = [
   {
@@ -19,6 +20,10 @@ const userRoutes: RouteObject[] = [
   {
     path: appRoutes.stats,
     element: <StatsPage />,
+  },
+  {
+    path: appRoutes.profile,
+    element: <ProfilePage />,
   },
 ];
 
