@@ -25,11 +25,11 @@ export const FormInput = <T extends AnyDict>({
   const error = formState.errors[field];
 
   return (
-    <div className={cn("mb-2", className)}>
+    <div className={cn("w-full", className)}>
       {label ? (
         <label
           htmlFor={field as string}
-          className="block font-bold text-sm mb-2"
+          className="block font-bold text-sm mb-1"
         >
           {label}
         </label>

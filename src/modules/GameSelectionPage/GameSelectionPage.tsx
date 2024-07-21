@@ -40,7 +40,7 @@ const GameSelectionPage: FC = () => {
       <Form
         form={form}
         onSubmit={onSubmit}
-        className=" bg-background-opacity mt-8 min-w-[256px]"
+        className=" bg-background-opacity mt-8 w-[480px] max-w-full p-4 rounded-md flex flex-col items-center"
         submitTitle="Начать Игру"
         name="Выберите игру"
       >

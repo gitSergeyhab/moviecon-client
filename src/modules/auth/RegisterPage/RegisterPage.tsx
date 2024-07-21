@@ -11,6 +11,9 @@ import { RegisterSchema, RegisterSchemaType } from "@/schemas/register";
 import { setUser } from "@/store/user/store";
 import { ApiError } from "@/type/api";
 import { AnyDict } from "@/type/dict";
+import { AuthFormLayout } from "../AuthFormLayout";
+import appRoutes from "@/lib/configs/routes/routes";
+import { AppLink } from "@/components/ui/AppLink";
 
 const RegisterPage: FC = () => {
   const form = useAppForm(RegisterSchema);
@@ -31,13 +34,12 @@ const RegisterPage: FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <AuthFormLayout>
       <Form
         form={form}
         onSubmit={onSubmit}
         name="Регистрация"
         submitTitle="Регистрация"
-        className="bg-background-opacity"
       >
         <FormInput field="email" form={form} label="Email" type="email" />
         <FormInput field="name" form={form} label="Имя" />
@@ -54,7 +56,8 @@ const RegisterPage: FC = () => {
           type="password"
         />
       </Form>
-    </div>
+      <AppLink to={appRoutes.auth.login}>уже есть аккаунт</AppLink>
+    </AuthFormLayout>
   );
 };
 export default RegisterPage;

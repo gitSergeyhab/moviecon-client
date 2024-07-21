@@ -11,6 +11,9 @@ import { LoginSchema, LoginSchemaType } from "@/schemas/login";
 import { setUser } from "@/store/user/store";
 import { ApiError } from "@/type/api";
 import { AnyDict } from "@/type/dict";
+import appRoutes from "@/lib/configs/routes/routes";
+import { AuthFormLayout } from "../AuthFormLayout";
+import { AppLink } from "@/components/ui/AppLink";
 
 const LoginPage: FC = () => {
   const form = useAppForm(LoginSchema);
@@ -31,14 +34,8 @@ const LoginPage: FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <Form
-        form={form}
-        onSubmit={onSubmit}
-        name="Вход"
-        submitTitle="Войти"
-        className="bg-background-opacity"
-      >
+    <AuthFormLayout>
+      <Form form={form} onSubmit={onSubmit} name="Вход" submitTitle="Войти">
         <FormInput field="email" form={form} label="Email" type="email" />
         <FormInput
           field="password"
@@ -47,7 +44,8 @@ const LoginPage: FC = () => {
           type="password"
         />
       </Form>
-    </div>
+      <AppLink to={appRoutes.auth.register}>еще нет аккаунта</AppLink>
+    </AuthFormLayout>
   );
 };
 

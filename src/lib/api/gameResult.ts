@@ -1,7 +1,11 @@
 import { GameCategory, GameDuration, GameType } from "@/type/game";
 import { request } from ".";
 import { createQueryString } from "../utils/query";
-import { GameAggregateResult, GameResult } from "@/type/game-results";
+import {
+  GameAggregateRecord,
+  GameAggregateResult,
+  GameResult,
+} from "@/type/game-results";
 
 const url = "/game-result/";
 
@@ -24,5 +28,7 @@ export const requestUserResults$ = (
 export const requestUserBestResults$ = (): Promise<GameAggregateResult[]> =>
   request.get(getUrl("user-best/"));
 
-export const requestRecords$ = (): Promise<GameAggregateResult[]> =>
-  request.get(getUrl("records/"));
+export const requestRecords$ = (
+  limit: number
+): Promise<GameAggregateRecord[]> =>
+  request.get(getUrl(`records?limit=${limit}`));

@@ -2,25 +2,6 @@ import { UserResultParams } from "@/lib/api/gameResult";
 import { GameCategory, GameDuration } from "@/type/game";
 import { Option } from "@/type/option";
 
-export const TextData = {
-  category: {
-    all: "Все фильмы",
-    ussr: "Советское кино",
-    rus: "Российское кино",
-    world: "Мировое кино",
-  },
-  duration: {
-    QUICK: "Быстрая",
-    COMMON: "Стандартная",
-    LONG: "Большая",
-  },
-  status: {
-    WON: "Победа",
-    LOST: "Поражение",
-    ENDED: "Прервана",
-  },
-};
-
 export type CategoryOption = Option<GameCategory | "none">;
 export type DurationOption = Option<GameDuration | "none">;
 export type SortOption = Option<"-1" | "1">;

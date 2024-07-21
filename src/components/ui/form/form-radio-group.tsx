@@ -36,7 +36,7 @@ export const FormRadioGroup = <T extends AnyDict>({
           />
           <label
             htmlFor={value}
-            className="ms-2 text-xl font-medium text-gray-900 dark:text-gray-300"
+            className="ms-2 text-xl font-medium text-neutral-800 dark:text-neutral-200"
           >
             {label}
           </label>

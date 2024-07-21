@@ -25,3 +25,8 @@ export interface GameAggregateResult {
   params: ResultParam;
   bestResult: GameResult;
 }
+
+export interface GameAggregateRecord {
+  params: ResultParam;
+  bestResult: GameResult[];
+}

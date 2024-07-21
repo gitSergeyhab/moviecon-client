@@ -23,15 +23,12 @@ export const Form = <T extends AnyDict>({
   submitTitle,
 }: FormProps<T>) => {
   const { formState, handleSubmit } = form;
-  const { isSubmitting } = formState;
+  const { isSubmitting, isValid } = formState;
   return (
     <form
       noValidate
       onSubmit={handleSubmit(onSubmit)}
-      className={cn(
-        "max-w-md mx-auto bg-white p-6 rounded-md shadow-[0_35px_80px_15px_rgba(0,0,0,0.9)]",
-        className
-      )}
+      className={cn("w-full", className)}
     >
       <h2 className="text-2xl mb-6 text-center text-primary font-bold">
         {name}
@@ -39,8 +36,7 @@ export const Form = <T extends AnyDict>({
       {children}
       <Button
         type="submit"
-        //  disabled={!isValid || isSubmitting}
-        disabled={isSubmitting}
+        disabled={!isValid || isSubmitting}
         className="w-full font-bold"
         variant={"outline"}
       >

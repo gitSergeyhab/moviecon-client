@@ -1,9 +1,9 @@
 import { SecondaryHeader } from "@/components/ui/headers";
 import { Table, TableD, TableH, TableRow } from "@/components/ui/table";
 import { FC } from "react";
-import { TextData } from "../const";
 import { toDayMonthYearTime } from "@/lib/utils/date";
 import { GameResult } from "@/type/game-results";
+import { TextData } from "@/const/textCategories";
 export interface TableResultsProps {
   results: GameResult[];
 }
