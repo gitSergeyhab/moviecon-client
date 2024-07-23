@@ -24,5 +24,5 @@ export interface GameState {
   correctAnswerId: string | null | number;
   infoLoadingStatus: LoadingStatus;
   loadingStatus: LoadingStatus;
-  isDelayBeforeInfo: boolean;
+  isTransition: boolean;
 }

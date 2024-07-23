@@ -42,7 +42,7 @@ export const ResultSection: FC<PrevLevelSectionProps> = ({
           <tbody>
             {tableData.map(({ title, value }) => (
               <TableRow key={title} type="body">
-                <TableD>{title}</TableD>
+                <TableD className="text-start">{title}</TableD>
                 <TableD>{value}</TableD>
               </TableRow>
             ))}

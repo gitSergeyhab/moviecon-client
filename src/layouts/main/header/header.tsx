@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-basic-gradient sticky top-0 text-white py-4 px-4 sm:px-8 flex items-center justify-between font-bold shadow-xl">
+    <header className="bg-basic-gradient fixed w-full z-20 top-0 text-white py-4 px-4 sm:px-8 flex items-center justify-between font-bold shadow-xl">
       <button
         data-no-close={"nav-menu"}
         className={cn(

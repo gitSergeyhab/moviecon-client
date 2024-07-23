@@ -9,8 +9,7 @@ import Modal from "@/components/Modal";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchAnswerQuestion } from "@/store/game/thunks";
 import { cn } from "@/lib/utils/styles";
-import { getGrigWrapperClasses } from "../../helpers";
-import { setIsDelayBeforeInfo } from "@/store/game/store";
+import { getGrigWrapperClasses, getUniqueVariants } from "../../helpers";
 import { GameVariant } from "./GameVariant";
 
 export interface VariantsSectionProps {
@@ -33,6 +32,8 @@ export const VariantsSection: FC<VariantsSectionProps> = ({
     null
   );
 
+  const filteredVariants = getUniqueVariants(variants);
+
   const handleImageClick = (variant: Variant) => {
     setModalImage(variant.imageUrl!);
     setModalAnswerId(variant.id!);
@@ -40,7 +41,6 @@ export const VariantsSection: FC<VariantsSectionProps> = ({
   };
 
   const handleAnswerClick = async (variantId: string | number) => {
-    dispatch(setIsDelayBeforeInfo(true));
     setSelectedId(variantId);
     dispatch(fetchAnswerQuestion({ variantId, questionId: testId }));
   };
@@ -60,7 +60,7 @@ export const VariantsSection: FC<VariantsSectionProps> = ({
 
   return (
     <section className={cn("gap-4 py-4", getGrigWrapperClasses(testType))}>
-      {variants.map((variant) => (
+      {filteredVariants.map((variant) => (
         <GameVariant
           key={variant.id}
           selectedId={selectedId}

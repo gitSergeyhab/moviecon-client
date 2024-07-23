@@ -1,6 +1,7 @@
 import { BlockField, BlockType } from "@/lib/configs/game/config";
 import { checkValueExist } from "@/lib/utils/common";
-import { GameStatus, TestType, Variant } from "@/type/game";
+import { EndGameStatus, TestType, Variant } from "@/type/game";
+import { gameOverImages } from "./const";
 
 export const getContent = (
   settingsDict: Record<TestType, BlockField>,
@@ -66,33 +67,16 @@ const getRandomItem = <T>(values: Array<T>): T => {
   return values[randomIndex];
 };
 
-export type EndGameStatus = Extract<GameStatus, "ENDED" | "WON" | "LOST">;
-
 export const getRandomGameOverSrc = (status: EndGameStatus): string => {
-  const images: Record<EndGameStatus, string[]> = {
-    WON: [
-      "win-1",
-      "win-2",
-      "win-3",
-      "win-4",
-      "win-5",
-      "win-6",
-      "win-7",
-      "win-8",
-    ],
-    LOST: [
-      "lost-1",
-      "lost-2",
-      "lost-3",
-      "lost-4",
-      "lost-5",
-      "lost-6",
-      "lost-7",
-      "lost-8",
-    ],
-
-    ENDED: ["end-1", "end-2", "end-3", "end-4", "end-5", "end-6", "end-7"],
-  };
-  const image = getRandomItem(images[status]);
+  const image = getRandomItem(gameOverImages[status]);
   return getPath(image);
+};
+
+export const getUniqueVariants = (variants: Variant[]): Variant[] => {
+  const hashId: Record<string, boolean> = {};
+  return variants.filter((variant) => {
+    if (hashId[variant.id!.toString()]) return false;
+    hashId[variant.id!.toString()] = true;
+    return true;
+  });
 };

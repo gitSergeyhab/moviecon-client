@@ -11,16 +11,20 @@ const MainPage: FC = () => {
     >
       <div className="col-span-2 sm:p-4 p-2 rounded-lg w-full">
         <div className="flex justify-center">
-          <Text
-            tag="h1"
-            className="text-center sm:text-5xl uppercase text-3xl font-bold   
+          <div
+            className="mt-16 p-8 border-4 border-neutral-800 dark:border-neutral-200 min-w-min 
             drop-shadow-[0_1px_4px_rgb(0,0,0)] dark:drop-shadow-[0_4px_4px_rgb(200,200,200)]
-             p-8 border-4 border-neutral-800 dark:border-neutral-200 min-w-min 
-              scale-100 animate-blink
-             "
+            scale-100 animate-blink"
           >
-            MovieCon
-          </Text>
+            <Text
+              tag="h1"
+              className="
+              dark:drop-shadow-[0_1px_4px_rgb(0,0,0)] drop-shadow-[0_4px_4px_rgb(250,250,250)]
+              text-center sm:text-5xl uppercase text-3xl font-bold"
+            >
+              MovieCon
+            </Text>
+          </div>
         </div>
 
         <MainTableSection />

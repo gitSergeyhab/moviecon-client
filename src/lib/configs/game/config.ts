@@ -34,7 +34,7 @@ export const VariantBlocksByTestType: Record<TestType, BlockField> = {
     enName: null,
     primary: "name",
     secondary: null,
-    image: null,
+    image: "imageUrl",
   },
   MovieByYear: {
     enName: "enName",

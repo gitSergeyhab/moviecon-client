@@ -48,6 +48,26 @@ export const getTestIndexes = (state: RootState): string[] =>
 export const getTestsDict = (state: RootState): TestDict | null =>
   state.game.levelTestsDict;
 
+export const getImages = createSelector(getTestsDict, (dict): string[] => {
+  if (!dict) return [];
+  const questionImages = Object.values(dict).reduce((acc, test) => {
+    if (test.question.imageUrl) {
+      acc.push(test.question.imageUrl);
+    }
+    return acc;
+  }, [] as string[]);
+  const variantImages = Object.values(dict).reduce((acc, test) => {
+    const variants = Object.values(test.variants);
+    variants.forEach((variant) => {
+      if (variant.imageUrl) {
+        acc.push(variant.imageUrl);
+      }
+    });
+    return acc;
+  }, [] as string[]);
+  return [...questionImages, ...variantImages];
+});
+
 export const getCorrectAnswerId = (state: RootState): string | number | null =>
   state.game.correctAnswerId;
 
@@ -58,8 +78,6 @@ export const getMadeErrors = (state: RootState): number =>
   state.game.levelErrors;
 export const getMadeSkips = (state: RootState): number =>
   state.game.levelSkipped;
-export const getQuestions = (state: RootState): number =>
-  state.game.levelTestsIds.length;
 
 export const getLevelsCount = (state: RootState): number =>
   state.game.levelsCount;
@@ -91,8 +109,8 @@ export const getRemainingOptions = createSelector(
   } | null => {
     if (!info) return null;
     const remainingErrors = info.errors - errors;
-    const remainingSkips = info.errors - skips;
-    const remainingQuestions = info.errors - index;
+    const remainingSkips = info.skips - skips;
+    const remainingQuestions = info.questions - index;
     return { remainingErrors, remainingQuestions, remainingSkips };
   }
 );
@@ -117,11 +135,9 @@ export const getNexGameAction = createSelector(
   }
 );
 
-const getIsDelayBeforeInfo = (state: RootState): boolean =>
-  state.game.isDelayBeforeInfo;
+export const getIsTransition = (state: RootState): boolean =>
+  state.game.isTransition;
 
-export const getIsShownInfoBlock = createSelector(
-  getGameStatus,
-  getIsDelayBeforeInfo,
-  (status, isDelay): boolean => status !== "IN_PROGRESS" && !isDelay
-);
+export const getIsGameOver = createSelector(getGameStatus, (status) => {
+  return status === "ENDED" || status === "LOST" || status === "WON";
+});

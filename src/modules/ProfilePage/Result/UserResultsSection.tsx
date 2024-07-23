@@ -35,7 +35,7 @@ export const UserResultsSection: FC = () => {
     status === "loading" ? <Spinner size="2xs" /> : "Загрузить еще";
 
   return (
-    <div className="mx-auto ">
+    <div className="mx-auto max-w-full">
       <div className="p-4 flex flex-wrap justify-center gap-2 bg-neutral-500 rounded-t-lg">
         <FilterSelect
           onValueChange={handleCategoryChange}

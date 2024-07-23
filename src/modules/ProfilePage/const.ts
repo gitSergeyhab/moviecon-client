@@ -28,7 +28,7 @@ export const durationOptions: DurationOption[] = [
 
 export const defaultQuery: UserResultParams = {
   offset: 0,
-  limit: 1,
+  limit: 10,
   sort: "-1",
   category: "none",
   duration: "none",

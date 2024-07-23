@@ -3,14 +3,15 @@ import { useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
 import {
   getIsAnswerDone,
-  getLoadingStatus,
   getNexGameAction,
   getRemainingOptions,
+  getIsTransition,
+  getMadeSkips,
 } from "@/store/game/selectors";
 import { Spinner } from "@/components/Spinner";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchExitGame, fetchSkipQuestion } from "@/store/game/thunks";
-import { setIsDelayBeforeInfo, setNextQuestion } from "@/store/game/store";
+import { setTransition } from "@/store/game/store";
 import { Portal } from "@/components/Portal";
 import Modal from "@/components/Modal";
 import { ConfirmExitGame } from "./ConfirmExitGame";
@@ -18,8 +19,9 @@ import { ConfirmExitGame } from "./ConfirmExitGame";
 export const ControlsSection: FC = () => {
   const options = useSelector(getRemainingOptions);
   const isAnswerDone = useSelector(getIsAnswerDone);
-  const loadingStatus = useSelector(getLoadingStatus);
+  const isTransition = useSelector(getIsTransition);
   const [isModalShown, setIsModalShown] = useState(false);
+  const madeSkips = useSelector(getMadeSkips);
 
   const nexGameAction = useSelector(getNexGameAction);
   const dispatch = useAppDispatch();
@@ -34,30 +36,27 @@ export const ControlsSection: FC = () => {
     return <p>невозможно получить данные уровня</p>;
   }
 
-  if (loadingStatus === "loading")
+  if (isTransition)
     return (
-      <section className="flex flex-col justify-center items-center">
-        <Spinner size="sm" />
+      <section className="flex flex-col justify-center items-center sm:h-auto h-24">
+        <Spinner size="xs" />
       </section>
     );
 
   const isSkipQuestionBtnShow = options.remainingSkips > 0 && !isAnswerDone;
 
-  const handleClickSkipBtn = () => {
-    dispatch(fetchSkipQuestion());
-    dispatch(setIsDelayBeforeInfo(false));
-  };
-  const handleClickContinueBtn = () => {
-    dispatch(setNextQuestion());
-    dispatch(setIsDelayBeforeInfo(false));
-  };
+  console.log({ isSkipQuestionBtnShow }, options.remainingSkips, { madeSkips });
+
+  const handleClickSkipBtn = () => dispatch(fetchSkipQuestion());
+  const handleClickContinueBtn = () => dispatch(setTransition(true));
 
   const handleCloseModal = () => setIsModalShown(false);
   const handleClickExitGameBtn = () =>
     dispatch(fetchExitGame(handleCloseModal));
 
+  // TODO: обработка 404, когда сервер перезагрузился и айди с такой игрой уже нет
   return (
-    <section className="flex flex-col gap-2 justify-center items-center px-4 sm:px-24 lg:px-12 ">
+    <section className="flex flex-col gap-2 justify-center items-center px-4 sm:px-24 lg:px-12 sm:h-auto h-24">
       {isSkipQuestionBtnShow && (
         <Button
           type="button"

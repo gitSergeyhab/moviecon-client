@@ -21,8 +21,9 @@ const gameSlice = createSlice({
     setNextQuestion(state) {
       state.currentTestIndex++;
     },
-    setIsDelayBeforeInfo(state, { payload }: PayloadAction<boolean>) {
-      state.isDelayBeforeInfo = payload;
+
+    setTransition(state, { payload }: PayloadAction<boolean>) {
+      state.isTransition = payload;
     },
   },
   extraReducers: (builder) => {
@@ -86,6 +87,13 @@ const gameSlice = createSlice({
       if (answerStatus === "wrong") {
         state.levelErrors++;
       }
+      const questionsCount = state.levelInfo?.questions;
+      if (!questionsCount) {
+        throw new Error("не задано количество вопросов");
+      }
+      if (questionsCount > index + 1) {
+        state.isTransition = true;
+      }
     });
 
     builder.addCase(fetchSkipQuestion.pending, (state) => {
@@ -109,7 +117,7 @@ const gameSlice = createSlice({
       state.gameStatus = gameStatus;
       state.levelSkipped++;
       if (questionsCount > index + 1) {
-        state.currentTestIndex++;
+        state.isTransition = true;
       }
     });
 
@@ -123,11 +131,15 @@ const gameSlice = createSlice({
     builder.addCase(fetchExitGame.fulfilled, (state) => {
       state.loadingStatus = "success";
       state.gameStatus = "ENDED";
-      state.isDelayBeforeInfo = false;
     });
   },
 });
 
-export const { startGame, setNextQuestion, setIsDelayBeforeInfo, resetGame } =
-  gameSlice.actions;
+export const {
+  startGame,
+  setNextQuestion,
+  // setIsDelayBeforeInfo,
+  resetGame,
+  setTransition,
+} = gameSlice.actions;
 export default gameSlice;
