@@ -20,6 +20,7 @@ const gameSlice = createSlice({
     },
     setNextQuestion(state) {
       state.currentTestIndex++;
+      state.correctAnswerId = null;
     },
 
     setTransition(state, { payload }: PayloadAction<boolean>) {

@@ -11,6 +11,7 @@ import { ProgressBar } from "./ProgressBar/ProgressBar";
 import { cn } from "@/lib/utils/styles";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { setNextQuestion, setTransition } from "@/store/game/store";
+import { InfoBar } from "./InfoBar/InfoBar";
 
 export const GameProcess: FC = () => {
   const test = useSelector(getCurrentTest);
@@ -52,7 +53,7 @@ export const GameProcess: FC = () => {
   return (
     <div
       className={cn(
-        "p-4 pb-12 min-w-[320px] max-w-[1280px] pt-24 min-h-dvh m-auto bg-neutral-300/80 dark:bg-black/80 rounded-lg shadow-[0_5px_10px_5px_rgba(128,128,128,0.9)] relative transition duration-500 ease-in-out",
+        "p-4 pb-12 min-w-[320px] max-w-[1280px]  min-h-dvh m-auto bg-neutral-300/80 dark:bg-black/80 rounded-lg shadow-[0_5px_10px_5px_rgba(128,128,128,0.9)] relative transition duration-500 ease-in-out",
         isTransition ? "opacity-70" : "opacity-100"
       )}
     >
@@ -63,6 +64,7 @@ export const GameProcess: FC = () => {
         )}
       />
       <ProgressBar />
+      <InfoBar />
       <GameQuestion
         onImageClick={handleQuestionImageClick}
         questionText={test.questionText}

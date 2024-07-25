@@ -5,8 +5,7 @@ import { TestType, Variant } from "@/type/game";
 import { PrimaryBlock } from "../../_ui/PrimaryBlock";
 import { SecondaryBlock } from "../../_ui/SecondaryBlock";
 import { getAnswerColorClasses, getContents } from "../../helpers";
-import { Button } from "../../../../components/ui/button";
-import { ImageBlock } from "../../_ui/ImageBlock";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils/styles";
 import { getIsAnswerDone, getLoadingStatus } from "@/store/game/selectors";
 
@@ -43,23 +42,27 @@ export const GameVariant: FC<GameQuestionProps> = ({
   return (
     <div
       className={cn(
-        "border-4 p-2 rounded-lg  bg-neutral-300/85 dark:bg-neutral-800/95  flex flex-col justify-between",
+        "border-2 sm:border-4 p-1 sm:p-2 rounded-lg  bg-neutral-300/85 dark:bg-neutral-800/95  flex flex-col justify-between",
         classes
       )}
     >
       {!!primary && <PrimaryBlock text={primary} enText={enName} />}
       {!!secondary && <SecondaryBlock text={secondary} />}
       {!!image && (
-        <ImageBlock imageUrl={image as string} onClick={onImageClick} />
+        <img
+          src={image as string}
+          alt=""
+          className="w-full h-40 md:h-48 lg:h-72 object-contain m-auto cursor-pointer"
+          onClick={onImageClick}
+        />
       )}
       <Button
-        size={"lg"}
         variant={"outline"}
-        className="w-full mt-2  border-2 border-neutral-400  hover:border-orange-600 transition duration-300"
+        className="w-full mt-1 md:mt-2  border-2 border-neutral-400  hover:border-orange-600 transition duration-300"
         onClick={isAnswerDone ? () => {} : onButtonClick}
         disabled={isAnswerDone || loadingStatus === "loading"}
       >
-        {isAnswerDone ? "..." : "Выбрать"}
+        Выбрать
       </Button>
     </div>
   );

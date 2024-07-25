@@ -36,7 +36,7 @@ export const GameButtonBlock: FC<GameButtonBlockProps> = ({ isGameOver }) => {
   const isLoading = loadingStatus === "loading";
   const images = useSelector(getImages);
   const { areImagesLoaded } = useImagePreload(images, !isGameOver);
-  console.log({ areImagesLoaded, isLoading, isGameOver });
+  // console.log({ areImagesLoaded, isLoading, isGameOver });
 
   const handleStartClick = () => dispatch(fetchStartLevel());
   const handleReStartClick = () => navigate(appRoutes.gameSelection);

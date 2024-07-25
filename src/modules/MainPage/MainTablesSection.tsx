@@ -19,7 +19,7 @@ export const MainTableSection: FC = () => {
 
   return (
     <section>
-      <Text tag="h2" className="text-center sm:text-3xl text-l mt-16">
+      <Text tag="h2" className="text-center sm:text-3xl text-xl mt-8 sm:mt-16">
         Наши рекордсмены
       </Text>
       <div className="grid xl:grid-cols-3 mt-4 lg:grid-cols-2 grid-cols-1 gap-4">

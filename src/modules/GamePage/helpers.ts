@@ -1,7 +1,7 @@
 import { BlockField, BlockType } from "@/lib/configs/game/config";
 import { checkValueExist } from "@/lib/utils/common";
-import { EndGameStatus, TestType, Variant } from "@/type/game";
-import { gameOverImages } from "./const";
+import { EndGameStatus, NexGameAction, TestType, Variant } from "@/type/game";
+import { gameOverImages, questionClasses, testTypeQuesVar } from "./const";
 
 export const getContent = (
   settingsDict: Record<TestType, BlockField>,
@@ -49,12 +49,18 @@ export const getAnswerColorClasses = ({
   return "border-neutral-400";
 };
 
-const flatGrigTypes: TestType[] = ["MovieByPerson", "PersonByMovie"];
+const flatGrigTypes: TestType[] = [
+  "MovieByPerson",
+  "PersonByMovie",
+  "PhotoByPerson",
+  "MovieBySlogan",
+  "MovieByYear",
+];
 
 export const getGrigWrapperClasses = (testType: TestType): string =>
   flatGrigTypes.includes(testType)
-    ? "grid grid-cols-2 lg:grid-cols-4 "
-    : "grid sm:grid-cols-2 gap-4 grid-cols-1";
+    ? "grid grid-cols-2  lg:grid-cols-4 "
+    : "grid sm:grid-cols-2 gap-2 sm:gap-4 grid-cols-1";
 
 const getPath = (imgName: string): string => {
   const pathToImg = "/img/gameOverImages/";
@@ -79,4 +85,24 @@ export const getUniqueVariants = (variants: Variant[]): Variant[] => {
     hashId[variant.id!.toString()] = true;
     return true;
   });
+};
+
+export const getQuestionClasses = (type: TestType) =>
+  questionClasses[testTypeQuesVar[type]];
+
+export const getNextActionText = (nexGameAction: NexGameAction): string => {
+  let text = "Пропустить ";
+
+  switch (nexGameAction) {
+    case "GAME_OVER":
+      text += "и завершить игру";
+      break;
+    case "NEXT_LEVEL":
+      text += "и завершить уровень";
+      break;
+    case "NEXT_TEST":
+      text += "вопрос";
+      break;
+  }
+  return text;
 };

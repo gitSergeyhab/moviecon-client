@@ -1,7 +1,11 @@
 import { FC, PropsWithChildren } from "react";
 
 export const MainHeader: FC<PropsWithChildren> = ({ children }) => {
-  return <h1 className="font-bold text-3xl text-center my-3">{children}</h1>;
+  return (
+    <h1 className="font-bold text-xl sm:text-3xl text-center my-1 sm:my-3">
+      {children}
+    </h1>
+  );
 };
 
 export const SecondaryHeader: FC<PropsWithChildren> = ({ children }) => {

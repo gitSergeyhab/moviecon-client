@@ -5,23 +5,22 @@ import {
   getIsAnswerDone,
   getNexGameAction,
   getRemainingOptions,
-  getIsTransition,
-  getMadeSkips,
+  getLoadingStatus,
 } from "@/store/game/selectors";
 import { Spinner } from "@/components/Spinner";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchExitGame, fetchSkipQuestion } from "@/store/game/thunks";
-import { setTransition } from "@/store/game/store";
 import { Portal } from "@/components/Portal";
 import Modal from "@/components/Modal";
 import { ConfirmExitGame } from "./ConfirmExitGame";
+import { SkipForwardIcon, DoorOpenIcon } from "lucide-react";
+import { getNextActionText } from "../../helpers";
 
 export const ControlsSection: FC = () => {
   const options = useSelector(getRemainingOptions);
   const isAnswerDone = useSelector(getIsAnswerDone);
-  const isTransition = useSelector(getIsTransition);
   const [isModalShown, setIsModalShown] = useState(false);
-  const madeSkips = useSelector(getMadeSkips);
+  const isLoading = useSelector(getLoadingStatus) === "loading";
 
   const nexGameAction = useSelector(getNexGameAction);
   const dispatch = useAppDispatch();
@@ -36,58 +35,51 @@ export const ControlsSection: FC = () => {
     return <p>невозможно получить данные уровня</p>;
   }
 
-  if (isTransition)
-    return (
-      <section className="flex flex-col justify-center items-center sm:h-auto h-24">
-        <Spinner size="xs" />
-      </section>
-    );
-
   const isSkipQuestionBtnShow = options.remainingSkips > 0 && !isAnswerDone;
 
-  console.log({ isSkipQuestionBtnShow }, options.remainingSkips, { madeSkips });
-
   const handleClickSkipBtn = () => dispatch(fetchSkipQuestion());
-  const handleClickContinueBtn = () => dispatch(setTransition(true));
-
   const handleCloseModal = () => setIsModalShown(false);
   const handleClickExitGameBtn = () =>
     dispatch(fetchExitGame(handleCloseModal));
 
   // TODO: обработка 404, когда сервер перезагрузился и айди с такой игрой уже нет
+
+  console.log({ isSkipQuestionBtnShow, isAnswerDone, nexGameAction });
+
   return (
-    <section className="flex flex-col gap-2 justify-center items-center px-4 sm:px-24 lg:px-12 sm:h-auto h-24">
-      {isSkipQuestionBtnShow && (
-        <Button
-          type="button"
-          onClick={handleClickSkipBtn}
-          className="w-full border-red-500 border-2 "
-          variant={"outline"}
-        >
-          Пропустить
-          {nexGameAction === "GAME_OVER" && " и завершить игру"}
-          {nexGameAction === "NEXT_LEVEL" && " и завершить уровень"}
-          {nexGameAction === "NEXT_TEST" && " вопрос"}
-        </Button>
-      )}
-      {isAnswerDone && (
-        <Button
-          onClick={handleClickContinueBtn}
-          className="w-full border-neutral-500 border-2"
-          variant={"outline"}
-        >
-          {nexGameAction === "NEXT_TEST"
-            ? "Следующий вопрос"
-            : "Посмотреть результаты"}
-        </Button>
+    <section className="flex gap-1 lg:gap-8 flex-wrap justify-center items-center sm:p-4 p-2 relative">
+      {isLoading && (
+        <div className="absolute top-0 right-0 bottom-0 left-0 z-10 flex items-center justify-center">
+          <Spinner size="xs" />
+        </div>
       )}
       <Button
-        onClick={() => setIsModalShown(true)}
-        className="w-full "
-        variant={"destructive"}
-        size={"xs"}
+        type="button"
+        onClick={handleClickSkipBtn}
+        size={"sm"}
+        className="w-full   max-w-72  hover:scale-105 transition-all disabled:opacity-20"
+        variant={"outline"}
+        disabled={isLoading || !isSkipQuestionBtnShow}
       >
-        Завершить игру
+        <span className="sm:inline hidden">
+          {getNextActionText(nexGameAction)}
+        </span>
+        <span className="sm:hidden inline">
+          <SkipForwardIcon size={20} />
+        </span>
+      </Button>
+      <Button
+        type="button"
+        onClick={() => setIsModalShown(true)}
+        size={"sm"}
+        className="w-full max-w-72 scale-100 hover:scale-105 transition-all disabled:opacity-20"
+        variant={"destructive"}
+        disabled={isLoading || isAnswerDone}
+      >
+        <span className="sm:inline hidden">Завершить игру</span>
+        <span className="sm:hidden inline">
+          <DoorOpenIcon size={20} />
+        </span>
       </Button>
       {isModalShown && (
         <Portal containerId="#modal">

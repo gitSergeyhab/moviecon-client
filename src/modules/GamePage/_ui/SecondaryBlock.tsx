@@ -1,3 +1,4 @@
+import Text from "@/components/ui/text";
 import { FC } from "react";
 
 interface SecondaryBlockProps {
@@ -6,8 +7,11 @@ interface SecondaryBlockProps {
 
 export const SecondaryBlock: FC<SecondaryBlockProps> = ({ text }) => {
   return (
-    <p className="px-8 py-2 opacity-90 text-center font-semibold italic">
+    <Text
+      tag="p"
+      className="text-xs  md:text-lg opacity-90 text-center font-semibold italic"
+    >
       {text}
-    </p>
+    </Text>
   );
 };

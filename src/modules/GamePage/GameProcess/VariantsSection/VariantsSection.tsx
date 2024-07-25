@@ -59,7 +59,9 @@ export const VariantsSection: FC<VariantsSectionProps> = ({
   };
 
   return (
-    <section className={cn("gap-4 py-4", getGrigWrapperClasses(testType))}>
+    <section
+      className={cn("gap-4 py-1 md:py-4 ", getGrigWrapperClasses(testType))}
+    >
       {filteredVariants.map((variant) => (
         <GameVariant
           key={variant.id}

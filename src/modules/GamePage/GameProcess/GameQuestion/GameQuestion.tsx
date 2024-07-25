@@ -3,11 +3,9 @@ import { QuestionBlocksByTestType } from "@/lib/configs/game/config";
 import { TestType, Variant } from "@/type/game";
 import { PrimaryBlock } from "../../_ui/PrimaryBlock";
 import { SecondaryBlock } from "../../_ui/SecondaryBlock";
-import { ImageBlock } from "../../_ui/ImageBlock";
-import { getContents } from "../../helpers";
-import { MainHeader } from "@/components/ui/headers";
+import { getContents, getQuestionClasses } from "../../helpers";
 import { ControlsSection } from "./ControlsSection";
-import { InfoSection } from "./InfoSection";
+import Text from "@/components/ui/text";
 
 export interface GameQuestionProps {
   variant: Variant;
@@ -26,17 +24,30 @@ export const GameQuestion: FC<GameQuestionProps> = ({
     testType,
     variant
   );
+
+  const { imageClasses, imgWrapperClasses, wrapperClasses } =
+    getQuestionClasses(testType);
+
+  console.log({ imageClasses, imgWrapperClasses, wrapperClasses });
   return (
-    <div className="bg-neutral-300/70 dark:bg-neutral-800/90 px-4 pb-2 rounded-lg grid lg:grid-cols-3 border-4 border-neutral-400 ">
-      <InfoSection />
-      <section>
-        <MainHeader>{questionText}</MainHeader>
+    <div className={wrapperClasses}>
+      <div>
+        <Text tag="h2" className="text-center text-lg md:text-2xl italic">
+          {questionText}
+        </Text>
         {!!primary && <PrimaryBlock text={primary} enText={enName} />}
         {!!secondary && <SecondaryBlock text={secondary} />}
+      </div>
+      <div className={imgWrapperClasses}>
         {!!image && (
-          <ImageBlock imageUrl={image as string} onClick={onImageClick} />
+          <img
+            src={image as string}
+            alt=""
+            className={imageClasses}
+            onClick={onImageClick}
+          />
         )}
-      </section>
+      </div>
       <ControlsSection />
     </div>
   );
