@@ -1,6 +1,6 @@
 import { Spinner } from "@/components/Spinner";
 import { AppLink } from "@/components/ui/AppLink";
-import Text from "@/components/ui/text";
+import { PrimaryText } from "@/components/ui/text";
 import appRoutes from "@/lib/configs/routes/routes";
 import { getUser, getUserStatus } from "@/store/user/selectors";
 import { FC } from "react";
@@ -20,9 +20,9 @@ export const StartGameSection: FC = () => {
   return (
     <section className="w-full flex flex-col items-center">
       <h1 className="hidden">Начать игру</h1>
-      <Text tag="p" className="text-center sm:text-2xl text-l mt-16 font-bold">
+      <PrimaryText className="text-center mt-16 font-bold">
         Начни игру, чтоб оказаться в их числе
-      </Text>
+      </PrimaryText>
 
       <AppLink
         to={user ? appRoutes.gameSelection : appRoutes.auth.register}

@@ -1,10 +1,10 @@
-import Text from "@/components/ui/text";
 import { GameAggregateRecord } from "@/type/game-results";
 import { FC } from "react";
 import { Table, TableD, TableH, TableRow } from "@/components/ui/table";
 import { TextData } from "@/const/textCategories";
 import { cn } from "@/lib/utils/styles";
 import { classPosition } from "./const";
+import { ItemHeader } from "@/components/ui/text";
 
 export interface TableResultsProps {
   result: GameAggregateRecord;
@@ -14,9 +14,9 @@ export const TableRecords: FC<TableResultsProps> = ({ result }) => {
   const { category, duration } = params;
   return (
     <div className="w-full flex flex-col items-center  ">
-      <Text tag="h3" className="text-lg my-2">
+      <ItemHeader className="my-2">
         {TextData.duration[duration]} игра / {TextData.category[category]}
-      </Text>
+      </ItemHeader>
       <div className="px-2 sm:px-4 w-full  max-h-[520px] sm:max-h-[720px] overflow-auto">
         <Table className="w-full ">
           <thead>

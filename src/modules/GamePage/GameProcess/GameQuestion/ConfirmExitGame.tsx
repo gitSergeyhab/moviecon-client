@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Button } from "@/components/ui/button";
-import Text from "@/components/ui/text";
+import { SecondaryText } from "@/components/ui/text";
 
 export interface ConfirmExitGameProps {
   onConfirm: VoidFunction;
@@ -13,9 +13,9 @@ export const ConfirmExitGame: FC<ConfirmExitGameProps> = ({
 }) => {
   return (
     <div className="w-96 bg-neutral-300 dark:bg-neutral-800 border-8 rounded-lg border-neutral-800  dark:border-neutral-300 p-8 m-auto">
-      <Text className="font-bold italic text-center text-lg">
+      <SecondaryText className="font-bold italic text-center">
         Вы уверены, что хотите завершить игру?
-      </Text>
+      </SecondaryText>
       <div className="flex justify-between pt-4">
         <Button type="button" variant={"outline"} onClick={onCancel}>
           Отмена

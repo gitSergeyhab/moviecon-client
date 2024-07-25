@@ -1,7 +1,7 @@
-import { SecondaryHeader } from "@/components/ui/headers";
 import { EndGameStatus, GameStatus } from "@/type/game";
 import { FC, useState } from "react";
 import { getRandomGameOverSrc } from "../helpers";
+import { SecondaryHeader } from "@/components/ui/text";
 
 const imageClasses =
   "max-w-[600px] object-contain flex h-64 sm:max-h-max w-full text-center rounded-sm";

@@ -3,8 +3,8 @@ import { FC } from "react";
 import { toDayMonthYearTime } from "@/lib/utils/date";
 import { GameResult } from "@/type/game-results";
 import { GameDuration } from "@/type/game";
-import Text from "@/components/ui/text";
 import { TextData } from "@/const/textCategories";
+import { ItemHeader } from "@/components/ui/text";
 
 export interface TableResultsProps {
   results: GameResult[];
@@ -13,9 +13,9 @@ export interface TableResultsProps {
 export const TableRecords: FC<TableResultsProps> = ({ results, duration }) => {
   return (
     <div className="w-full flex flex-col items-center">
-      <Text tag="h3" className="text-lg my-2">
+      <ItemHeader className="my-2">
         {TextData.duration[duration]} Игра
-      </Text>
+      </ItemHeader>
       <div className="px-2 sm:px-4 w-full  max-h-[520px] sm:max-h-[720px] overflow-auto">
         <Table className="w-full">
           <thead>

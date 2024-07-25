@@ -3,7 +3,7 @@ import { UserResultsSection } from "./Result/UserResultsSection";
 import { getUser, getUserStatus } from "@/store/user/selectors";
 import { useSelector } from "react-redux";
 import { Spinner } from "@/components/Spinner";
-import Text from "@/components/ui/text";
+import { PrimaryHeader, PrimaryText } from "@/components/ui/text";
 import { UserRecordsSection } from "./Record/UserRecordsSection";
 
 export const ProfilePage: FC = () => {
@@ -23,12 +23,10 @@ export const ProfilePage: FC = () => {
     flex flex-wrap gap-4"
     >
       <div className="col-span-2 sm:p-4 p-2 rounded-lg w-full">
-        <Text tag="h1" className="text-center sm:text-3xl text-xl">
+        <PrimaryHeader className="text-center">
           Страница профиля пользователя
-        </Text>
-        <Text tag="p" className="text-center sm:text-3xl text-xl font-bold">
-          {user.name}
-        </Text>
+        </PrimaryHeader>
+        <PrimaryText className="text-center font-bold">{user.name}</PrimaryText>
         {/* // TODO add user avatar */}
       </div>
       <UserRecordsSection />

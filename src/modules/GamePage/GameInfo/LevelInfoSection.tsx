@@ -1,5 +1,5 @@
-import { SecondaryHeader } from "@/components/ui/headers";
 import { Table, TableD, TableRow } from "@/components/ui/table";
+import { SecondaryHeader } from "@/components/ui/text";
 import { Level } from "@/type/game";
 import { FC } from "react";
 

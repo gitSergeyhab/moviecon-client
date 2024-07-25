@@ -1,10 +1,10 @@
-import { SecondaryHeader } from "@/components/ui/headers";
 import { Table, TableD, TableH, TableRow } from "@/components/ui/table";
 import { FC } from "react";
 import { toDayMonthYearTime } from "@/lib/utils/date";
 import { GameResult } from "@/type/game-results";
 import { TextData } from "@/const/textCategories";
 import { cn } from "@/lib/utils/styles";
+import { SecondaryHeader } from "@/components/ui/text";
 
 const tdClasses = "p-1 sm:p-2 lg:px-4";
 export interface TableResultsProps {

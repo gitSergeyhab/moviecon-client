@@ -10,16 +10,66 @@ interface TextProps {
   children: React.ReactNode;
 }
 
-const Text: FC<TextProps> = ({ tag = "p", color, bg, className, children }) => {
+export const Text: FC<TextProps> = ({ tag = "p", className, children }) => {
   const baseClasses = ["h1", "h2", "h3"].includes(tag)
     ? "font-bold"
     : "font-normal";
-  const colorClass = color ? `text-${color}` : "";
-  const bgClass = bg ? `bg-${bg}` : "";
-  const classes = cn(baseClasses, colorClass, bgClass, className);
+
+  const classes = cn(baseClasses, className);
 
   const HeaderTag = tag as keyof JSX.IntrinsicElements;
   return <HeaderTag className={classes}>{children}</HeaderTag>;
 };
 
-export default Text;
+export const PrimaryText: FC<TextProps> = ({ children, className }) => (
+  <Text
+    tag="p"
+    className={cn("text-xl md:text-2xl", className)}
+    color="primary"
+  >
+    {children}
+  </Text>
+);
+
+export const SecondaryText: FC<TextProps> = ({ children, className }) => (
+  <Text tag="p" className={cn("text-lg md:text-xl", className)} color="primary">
+    {children}
+  </Text>
+);
+
+export const PrimaryHeader: FC<TextProps> = ({ children, className }) => (
+  <Text
+    tag="h1"
+    className={cn("text-xl md:text-3xl", className)}
+    color="primary"
+  >
+    {children}
+  </Text>
+);
+export const SecondaryHeader: FC<TextProps> = ({ children, className }) => (
+  <Text
+    tag="h2"
+    className={cn("text-lg md:text-2xl ", className)}
+    color="primary"
+  >
+    {children}
+  </Text>
+);
+export const ItemHeader: FC<TextProps> = ({ children, className }) => (
+  <Text tag="h3" className={cn("md:text-xl", className)} color="primary">
+    {children}
+  </Text>
+);
+
+export const PaleText: FC<TextProps> = ({ children, className }) => (
+  <Text
+    tag="p"
+    className={cn(
+      "text-xs  md:text-lg opacity-90 font-semibold italic",
+      className
+    )}
+    color="primary"
+  >
+    {children}
+  </Text>
+);

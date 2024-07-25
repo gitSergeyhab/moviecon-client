@@ -3,7 +3,7 @@ import { useFetchUserRecords } from "./useFetchUserRecords";
 import { getResultSplitByDuration } from "../utils";
 import { Spinner } from "@/components/Spinner";
 import { TableRecords } from "./TableRecords";
-import Text from "@/components/ui/text";
+import { PrimaryHeader, PrimaryText } from "@/components/ui/text";
 
 export const UserRecordsSection: FC = () => {
   const { records, status } = useFetchUserRecords();
@@ -19,15 +19,15 @@ export const UserRecordsSection: FC = () => {
 
   if (!COMMON && !LONG && !QUICK)
     return (
-      <Text tag="p" className="text-center sm:text-xl text-xl font-bold mt-8">
+      <PrimaryText className="text-center  font-bold mt-8">
         У вас нет пока рекордов
-      </Text>
+      </PrimaryText>
     );
   return (
     <div className="mx-auto bg-neutral-200/80 dark:bg-neutral-900/80  rounded-lg py-4 ">
-      <Text tag="p" className="text-center sm:text-3xl text-2xl font-bold mt-8">
+      <PrimaryHeader className="text-center font-bold mt-8">
         Ваши рекорды
-      </Text>
+      </PrimaryHeader>
       <div className="grid grid-cols-1 gap-4">
         {Boolean(LONG) && <TableRecords results={LONG} duration={"LONG"} />}
         {Boolean(COMMON) && (

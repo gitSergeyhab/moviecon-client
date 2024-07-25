@@ -19,8 +19,8 @@ import { Spinner } from "@/components/Spinner";
 import { cn } from "@/lib/utils/styles";
 import { GameButtonBlock } from "./GameButtonBlock";
 
-const wrapperClasses = `bg-neutral-300/40 m-auto dark:bg-neutral-800/80 
-    max-w-[1200px] rounded-lg mt-10 p-8 sm:px-16 px-2 
+const wrapperClasses = `bg-neutral-300/70 dark:bg-neutral-800/80 
+ p-8 sm:px-16 px-2 rounded-lg
     flex flex-wrap`;
 
 export const GameInfo = () => {
@@ -40,7 +40,12 @@ export const GameInfo = () => {
 
   if (isInfoLoading) {
     return (
-      <div className={cn(wrapperClasses, "justify-center py-32")}>
+      <div
+        className={cn(
+          wrapperClasses,
+          "m-auto max-w-[1200px] rounded-lg mt-10 justify-center py-32"
+        )}
+      >
         <Spinner size="2xl" />
       </div>
     );
@@ -48,24 +53,29 @@ export const GameInfo = () => {
 
   return (
     <div
-      className={cn(
-        wrapperClasses,
-        "justify-around gap-y-2 sm:gap-y-8 text-sm sm:text-lg text-center",
-        isTransition && "opacity-0"
-      )}
+      className="m-auto 
+    max-w-[1200px] rounded-lg mt-10 bg-[url('/img/game-go2.webp')] bg-no-repeat bg-cover bg-center "
     >
-      {isGameOver && (
-        <GameOverSection gameStatus={gameStatus} totalScore={totalScore} />
-      )}
-      {!!prevLevelResult && (
-        <ResultSection
-          levelResult={prevLevelResult}
-          totalScore={totalScore}
-          isGameOver={isGameOver}
-        />
-      )}
-      {!!levelInfo && <LevelInfoSection level={levelInfo} />}
-      <GameButtonBlock isGameOver={isGameOver} />
+      <div
+        className={cn(
+          wrapperClasses,
+          "justify-around gap-y-2 sm:gap-y-8 text-sm sm:text-lg text-center",
+          isTransition && "opacity-0"
+        )}
+      >
+        {isGameOver && (
+          <GameOverSection gameStatus={gameStatus} totalScore={totalScore} />
+        )}
+        {!!prevLevelResult && (
+          <ResultSection
+            levelResult={prevLevelResult}
+            totalScore={totalScore}
+            isGameOver={isGameOver}
+          />
+        )}
+        {!!levelInfo && <LevelInfoSection level={levelInfo} />}
+        <GameButtonBlock isGameOver={isGameOver} />
+      </div>
     </div>
   );
 };

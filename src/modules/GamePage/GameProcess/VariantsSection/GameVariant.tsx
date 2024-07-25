@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import { VariantBlocksByTestType } from "@/lib/configs/game/config";
 import { TestType, Variant } from "@/type/game";
 import { PrimaryBlock } from "../../_ui/PrimaryBlock";
-import { SecondaryBlock } from "../../_ui/SecondaryBlock";
 import { getAnswerColorClasses, getContents } from "../../helpers";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils/styles";
 import { getIsAnswerDone, getLoadingStatus } from "@/store/game/selectors";
+import { PaleText } from "@/components/ui/text";
 
 export interface GameQuestionProps {
   variant: Variant;
@@ -47,7 +47,9 @@ export const GameVariant: FC<GameQuestionProps> = ({
       )}
     >
       {!!primary && <PrimaryBlock text={primary} enText={enName} />}
-      {!!secondary && <SecondaryBlock text={secondary} />}
+      {!!secondary && (
+        <PaleText className="italic text-center">{secondary}</PaleText>
+      )}
       {!!image && (
         <img
           src={image as string}

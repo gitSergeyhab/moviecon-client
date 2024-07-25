@@ -10,7 +10,7 @@ import { useFetchUserResults } from "./useFetchUserResults";
 import { Spinner } from "@/components/Spinner";
 import { TableResults } from "./TableResults";
 import { FilterSelect } from "./FilterSelect";
-import Text from "@/components/ui/text";
+import { PrimaryText } from "@/components/ui/text";
 
 export const UserResultsSection: FC = () => {
   const { query, setQuery, results, status, count } = useFetchUserResults();
@@ -55,9 +55,9 @@ export const UserResultsSection: FC = () => {
       </div>
 
       {!count && (
-        <Text tag="p" className="text-center sm:text-xl text-xl font-bold mt-8">
+        <PrimaryText className="text-center font-bold mt-8">
           У вас нет пока игр в выбранных категориях
-        </Text>
+        </PrimaryText>
       )}
       {!!count && (
         <>
