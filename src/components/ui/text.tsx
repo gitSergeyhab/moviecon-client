@@ -40,7 +40,7 @@ export const SecondaryText: FC<TextProps> = ({ children, className }) => (
 export const PrimaryHeader: FC<TextProps> = ({ children, className }) => (
   <Text
     tag="h1"
-    className={cn("text-xl md:text-3xl", className)}
+    className={cn("text-2xl md:text-4xl", className)}
     color="primary"
   >
     {children}

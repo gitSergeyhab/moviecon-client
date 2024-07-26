@@ -17,7 +17,7 @@ export const GameOverSection: FC<GameOverSectionProps> = ({
 }) => {
   const [isImgLoaded, setImgLoaded] = useState(false);
   return (
-    <section className="w-full flex flex-col items-center bg-neutral-200/80 dark:bg-neutral-900/80  rounded-lg py-4">
+    <section className="w-full flex flex-col items-center bg-neutral-200/80 dark:bg-neutral-900/80  rounded-lg py-2 md:py-4">
       <SecondaryHeader>
         {gameStatus === "ENDED" && "Игра окончена"}
         {gameStatus === "LOST" && "Поражение"}
