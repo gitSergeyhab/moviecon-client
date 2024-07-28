@@ -10,3 +10,5 @@ export const DD_MM_YY_HH_MM = "DD.MM.YY HH:mm";
 
 export const toDayMonthYearTime = (date: string | Date): string =>
   toDate(date, DD_MM_YY_HH_MM);
+export const toDayMonthYear = (date: string | Date): string =>
+  toDate(date, DD_MM_YY);

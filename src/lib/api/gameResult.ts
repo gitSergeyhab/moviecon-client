@@ -3,7 +3,8 @@ import { request } from ".";
 import { createQueryString } from "../utils/query";
 import {
   GameAggregateRecord,
-  GameAggregateResult,
+  UserAggregateRecords,
+  GameAggregateScores,
   GameResult,
 } from "@/type/game-results";
 
@@ -25,10 +26,13 @@ export const requestUserResults$ = (
 ): Promise<{ results: GameResult[]; totalCount: number }> =>
   request.get(getUrl(`user-top?${createQueryString(query)}`));
 
-export const requestUserBestResults$ = (): Promise<GameAggregateResult[]> =>
+export const requestUserRecords$ = (): Promise<UserAggregateRecords[]> =>
   request.get(getUrl("user-best/"));
 
 export const requestRecords$ = (
   limit: number
 ): Promise<GameAggregateRecord[]> =>
   request.get(getUrl(`records?limit=${limit}`));
+
+export const requestScores$ = (): Promise<GameAggregateScores[]> =>
+  request.get(getUrl(`scores`));

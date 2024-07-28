@@ -13,11 +13,10 @@ import {
 import { fetchLevelInfo } from "@/store/game/thunks";
 import { ResultSection } from "./ResultSection";
 import { LevelInfoSection } from "./LevelInfoSection";
-
 import { GameOverSection } from "./GameOverSection";
-import { Spinner } from "@/components/Spinner";
 import { cn } from "@/lib/utils/styles";
 import { GameButtonBlock } from "./GameButtonBlock";
+import { ContentLoader } from "@/components/ContentLoader";
 
 const wrapperClasses = `bg-neutral-300/70 dark:bg-neutral-800/80 
  p-8 sm:px-16 px-2 rounded-lg
@@ -40,14 +39,9 @@ export const GameInfo = () => {
 
   if (isInfoLoading) {
     return (
-      <div
-        className={cn(
-          wrapperClasses,
-          "m-auto max-w-[1200px] rounded-lg mt-10 justify-center py-32"
-        )}
-      >
-        <Spinner size="2xl" />
-      </div>
+      <ContentLoader
+        className={cn(wrapperClasses, "min-h-96 min-w-80 w-[80%] m-auto")}
+      />
     );
   }
 

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { LoadingStatus } from "@/type/ui";
 import { GameAggregateRecord } from "@/type/game-results";
 
-export const useFetchRecords = () => {
+export const useFetchRecords = (limit: number) => {
   const [records, setRecords] = useState<GameAggregateRecord[]>([]);
   const [status, setStatus] = useState<LoadingStatus>("idle");
 
@@ -11,7 +11,7 @@ export const useFetchRecords = () => {
     const fetchResults = async () => {
       try {
         setStatus("loading");
-        const response = await requestRecords$(3);
+        const response = await requestRecords$(limit);
         setRecords(response);
         setStatus("success");
       } catch (error) {

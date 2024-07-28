@@ -1,19 +1,30 @@
-import { FC } from "react";
-import { useFetchUserRecords } from "./useFetchUserRecords";
+import { FC, useEffect } from "react";
 import { getResultSplitByDuration } from "../utils";
-import { Spinner } from "@/components/Spinner";
 import { TableRecords } from "./TableRecords";
-import { PrimaryHeader, PrimaryText } from "@/components/ui/text";
+import { PrimaryText, SecondaryHeader } from "@/components/ui/text";
+import { useSelector } from "react-redux";
+import {
+  getUserRecords,
+  getUserRecordsStatus,
+} from "@/store/records/selectors";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { fetchUserRecords } from "@/store/records/thunks";
+import { ContentLoader } from "@/components/ContentLoader";
 
 export const UserRecordsSection: FC = () => {
-  const { records, status } = useFetchUserRecords();
+  // const { records, status } = useFetchUserRecords();
+  const records = useSelector(getUserRecords);
+  const loadingStatus = useSelector(getUserRecordsStatus);
 
-  if (status === "loading")
-    return (
-      <div className="w-full flex items-center justify-center">
-        <Spinner size="lg" />
-      </div>
-    );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (records === null) {
+      dispatch(fetchUserRecords());
+    }
+  }, [records, dispatch]);
+
+  if (loadingStatus === "loading" || records === null) return <ContentLoader />;
 
   const { COMMON, LONG, QUICK } = getResultSplitByDuration(records);
 
@@ -25,9 +36,7 @@ export const UserRecordsSection: FC = () => {
     );
   return (
     <div className="mx-auto bg-neutral-200/80 dark:bg-neutral-900/80  rounded-lg py-4 ">
-      <PrimaryHeader className="text-center font-bold mt-8">
-        Ваши рекорды
-      </PrimaryHeader>
+      <SecondaryHeader className="text-center ">Ваши рекорды</SecondaryHeader>
       <div className="grid grid-cols-1 gap-4">
         {Boolean(LONG) && <TableRecords results={LONG} duration={"LONG"} />}
         {Boolean(COMMON) && (

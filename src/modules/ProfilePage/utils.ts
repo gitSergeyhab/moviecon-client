@@ -1,7 +1,7 @@
 import { GameDuration } from "@/type/game";
-import { GameAggregateResult, GameResult } from "@/type/game-results";
+import { UserAggregateRecords, GameResult } from "@/type/game-results";
 
-export const getResultSplitByDuration = (results: GameAggregateResult[]) => {
+export const getResultSplitByDuration = (results: UserAggregateRecords[]) => {
   return results.reduce((acc, item) => {
     const { params, bestResult } = item;
     const { duration } = params;

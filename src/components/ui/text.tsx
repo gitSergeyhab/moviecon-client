@@ -22,11 +22,7 @@ export const Text: FC<TextProps> = ({ tag = "p", className, children }) => {
 };
 
 export const PrimaryText: FC<TextProps> = ({ children, className }) => (
-  <Text
-    tag="p"
-    className={cn("text-xl md:text-2xl", className)}
-    color="primary"
-  >
+  <Text tag="p" className={cn("text-xl md:text-2xl", className)}>
     {children}
   </Text>
 );

@@ -1,18 +1,15 @@
 import { SecondaryHeader } from "@/components/ui/text";
 import { FC } from "react";
-import { useFetchRecords } from "./useFetchRecords";
-import { Spinner } from "@/components/Spinner";
+import { useFetchRecords } from "../../hooks/useFetchRecords";
 import { TableRecords } from "./RecordTable";
+import { recordsTableCount } from "./const";
+import { ContentLoader } from "@/components/ContentLoader";
 
 export const MainTableSection: FC = () => {
-  const { status, records } = useFetchRecords();
+  const { status, records } = useFetchRecords(recordsTableCount);
 
   if (status === "loading") {
-    return (
-      <div className="max-w-[1200px] mx-auto px-0 sm:px-8 pb-12 pt-4 rounded-lg bg-neutral-500/50 flex justify-center">
-        <Spinner size="xl" />
-      </div>
-    );
+    return <ContentLoader className="min-h-96" />;
   }
 
   if (!records || records.length === 0) return null;

@@ -21,7 +21,7 @@ export interface ResultParam {
   category: GameCategory;
 }
 
-export interface GameAggregateResult {
+export interface UserAggregateRecords {
   params: ResultParam;
   bestResult: GameResult;
 }
@@ -29,4 +29,8 @@ export interface GameAggregateResult {
 export interface GameAggregateRecord {
   params: ResultParam;
   bestResult: GameResult[];
+}
+export interface GameAggregateScores {
+  params: ResultParam;
+  scores: number[];
 }

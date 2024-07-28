@@ -3,10 +3,10 @@ import SpinnerIcon from "./icons/spinner";
 import SpinnerIcon2 from "./icons/spinner2";
 import { cn } from "@/lib/utils/styles";
 
-type Size = "2xs" | "xs" | "sm" | "l" | "lg" | "xl" | "2xl";
+export type SpinnerSize = "2xs" | "xs" | "sm" | "l" | "lg" | "xl" | "2xl";
 
 const classes: Record<
-  Size,
+  SpinnerSize,
   { wrapper: string; middle: string; inner: string }
 > = {
   "2xl": {
@@ -47,7 +47,7 @@ const classes: Record<
 };
 
 export interface SpinnerProps {
-  size: Size;
+  size: SpinnerSize;
   variant?: "first" | "second";
 }
 

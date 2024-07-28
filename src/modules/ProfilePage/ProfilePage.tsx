@@ -2,18 +2,19 @@ import { FC } from "react";
 import { UserResultsSection } from "./Result/UserResultsSection";
 import { getUser, getUserStatus } from "@/store/user/selectors";
 import { useSelector } from "react-redux";
-import { Spinner } from "@/components/Spinner";
 import { PrimaryHeader, PrimaryText } from "@/components/ui/text";
 import { UserRecordsSection } from "./Record/UserRecordsSection";
+import { ContentLoader } from "@/components/ContentLoader";
 
 export const ProfilePage: FC = () => {
   const user = useSelector(getUser);
   const loading = useSelector(getUserStatus) === "loading";
   if (loading) {
     return (
-      <div className="max-w-[1200px] mx-auto px-0 sm:px-8 pb-12 pt-4 rounded-lg bg-neutral-500/50">
-        <Spinner size="2xl" />
-      </div>
+      <ContentLoader
+        size="2xl"
+        className="max-w-[1200px] mx-auto min-h-96 bg-neutral-500/50"
+      />
     );
   }
   if (!user) return null;

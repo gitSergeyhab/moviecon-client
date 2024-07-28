@@ -23,3 +23,5 @@ export const features: { feature: string; description: string }[] = [
     description: " ",
   },
 ];
+
+export const recordsTableCount = 3;
