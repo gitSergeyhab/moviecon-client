@@ -6,7 +6,7 @@ export interface HeaderNavProps extends PropsWithChildren {
 export const HeaderNav: FC<HeaderNavProps> = ({ isMenuOpen, children }) => {
   return (
     <nav
-      className={`min-h-12 sm:flex sm:items-center text-3xl sm:text-xl flex-wrap lg:text-2xl absolute left-2 top-16  bg-basic-dark sm:bg-transparent p-6 px-8 sm:static sm:p-0 sm:px-0 rounded-md ${
+      className={`md:flex md:bg-transparent md:static  md:items-center md:border-0 border-4 text-3xl md:text-xl flex-wrap lg:text-2xl absolute left-2 top-16  bg-base-gradient rounded-md ${
         isMenuOpen ? "block" : "hidden"
       }`}
     >

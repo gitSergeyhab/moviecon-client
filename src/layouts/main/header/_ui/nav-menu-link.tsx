@@ -13,8 +13,8 @@ export const NavMenuLink: FC<UserMenuLinkProps> = ({ item }) => {
     <Link
       to={href}
       className={cn(
-        "block sm:mt-0 rounded-lg sm:px-4 py-0 back transition-colors hover:text-orange-500 duration-300",
-        pathname === href ? "bg-zinc-900" : ""
+        "flex h-16 items-center px-4 w-full md:w-auto py-0 back  hover:bg-neutral-500/70 transition-colors  duration-300 ",
+        pathname === href ? "bg-neutral-900/40" : ""
       )}
     >
       {title}

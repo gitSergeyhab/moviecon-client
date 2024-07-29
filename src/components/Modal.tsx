@@ -13,10 +13,12 @@ const Modal: FC<ModalProps> = ({ onClose, children, hasCrossBtn }) => {
         onClose();
       }
     };
+    document.body.classList.add("overflow-y-hidden");
     document.addEventListener("keydown", onKeydown);
 
     return () => {
       document.removeEventListener("keydown", onKeydown);
+      document.body.classList.remove("overflow-y-hidden");
     };
   }, []);
 

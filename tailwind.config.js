@@ -102,7 +102,7 @@ const conf  = {
           '72.4%': { backgroundColor: '#222'},
           '72.8%': { backgroundColor: '#DDD'},
           '100%': { backgroundColor: '#222'},
-        }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -115,6 +115,7 @@ const conf  = {
         "basic-gradient": "linear-gradient(to bottom left, #696363, #202120)",
         "light-gradient": "linear-gradient(to bottom left, #696363, #cecfce)",
         "dark-gradient": "linear-gradient(to bottom left, #333333, #000000)",
+        "base-gradient": "var(--base-gradient)",
       },
       backgroundColor: {
         "basic-dark": "#202120",

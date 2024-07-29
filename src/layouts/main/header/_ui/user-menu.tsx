@@ -1,29 +1,39 @@
-import { FC } from "react";
+import { FC, MouseEventHandler, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { noAuthUserMenuItems, userMenuItems } from "../constants";
 import ProfileIcon from "@/components/icons/profile";
 import { getUser } from "@/store/user/selectors";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { useCloseOnOutClick } from "@/hooks/useCloseOnOutClick";
 
 export const UserMenu: FC = () => {
   const user = useSelector(getUser);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const navigate = useNavigate();
+
+  useCloseOnOutClick({
+    noCloseDataId: "user-menu",
+    onClose: () => setIsMenuOpen(false),
+  });
+
+  const closeNavMenu: MouseEventHandler = (e) => {
+    e.stopPropagation();
+    setIsMenuOpen((prev) => !prev);
+  };
 
   const menuItems = user ? userMenuItems : noAuthUserMenuItems;
   const src = user?.avatar;
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="w-10 h-10 hover:text-orange-600 transition-colors duration-300">
+    <div className="relative h-10">
+      <button
+        onClick={closeNavMenu}
+        data-no-close={"user-menu"}
+        type="button"
+        className="w-10 h-10  hover:text-orange-600 transition-colors duration-300"
+      >
         {src ? (
           <Avatar>
             <AvatarImage src={src} />
@@ -32,23 +42,27 @@ export const UserMenu: FC = () => {
         ) : (
           <ProfileIcon />
         )}
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="mr-4 mt-4 p-2">
-        <DropdownMenuLabel>
-          {user ? user.name : "вход не выполнен"}
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {menuItems.map(({ href, icon, title, onClick }) => (
-          <DropdownMenuItem
-            className="gap-4 justify-between hover:bg-neutral-300 py-4"
-            onClick={onClick || (() => navigate(href))}
-            key={title}
-          >
-            {title}
-            {icon}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </button>
+      {isMenuOpen && (
+        <div className="absolute  right-0 bg-base-gradient flex flex-col gap-1 p-1 py-2 border-4">
+          <div className="text-center">
+            {user ? user.name : "вход не выполнен"}
+          </div>
+          <hr className="mb-2" />
+          {menuItems.map(({ href, icon, title, onClick }) => (
+            <button
+              type="button"
+              className="flex justify-between border-0 items-center h-10 rounded-none min-w-40 bg-neutral-500/10 px-2 transition-colors hover:bg-neutral-500/70"
+              onClick={onClick || (() => navigate(href))}
+              key={title}
+            >
+              {title}
+
+              {icon}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 };

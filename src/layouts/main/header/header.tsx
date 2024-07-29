@@ -18,39 +18,39 @@ const Header = () => {
     onClose: () => setIsMenuOpen(false),
   });
 
-  const closNavMenu: MouseEventHandler = (e) => {
+  const closeNavMenu: MouseEventHandler = (e) => {
     e.stopPropagation();
     setIsMenuOpen((prev) => !prev);
   };
 
   return (
-    <header className="bg-basic-gradient fixed w-full z-20 top-0 text-white py-4 px-4 sm:px-8 flex items-center justify-between font-bold shadow-xl min-w-80">
-      <button
-        data-no-close={"nav-menu"}
-        className={cn(
-          "text-white hover:text-orange-500 transition-colors duration-300",
-          "sm:hidden mr-4"
-        )}
-        onClick={closNavMenu}
-      >
-        <MenuIcon className="w-8 h-8" />
-      </button>
-      <Link
-        to={"/"}
-        className={
-          "text-white hover:text-orange-500 transition-colors duration-300"
-        }
-      >
-        <PopcornIcon width={32} />
-      </Link>
-      <ToggleTheme />
-      <div className="flex items-center gap-8">
-        <HeaderNav isMenuOpen={isMenuOpen}>
-          {navMenuItems.map((item) => (
-            <NavMenuLink item={item} key={item.href} />
-          ))}
-        </HeaderNav>
-        <UserMenu />
+    <header className="bg-base-gradient  fixed w-full z-20 top-0    shadow-xl min-w-80 ">
+      <div className="flex items-center min-h-16 justify-between font-bold max-w-[1400px] m-auto px-4">
+        <button
+          data-no-close={"nav-menu"}
+          className={cn(
+            " hover:text-orange-500 transition-colors duration-300",
+            "md:hidden mr-4"
+          )}
+          onClick={closeNavMenu}
+        >
+          <MenuIcon className="w-8 h-8" />
+        </button>
+        <Link
+          to={"/"}
+          className={" hover:text-orange-500 transition-colors duration-300"}
+        >
+          <PopcornIcon width={32} />
+        </Link>
+        <ToggleTheme />
+        <div className="flex items-center gap-8">
+          <HeaderNav isMenuOpen={isMenuOpen}>
+            {navMenuItems.map((item) => (
+              <NavMenuLink item={item} key={item.href} />
+            ))}
+          </HeaderNav>
+          <UserMenu />
+        </div>
       </div>
     </header>
   );
