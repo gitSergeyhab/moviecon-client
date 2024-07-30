@@ -48,7 +48,7 @@ export const GameInfo = () => {
   return (
     <div
       className="m-auto 
-    max-w-[1200px] rounded-lg mt-10 bg-[url('/img/game-go2.webp')] bg-no-repeat bg-cover bg-center "
+    max-w-[1200px] rounded-lg mt-10 "
     >
       <div
         className={cn(

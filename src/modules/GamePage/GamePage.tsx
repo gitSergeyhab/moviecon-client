@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getGameId, getGameStatus } from "@/store/game/selectors";
 import appRoutes from "@/lib/configs/routes/routes";
-import { GameProcess } from "./GameProcess/GameQuestion/GameProcess";
+import { GameProcess } from "./GameProcess/GameProcess";
 import { GameInfo } from "./GameInfo/GameInfo";
 
 const GamePage: FC = () => {

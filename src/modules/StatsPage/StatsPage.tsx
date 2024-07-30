@@ -26,7 +26,7 @@ const StatsPage: FC = () => {
     setCategory(categoryItem);
 
   return (
-    <div className="bg-[url('/img/game-go.webp')] bg-no-repeat bg-cover bg-toprounded-lg max-w-[1200px] m-auto mb-16 ">
+    <div className="rounded-lg max-w-[1200px] m-auto mb-16 ">
       <div className=" bg-neutral-200/90 dark:bg-neutral-900/90 py-2 md:py-16 rounded-lg md:p-6 xl:p-24 min-h-[600px] md:min-h-[880px] flex flex-col gap-2">
         <PrimaryHeader className="text-center">Статистика</PrimaryHeader>
         <div className="w-full  rounded-lg">

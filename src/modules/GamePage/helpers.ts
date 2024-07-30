@@ -1,7 +1,7 @@
 import { BlockField, BlockType } from "@/lib/configs/game/config";
-import { checkValueExist } from "@/lib/utils/common";
-import { EndGameStatus, NexGameAction, TestType, Variant } from "@/type/game";
-import { gameOverImages, questionClasses, testTypeQuesVar } from "./const";
+import { checkValueExist, getRandomItem } from "@/lib/utils/common";
+import { GameStatus, NexGameAction, TestType, Variant } from "@/type/game";
+import { gameStatusImages, questionClasses, testTypeQuesVar } from "./const";
 
 export const getContent = (
   settingsDict: Record<TestType, BlockField>,
@@ -63,18 +63,12 @@ export const getGrigWrapperClasses = (testType: TestType): string =>
     : "grid sm:grid-cols-2 gap-2 sm:gap-4 grid-cols-1";
 
 const getPath = (imgName: string): string => {
-  const pathToImg = "/img/gameOverImages/";
-  const format = "webp";
-  return `${pathToImg}${imgName}.${format}`;
+  const pathToImg = "/img/sd/";
+  return `${pathToImg}${imgName}.webp`;
 };
 
-const getRandomItem = <T>(values: Array<T>): T => {
-  const randomIndex = Math.floor(Math.random() * values.length);
-  return values[randomIndex];
-};
-
-export const getRandomGameOverSrc = (status: EndGameStatus): string => {
-  const image = getRandomItem(gameOverImages[status]);
+export const getRandomImage = (status: GameStatus): string => {
+  const image = getRandomItem(gameStatusImages[status]);
   return getPath(image);
 };
 
@@ -105,4 +99,10 @@ export const getNextActionText = (nexGameAction: NexGameAction): string => {
       break;
   }
   return text;
+};
+
+export const getBgImage = () => {
+  const pathToImg = "/img/gameOverImages/";
+  const format = "webp";
+  return `${pathToImg}bg.${format}`;
 };

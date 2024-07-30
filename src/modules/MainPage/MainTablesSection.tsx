@@ -15,7 +15,7 @@ export const MainTableSection: FC = () => {
   if (!records || records.length === 0) return null;
 
   return (
-    <section className="bg-[url('/img/game-go.webp')] bg-no-repeat bg-cover bg-center rounded-lg">
+    <section className="rounded-lg">
       <div className=" bg-neutral-200/70 dark:bg-neutral-900/70 py-4 sm:py-8 rounded-lg">
         <SecondaryHeader className="text-center ">
           Наши рекордсмены
