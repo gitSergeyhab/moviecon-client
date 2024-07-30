@@ -30,7 +30,7 @@ export const UserRecordsSection: FC = () => {
 
   if (!COMMON && !LONG && !QUICK)
     return (
-      <PrimaryText className="text-center  font-bold mt-8">
+      <PrimaryText className="text-center  font-bold m-auto mt-8">
         У вас нет пока рекордов
       </PrimaryText>
     );

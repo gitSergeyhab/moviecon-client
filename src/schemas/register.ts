@@ -11,7 +11,7 @@ export const RegisterSchema = z
       .max(formConstants.name.max, {
         message: `максимальная длина: ${formConstants.name.max}`,
       }),
-    email: z.string().email({ message: "email обязателен" }),
+    email: z.string().email({ message: "введите корректный email" }),
     password: z
       .string()
       .min(formConstants.password.min, {

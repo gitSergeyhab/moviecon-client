@@ -2,6 +2,7 @@ import axios, { AxiosError } from "axios";
 import { ApiError, ApiErrorField, AppApi } from "@type/api";
 import { ENV } from "@/lib/configs/environment";
 import TokenService from "@lib/utils/tokenService";
+import { toast } from "sonner";
 
 const defaultHeaders = {
   "Content-type": "application/json",
@@ -22,12 +23,18 @@ const createRequestInstance = (addAuthHeader: boolean): AppApi => {
   instance.interceptors.response.use(
     (response) => response.data,
     (error: AxiosError) => {
-      const { response, message } = error;
+      console.error({ error }, "interceptors");
+      const { response } = error;
       const { data, status } = response as {
-        data?: { errors: ApiErrorField[] };
+        data?: { errors: ApiErrorField[]; message: string };
         status: number;
       };
       const errors = data?.errors || [];
+      const message = data?.message || "Что-то пошло не так, попробуйте позже";
+      toast(message, {
+        closeButton: true,
+        position: "top-right",
+      });
 
       if (status === 401) {
         TokenService.logout();

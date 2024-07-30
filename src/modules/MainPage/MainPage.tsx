@@ -8,8 +8,11 @@ import {
 } from "@/components/ui/text";
 import { features } from "./const";
 import { FeatureListItem } from "./FeatureListItem";
+import { useTitle } from "@/hooks/useTitle";
+import { MAIN_TITLE } from "@/const/title";
 
 const MainPage: FC = () => {
+  useTitle(MAIN_TITLE, false);
   return (
     <div
       className="max-w-[1600px] mx-auto  p-4 sm:p-8 sm:pb-16 pb-12  px-0  rounded-lg bg-neutral-200/70 dark:bg-neutral-800/70  

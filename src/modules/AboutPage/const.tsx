@@ -126,3 +126,5 @@ export const sourceLinks: LinkData[] = [
     icon: <ChatGPTIcon className={classes} />,
   },
 ];
+
+export const title = "О проекте";

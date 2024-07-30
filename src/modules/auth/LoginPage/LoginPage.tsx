@@ -14,6 +14,8 @@ import { AnyDict } from "@/type/dict";
 import appRoutes from "@/lib/configs/routes/routes";
 import { AuthFormLayout } from "../AuthFormLayout";
 import { AppLink } from "@/components/ui/AppLink";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 const LoginPage: FC = () => {
   const form = useAppForm(LoginSchema);
@@ -44,6 +46,13 @@ const LoginPage: FC = () => {
           type="password"
         />
       </Form>
+      <Button
+        onClick={() =>
+          toast("Toast", { closeButton: true, position: "top-right" })
+        }
+      >
+        Toast
+      </Button>
       <AppLink to={appRoutes.auth.register}>еще нет аккаунта</AppLink>
     </AuthFormLayout>
   );

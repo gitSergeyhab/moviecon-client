@@ -5,12 +5,15 @@ import { getGameId, getGameStatus } from "@/store/game/selectors";
 import appRoutes from "@/lib/configs/routes/routes";
 import { GameProcess } from "./GameProcess/GameProcess";
 import { GameInfo } from "./GameInfo/GameInfo";
+import { useTitle } from "@/hooks/useTitle";
+import { title } from "./const";
 
 const GamePage: FC = () => {
   const gameStatus = useSelector(getGameStatus);
   const gameId = useSelector(getGameId);
   const [isInfo, setIsInfo] = useState(true);
 
+  useTitle(title);
   useEffect(() => {
     let timer: NodeJS.Timeout | null = null;
     if (gameStatus === "IN_PROGRESS") {

@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { PrimaryHeader } from "@/components/ui/text";
+import { useTitle } from "@/hooks/useTitle";
 import appRoutes from "@/lib/configs/routes/routes";
 import { useNavigate } from "react-router-dom";
 
 const PageNotFound = () => {
+  useTitle("Страница не найдена");
+
   const navigate = useNavigate();
 
   return (

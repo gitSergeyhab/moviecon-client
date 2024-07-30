@@ -26,16 +26,17 @@ export const Tabs = <T extends string>({
       )}
     >
       {tabData.map(({ label, value }) => (
-        <li
-          onClick={() => onClick(value)}
-          className={cn(
-            "cursor-pointer  font-bold bg-neutral-600 opacity-80 px-2 md:px-8 py-2 hover:text-orange-500 transition-colors duration-300",
-            value === selectedValue &&
-              "bg-neutral-200/30 dark:bg-neutral-900/30 "
-          )}
-          key={value}
-        >
-          {label}
+        <li key={value}>
+          <button
+            onClick={() => onClick(value)}
+            className={cn(
+              "cursor-pointer  font-bold bg-neutral-600 opacity-80 px-2 md:px-8 py-2 hover:text-orange-500 transition-colors duration-300",
+              value === selectedValue &&
+                "bg-neutral-200/70 dark:bg-neutral-900/70 "
+            )}
+          >
+            {label}
+          </button>
         </li>
       ))}
     </ul>

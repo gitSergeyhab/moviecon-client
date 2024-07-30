@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils/styles";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { setNextQuestion, setTransition } from "@/store/game/store";
 import { InfoBar } from "./GameQuestion/InfoBar/InfoBar";
+import { title } from "../const";
 
 export const GameProcess: FC = () => {
   const test = useSelector(getCurrentTest);
@@ -57,6 +58,7 @@ export const GameProcess: FC = () => {
         isTransition ? "opacity-70" : "opacity-100"
       )}
     >
+      <h1 className="invisible h-0">{title}</h1>
       <div
         className={cn(
           "rounded-lg z-10 absolute top-0 left-0 right-0 bottom-0 bg-black pointer-events-none transition duration-500 ease-in-out",

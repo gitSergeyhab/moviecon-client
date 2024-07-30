@@ -5,9 +5,13 @@ import { useSelector } from "react-redux";
 import { PrimaryHeader, PrimaryText } from "@/components/ui/text";
 import { UserRecordsSection } from "./Record/UserRecordsSection";
 import { ContentLoader } from "@/components/ContentLoader";
+import { useTitle } from "@/hooks/useTitle";
 
 export const ProfilePage: FC = () => {
   const user = useSelector(getUser);
+
+  useTitle(user?.name || "Профиль");
+
   const loading = useSelector(getUserStatus) === "loading";
   if (loading) {
     return (

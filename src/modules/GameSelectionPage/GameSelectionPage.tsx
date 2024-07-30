@@ -10,16 +10,18 @@ import { ApiError } from "@/type/api";
 import { AnyDict } from "@/type/dict";
 import { FC, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { categoryOptions, durationOptions } from "./const";
+import { categoryOptions, durationOptions, title } from "./const";
 import { FormRadioGroup } from "@/components/ui/form/form-radio-group";
 import { Fieldset } from "@/components/ui/fieldset";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { resetGame, startGame } from "@/store/game/store";
+import { useTitle } from "@/hooks/useTitle";
 
 const GameSelectionPage: FC = () => {
   const form = useAppForm(GameSelectionSchema);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  useTitle(title);
 
   useEffect(() => {
     dispatch(resetGame());
@@ -37,6 +39,7 @@ const GameSelectionPage: FC = () => {
 
   return (
     <div className="m-auto max-w-[1200px] flex flex-col items-center">
+      <h1 className="invisible h-0">{title}</h1>
       <Form
         form={form}
         onSubmit={onSubmit}

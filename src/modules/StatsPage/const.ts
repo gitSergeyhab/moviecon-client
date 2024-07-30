@@ -15,3 +15,4 @@ export const categoryTabData: CategoryTabTata[] = [
   { label: TextData.category["rus"], value: "rus" },
 ];
 export const defaultCategory = categoryTabData[1].value;
+export const title = "Статистика";

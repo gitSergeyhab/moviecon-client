@@ -17,6 +17,7 @@ import { AppLink } from "@/components/ui/AppLink";
 
 const RegisterPage: FC = () => {
   const form = useAppForm(RegisterSchema);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

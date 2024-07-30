@@ -1,8 +1,11 @@
+import { useTitle } from "@/hooks/useTitle";
 import { FC, PropsWithChildren } from "react";
+import { title } from "./const";
 
 export interface AuthFormLayoutProps extends PropsWithChildren {}
 
 export const AuthFormLayout: FC<AuthFormLayoutProps> = ({ children }) => {
+  useTitle(title);
   return (
     <div className="container mx-auto p-4 flex">
       <div

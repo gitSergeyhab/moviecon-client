@@ -17,3 +17,5 @@ export const categoryOptions: CategoryOption[] = [
   { label: "Советское кино", value: "ussr" },
   { label: "Российское кино", value: "rus" },
 ];
+
+export const title = "Выбор игры";
