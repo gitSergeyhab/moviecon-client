@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { MenuItem } from "../constants";
+import { MenuItem } from "./const";
 import { cn } from "@/lib/utils/styles";
 export interface UserMenuLinkProps {
   item: MenuItem;

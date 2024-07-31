@@ -1,16 +1,19 @@
 import { MouseEventHandler, useState } from "react";
 import { Link } from "react-router-dom";
-import { HeaderNav } from "./_ui/header-nav";
-import { navMenuItems } from "./constants";
-import { NavMenuLink } from "./_ui/nav-menu-link";
-import { UserMenu } from "./_ui/user-menu";
+import { HeaderNav } from "./HeaderNav";
+import { NavMenuLink } from "./NavMenuLink";
+import { UserMenu } from "./UserMenu";
 import MenuIcon from "@/components/icons/menu";
 import PopcornIcon from "@/components/icons/popcorn";
 import { useCloseOnOutClick } from "@/hooks/useCloseOnOutClick";
 import { cn } from "@/lib/utils/styles";
 import { ToggleTheme } from "@/components/ToggleTheme";
+import { useSelector } from "react-redux";
+import { getUser } from "@/store/user/selectors";
+import { getNavMenuItems } from "./helpers";
 
 const Header = () => {
+  const user = useSelector(getUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useCloseOnOutClick({
@@ -22,6 +25,8 @@ const Header = () => {
     e.stopPropagation();
     setIsMenuOpen((prev) => !prev);
   };
+
+  const navMenuItems = getNavMenuItems(user?.role);
 
   return (
     <header className="bg-base-gradient  fixed w-full z-20 top-0    shadow-xl min-w-80 ">

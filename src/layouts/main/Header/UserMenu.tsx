@@ -1,7 +1,7 @@
 import { FC, MouseEventHandler, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { noAuthUserMenuItems, userMenuItems } from "../constants";
+import { noAuthUserMenuItems, userMenuItems } from "./const";
 import ProfileIcon from "@/components/icons/profile";
 import { getUser } from "@/store/user/selectors";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";

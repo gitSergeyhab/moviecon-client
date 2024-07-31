@@ -6,7 +6,9 @@ import LoginIcon from "@/components/icons/login";
 import appRoutes from "@/lib/configs/routes/routes";
 import { logout } from "@/lib/utils/user";
 
-const { about, auth, gameSelection, main, profile, stats } = appRoutes;
+const { about, auth, gameSelection, profile, stats, admin } = appRoutes;
+
+type Page = "about" | "gameSelection" | "stats" | "admin";
 
 const itemMenuClass = "w-4 h-4 ml-auto";
 export interface MenuItem {
@@ -46,18 +48,22 @@ export const noAuthUserMenuItems: UserMenuItem[] = [
   },
 ];
 
-export const navMenuItems: MenuItem[] = [
-  { href: main, title: "Главная" },
-  {
-    href: gameSelection,
-    title: "Игра",
-  },
-  {
-    href: stats,
-    title: "Статистика",
-  },
-  {
-    href: about,
-    title: "Инфо",
-  },
+export const navMenuItem: Record<Page, MenuItem> = {
+  gameSelection: { href: gameSelection, title: "Игра" },
+  stats: { href: stats, title: "Статистика" },
+  about: { href: about, title: "О проекте" },
+  admin: { href: admin, title: "Админка" },
+};
+
+export const navMenuNoAuthItems = [navMenuItem.about];
+export const navMenuUserItems = [
+  navMenuItem.gameSelection,
+  navMenuItem.stats,
+  navMenuItem.about,
+];
+export const navMenuAdminItems = [
+  navMenuItem.gameSelection,
+  navMenuItem.stats,
+  navMenuItem.about,
+  navMenuItem.admin,
 ];

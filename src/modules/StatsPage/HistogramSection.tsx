@@ -37,14 +37,14 @@ export const HistogramSection: FC = () => {
   const histogramData = generateHistogramData(data, userRecord);
   if (!histogramData) {
     return (
-      <SecondaryHeader>
+      <SecondaryHeader className="text-center">
         Недостаточно данных для построения графика
       </SecondaryHeader>
     );
   }
   return (
     <section>
-      <h2 className="hidden">Гистограмма распределения результатов</h2>
+      <h2 className="invisible h-0">Гистограмма распределения результатов</h2>
       <Histogram data={histogramData} userRecord={userRecord} />
     </section>
   );
