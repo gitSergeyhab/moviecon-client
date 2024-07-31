@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { UserInfo } from "@/type/user";
-import { fetchUser } from "./thunks";
 import { initialState } from "./const";
+import { LoadingStatus } from "@/type/ui";
 
 const authSlice = createSlice({
   name: "auth",
@@ -13,24 +13,12 @@ const authSlice = createSlice({
     clearUser(state) {
       state.user = null;
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchUser.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(fetchUser.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.payload || "Ошибка загрузки данных пользователя";
-      })
-      .addCase(fetchUser.fulfilled, (state, action) => {
-        state.status = "success";
-        state.user = action.payload;
-        state.error = null;
-      });
+    setLoadingStatus(state, { payload }: PayloadAction<LoadingStatus>) {
+      state.status = payload;
+    },
   },
 });
 
-export const { clearUser, setUser } = authSlice.actions;
+export const { clearUser, setUser, setLoadingStatus } = authSlice.actions;
 
 export default authSlice;

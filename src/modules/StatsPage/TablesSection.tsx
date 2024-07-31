@@ -29,8 +29,6 @@ export const TablesSection: FC<TablesSectionProps> = ({
       </PrimaryText>
     );
   }
-  console.log({ duration, category });
-  console.log({ records, status, filteredRecords });
   return (
     <section className="bg-transparent rounded-lg">
       <div className=" bg-neutral-200/20 dark:bg-neutral-900/20 py-4 sm:py-8 rounded-lg">

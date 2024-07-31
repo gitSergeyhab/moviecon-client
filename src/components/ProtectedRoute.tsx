@@ -1,6 +1,5 @@
 import { FC, PropsWithChildren, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { ProtectedRolesRoute } from "./ProtectedRoleRoute";
 import { UserRole } from "@/type/user";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
@@ -18,16 +17,19 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({
   const user = useSelector(getUser);
   const status = useSelector(getUserStatus);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
-      dispatch(fetchUser(navigate));
+      dispatch(fetchUser());
     }
   }, []);
 
-  if (status === "loading" || status === "idle") {
+  if (status === "loading") {
     return <h1>Loading...</h1>;
   }
 
-  return <ProtectedRolesRoute roles={roles}>{children}</ProtectedRolesRoute>;
+  return (
+    <ProtectedRolesRoute user={user} roles={roles}>
+      {children}
+    </ProtectedRolesRoute>
+  );
 };

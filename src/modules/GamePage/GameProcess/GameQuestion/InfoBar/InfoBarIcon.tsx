@@ -14,7 +14,7 @@ export const InfoBarIcons: FC<InfoBarIcon> = ({ count, isActive, type }) => {
       ? "fill-orange-500 text-orange-500"
       : "fill-neutral-400 text-neutral-800 opacity-50"
   );
-  console.log({ count, isActive, type });
+
   return Array(count)
     .fill(null)
     .map((_, i) =>

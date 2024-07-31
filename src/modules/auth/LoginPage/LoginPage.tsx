@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Form } from "@/components/ui/form/form";
 import { FormInput } from "@/components/ui/form/form-input";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
@@ -16,20 +16,25 @@ import { AuthFormLayout } from "../AuthFormLayout";
 import { AppLink } from "@/components/ui/AppLink";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { redirectQueryKey } from "@/const/redirectQueryKey";
 
 const LoginPage: FC = () => {
   const form = useAppForm(LoginSchema);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [searchParams] = useSearchParams();
 
   const onSubmit = async (data: AnyDict) => {
     try {
+      const redirectPath = searchParams.get(redirectQueryKey)
+        ? `${appRoutes.main}${searchParams.get(redirectQueryKey)}`
+        : appRoutes.main;
       const response = await requestLogin(data as LoginSchemaType);
       const { tokens, ...user } = response;
       dispatch(setUser(user));
       TokenService.accessToken = tokens.access;
       TokenService.refreshToken = tokens.refresh;
-      navigate("/");
+      navigate(redirectPath);
     } catch (e) {
       setFormErrors(e as ApiError, form.setError);
     }

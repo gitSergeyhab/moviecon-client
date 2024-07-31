@@ -27,7 +27,6 @@ export const GameQuestion: FC<GameQuestionProps> = ({
   const { imageClasses, imgWrapperClasses, wrapperClasses } =
     getQuestionClasses(testType);
 
-  console.log({ imageClasses, imgWrapperClasses, wrapperClasses });
   return (
     <div className={wrapperClasses}>
       <div>

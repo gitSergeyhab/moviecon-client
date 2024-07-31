@@ -24,7 +24,6 @@ export const Form = <T extends AnyDict>({
 }: FormProps<T>) => {
   const { formState, handleSubmit } = form;
   const { isSubmitting, isValid } = formState;
-  console.log({ isValid });
   return (
     <form
       noValidate

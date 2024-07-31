@@ -35,7 +35,6 @@ export const HistogramSection: FC = () => {
   const data = getTemporaryData(scores);
 
   const histogramData = generateHistogramData(data, userRecord);
-  console.log({ data, histogramData, userRecord });
   if (!histogramData) {
     return (
       <SecondaryHeader>

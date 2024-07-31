@@ -10,6 +10,7 @@ const appRoutes = {
   game: "/game/:gameId",
   stats: "/stats",
   admin: "/admin",
+  notFound: "not-found-page",
 } as const;
 export default appRoutes;
 

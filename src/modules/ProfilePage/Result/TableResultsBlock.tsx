@@ -18,7 +18,6 @@ export const TableResultsBlock: FC<TableResultsBlockProps> = ({
   if ((status === "loading" || status === "idle") && !results.length) {
     return <ContentLoader />;
   }
-  console.log({ count, results, status });
 
   if (!count || !results.length) {
     return (

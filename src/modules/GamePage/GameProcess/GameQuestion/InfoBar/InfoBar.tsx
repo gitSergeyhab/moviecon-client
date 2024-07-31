@@ -25,7 +25,6 @@ export const InfoBar: FC = () => {
   }
 
   const { errors, number, questions, skips } = levelInfo;
-  console.log({ errors, number, questions, skips, madeSkips, madeErrors });
 
   return (
     <div className="flex flex-wrap w-full mb-1 justify-between gap-1 p-0 bg-neutral-400 dark:bg-neutral-900 rounded-full shadow-xl sm:text-l text-xs">

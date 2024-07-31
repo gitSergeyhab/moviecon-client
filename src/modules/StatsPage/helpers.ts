@@ -36,7 +36,6 @@ export const generateHistogramData = (data: number[], userRecord: number) => {
     }
   }
   result.push(dict);
-  console.log({ result, data });
 
   return result;
 };

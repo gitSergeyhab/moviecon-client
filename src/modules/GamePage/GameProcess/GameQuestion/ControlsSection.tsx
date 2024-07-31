@@ -44,8 +44,6 @@ export const ControlsSection: FC = () => {
 
   // TODO: обработка 404, когда сервер перезагрузился и айди с такой игрой уже нет
 
-  console.log({ isSkipQuestionBtnShow, isAnswerDone, nexGameAction });
-
   return (
     <section className="flex gap-1 lg:gap-8 flex-wrap justify-center items-center sm:p-4 p-2 relative">
       {isLoading && (
