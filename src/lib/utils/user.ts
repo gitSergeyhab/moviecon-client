@@ -1,7 +1,7 @@
 import { store } from "@/store";
 import { clearUser } from "@/store/user/store";
 import { UserRole } from "@/type/user";
-import TokenService from "./tokenService";
+import TokenService from "./storage-services/tokenService";
 import { getUser } from "@/store/user/selectors";
 
 export const logout = () => {

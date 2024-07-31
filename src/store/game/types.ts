@@ -25,4 +25,5 @@ export interface GameState {
   infoLoadingStatus: LoadingStatus;
   loadingStatus: LoadingStatus;
   isTransition: boolean;
+  isImagePreloading: boolean;
 }

@@ -18,4 +18,5 @@ export const initialState: GameState = {
   infoLoadingStatus: "idle",
   correctAnswerId: null,
   isTransition: false,
+  isImagePreloading: false,
 };

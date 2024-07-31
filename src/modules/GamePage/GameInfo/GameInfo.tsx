@@ -53,7 +53,7 @@ export const GameInfo = () => {
       <div
         className={cn(
           wrapperClasses,
-          "justify-around gap-y-2 sm:gap-y-8 text-sm sm:text-lg text-center",
+          "justify-around gap-y-2 sm:gap-y-4 text-sm sm:text-lg text-center",
           isTransition && "opacity-0"
         )}
       >

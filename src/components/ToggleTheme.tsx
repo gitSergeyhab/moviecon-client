@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
-import ThemeService from "@/lib/utils/themeService";
+import ThemeService from "@/lib/utils/storage-services/themeService";
 
 export const ToggleTheme: FC = () => {
   const [isDark, setIsDark] = useState(false);

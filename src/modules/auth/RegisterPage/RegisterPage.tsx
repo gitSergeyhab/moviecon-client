@@ -6,7 +6,7 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useAppForm } from "@/hooks/useAppForm";
 import { requestRegister } from "@/lib/api/auth";
 import { setFormErrors } from "@/lib/utils/errors";
-import TokenService from "@/lib/utils/tokenService";
+import TokenService from "@/lib/utils/storage-services/tokenService";
 import { RegisterSchema, RegisterSchemaType } from "@/schemas/register";
 import { setUser } from "@/store/user/store";
 import { ApiError } from "@/type/api";

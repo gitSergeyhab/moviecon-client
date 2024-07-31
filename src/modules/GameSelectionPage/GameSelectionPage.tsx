@@ -16,6 +16,7 @@ import { Fieldset } from "@/components/ui/fieldset";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { resetGame, startGame } from "@/store/game/store";
 import { useTitle } from "@/hooks/useTitle";
+import { SwitchLoadingImages } from "./SwitchLoadingImages";
 
 const GameSelectionPage: FC = () => {
   const form = useAppForm(GameSelectionSchema);
@@ -56,7 +57,7 @@ const GameSelectionPage: FC = () => {
           />
         </Fieldset>
 
-        <Fieldset name="Длительность" className="my-4">
+        <Fieldset name="Длительность">
           <FormRadioGroup
             defaultValue="COMMON"
             field="duration"
@@ -64,6 +65,7 @@ const GameSelectionPage: FC = () => {
             options={durationOptions}
           />
         </Fieldset>
+        <SwitchLoadingImages />
       </Form>
     </div>
   );

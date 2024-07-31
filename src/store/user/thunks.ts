@@ -1,5 +1,5 @@
 import { ThunkFn } from "@type/store";
-import TokenService from "@/lib/utils/tokenService";
+import TokenService from "@/lib/utils/storage-services/tokenService";
 import { requestUser } from "@/lib/api/auth";
 import { setLoadingStatus, setUser } from "./store";
 

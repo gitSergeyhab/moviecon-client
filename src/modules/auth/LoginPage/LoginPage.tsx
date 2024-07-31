@@ -6,7 +6,7 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useAppForm } from "@/hooks/useAppForm";
 import { requestLogin } from "@/lib/api/auth";
 import { setFormErrors } from "@/lib/utils/errors";
-import TokenService from "@/lib/utils/tokenService";
+import TokenService from "@/lib/utils/storage-services/tokenService";
 import { LoginSchema, LoginSchemaType } from "@/schemas/login";
 import { setUser } from "@/store/user/store";
 import { ApiError } from "@/type/api";
@@ -14,8 +14,6 @@ import { AnyDict } from "@/type/dict";
 import appRoutes from "@/lib/configs/routes/routes";
 import { AuthFormLayout } from "../AuthFormLayout";
 import { AppLink } from "@/components/ui/AppLink";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
 import { redirectQueryKey } from "@/const/redirectQueryKey";
 
 const LoginPage: FC = () => {
@@ -51,13 +49,6 @@ const LoginPage: FC = () => {
           type="password"
         />
       </Form>
-      <Button
-        onClick={() =>
-          toast("Toast", { closeButton: true, position: "top-right" })
-        }
-      >
-        Toast
-      </Button>
       <AppLink to={appRoutes.auth.register}>еще нет аккаунта</AppLink>
     </AuthFormLayout>
   );

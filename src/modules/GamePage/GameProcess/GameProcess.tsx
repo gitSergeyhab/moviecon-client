@@ -2,7 +2,12 @@ import { useState, FC, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { GameQuestion } from "@/modules/GamePage/GameProcess/GameQuestion/GameQuestion";
-import { getCurrentTest, getIsTransition } from "@/store/game/selectors";
+import {
+  getCurrentTest,
+  getIsLoadingImages,
+  getIsTransition,
+  getNextQuestionImages,
+} from "@/store/game/selectors";
 import appRoutes from "@/lib/configs/routes/routes";
 import { Portal } from "@/components/Portal";
 import Modal from "@/components/Modal";
@@ -13,11 +18,15 @@ import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { setNextQuestion, setTransition } from "@/store/game/store";
 import { InfoBar } from "./GameQuestion/InfoBar/InfoBar";
 import { title } from "../const";
+import { useImagePreload } from "@/hooks/useImagePreload";
 
 export const GameProcess: FC = () => {
   const test = useSelector(getCurrentTest);
   const [modalOpen, setModalOpen] = useState(false);
   const isTransition = useSelector(getIsTransition);
+  const nextQuestionImages = useSelector(getNextQuestionImages);
+  const isPreLoadingImages = useSelector(getIsLoadingImages);
+  useImagePreload(nextQuestionImages, !isPreLoadingImages);
 
   const dispatch = useAppDispatch();
 

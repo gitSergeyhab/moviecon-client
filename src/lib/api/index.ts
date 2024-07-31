@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { ApiError, ApiErrorField, AppApi } from "@type/api";
 import { ENV } from "@/lib/configs/environment";
-import TokenService from "@lib/utils/tokenService";
+import TokenService from "@/lib/utils/storage-services/tokenService";
 import { toast } from "sonner";
 
 const defaultHeaders = {

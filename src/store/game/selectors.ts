@@ -48,6 +48,9 @@ export const getTestIndexes = (state: RootState): string[] =>
 export const getTestsDict = (state: RootState): TestDict | null =>
   state.game.levelTestsDict;
 
+export const getLevelInfo = (state: RootState): Level | null =>
+  state.game.levelInfo;
+
 export const getImages = createSelector(getTestsDict, (dict): string[] => {
   if (!dict) return [];
   const questionImages = Object.values(dict).reduce((acc, test) => {
@@ -68,11 +71,56 @@ export const getImages = createSelector(getTestsDict, (dict): string[] => {
   return [...questionImages, ...variantImages];
 });
 
+export const getNextQuestionImages = createSelector(
+  getTestsDict,
+  getCurrentTestIndex,
+  getTestIndexes,
+  getLevelInfo,
+  (dict, index, indexes, info): string[] => {
+    if (!dict) return [];
+    const questions = info?.questions || 0;
+    if (questions <= index - 1) return [];
+    const nextQuestion = dict[indexes[index + 1]];
+    if (!nextQuestion) return [];
+    const images: string[] = [];
+    if (nextQuestion.question.imageUrl) {
+      images.push(nextQuestion.question.imageUrl);
+    }
+
+    nextQuestion.variants.forEach((variant) => {
+      if (variant.imageUrl) {
+        images.push(variant.imageUrl);
+      }
+    });
+
+    return images;
+  }
+);
+
+export const getFirstQuestionImages = createSelector(
+  getTestsDict,
+  getTestIndexes,
+  (dict, indexes): string[] => {
+    if (!dict) return [];
+    const nextQuestion = dict[indexes[0]];
+    const images: string[] = [];
+    if (nextQuestion.question.imageUrl) {
+      images.push(nextQuestion.question.imageUrl);
+    }
+    nextQuestion.variants.forEach((variant) => {
+      if (variant.imageUrl) {
+        images.push(variant.imageUrl);
+      }
+    });
+    return images;
+  }
+);
+
+export const getIsLoadingImages = (state: RootState): boolean =>
+  state.game.isImagePreloading;
+
 export const getCorrectAnswerId = (state: RootState): string | number | null =>
   state.game.correctAnswerId;
-
-export const getLevelInfo = (state: RootState): Level | null =>
-  state.game.levelInfo;
 
 export const getMadeErrors = (state: RootState): number =>
   state.game.levelErrors;

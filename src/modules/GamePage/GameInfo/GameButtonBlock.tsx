@@ -3,7 +3,12 @@ import { Button } from "@/components/ui/button";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useImagePreload } from "@/hooks/useImagePreload";
 import appRoutes from "@/lib/configs/routes/routes";
-import { getImages, getLoadingStatus } from "@/store/game/selectors";
+import {
+  getFirstQuestionImages,
+  getImages,
+  getIsLoadingImages,
+  getLoadingStatus,
+} from "@/store/game/selectors";
 import { fetchStartLevel } from "@/store/game/thunks";
 import { FC, ReactNode } from "react";
 import { useSelector } from "react-redux";
@@ -33,9 +38,15 @@ export const GameButtonBlock: FC<GameButtonBlockProps> = ({ isGameOver }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const loadingStatus = useSelector(getLoadingStatus);
+  const isPreLoadingImages = useSelector(getIsLoadingImages);
   const isLoading = loadingStatus === "loading";
   const images = useSelector(getImages);
-  const { areImagesLoaded } = useImagePreload(images, !isGameOver);
+  const firstQuestionImages = useSelector(getFirstQuestionImages);
+
+  const { areImagesLoaded } = useImagePreload(
+    isPreLoadingImages ? images : firstQuestionImages,
+    !isGameOver
+  );
 
   const handleStartClick = () => dispatch(fetchStartLevel());
   const handleReStartClick = () => navigate(appRoutes.gameSelection);

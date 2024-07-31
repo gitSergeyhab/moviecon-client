@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const preloadImages = (images: string[]): Promise<void[]> => {
   return Promise.all(
@@ -22,7 +23,10 @@ export const useImagePreload = (
     if (isPreloadRequired && images.length > 0) {
       preloadImages(images)
         .then(() => setAreImagesLoaded(true))
-        .catch((err) => console.error(err));
+        .catch((err) => {
+          toast.error("Не удалось загрузить изображения");
+          console.error({ err });
+        });
     }
   }, [isPreloadRequired, images]);
   return { areImagesLoaded };

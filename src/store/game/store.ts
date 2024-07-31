@@ -7,13 +7,15 @@ import {
   fetchSkipQuestion,
   fetchStartLevel,
 } from "./thunks";
+import LoadingImagesService from "@/lib/utils/storage-services/LoadingImagesService";
 
 const gameSlice = createSlice({
   initialState,
   name: "game",
   reducers: {
     resetGame() {
-      return initialState;
+      const isImgPreLoading = LoadingImagesService.mode;
+      return { ...initialState, isImagePreloading: isImgPreLoading };
     },
     startGame(state, { payload }: PayloadAction<{ gameId: string }>) {
       state.gameId = payload.gameId;
@@ -25,6 +27,10 @@ const gameSlice = createSlice({
 
     setTransition(state, { payload }: PayloadAction<boolean>) {
       state.isTransition = payload;
+    },
+
+    setImgPreloading(state, { payload }: PayloadAction<boolean>) {
+      state.isImagePreloading = payload;
     },
   },
   extraReducers: (builder) => {
@@ -139,7 +145,7 @@ const gameSlice = createSlice({
 export const {
   startGame,
   setNextQuestion,
-  // setIsDelayBeforeInfo,
+  setImgPreloading,
   resetGame,
   setTransition,
 } = gameSlice.actions;

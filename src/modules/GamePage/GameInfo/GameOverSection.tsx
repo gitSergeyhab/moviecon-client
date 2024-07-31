@@ -5,7 +5,7 @@ import { getRandomImage } from "../helpers";
 import { cn } from "@/lib/utils/styles";
 
 const imageClasses =
-  "max-w-[600px] object-contain md:object-cover top flex h-64 md:h-96 sm:max-h-max w-full text-center rounded-md";
+  "max-w-[600px] object-contain md:object-cover top flex h-64 md:h-[480px] sm:max-h-max w-full text-center rounded-md";
 
 export interface GameOverSectionProps {
   gameStatus: GameStatus;

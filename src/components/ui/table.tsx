@@ -35,7 +35,7 @@ export interface TableHProps extends PropsWithChildren {
 export const TableH: FC<TableHProps> = ({ children, className }) => (
   <th
     className={cn(
-      "py-2 px-4 border-b-2 border-neutral-300 dark:border-neutral-600",
+      "py-[6px] px-4 border-b-2 border-neutral-300 dark:border-neutral-600 ",
       className
     )}
   >
@@ -50,7 +50,7 @@ export interface TableDProps extends PropsWithChildren {
 export const TableD: FC<TableDProps> = ({ children, className }) => (
   <td
     className={cn(
-      "py-2 px-4 border-b border-neutral-300 dark:border-neutral-600",
+      "py-1 px-4 border-b border-neutral-300 dark:border-neutral-600",
       className
     )}
   >
