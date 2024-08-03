@@ -20,7 +20,7 @@ export const FilterSelect: FC<FilterSelectProps> = ({
 }) => {
   return (
     <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="sm:w-[180px] w-full">
+      <SelectTrigger className="w-full sm:w-[180px]">
         <SelectValue placeholder={value} />
       </SelectTrigger>
       <SelectContent>

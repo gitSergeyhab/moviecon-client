@@ -5,9 +5,9 @@ import { ImageBlock } from "./ImageBlock";
 
 const ImagesSection: FC = () => {
   return (
-    <section className="flex flex-col gap-10 rounded-lg w-full ">
+    <section className="flex flex-col w-full gap-10 rounded-lg">
       <h2 className="invisible h-0">Примеры вопросов, скриншоты</h2>
-      <PrimaryText className="text-3xl md:text-5xl font-bold text-center">
+      <PrimaryText className="text-3xl font-bold text-center md:text-5xl">
         Угадывайте!
       </PrimaryText>
       {gameImages.map(({ image, title, id }) => (

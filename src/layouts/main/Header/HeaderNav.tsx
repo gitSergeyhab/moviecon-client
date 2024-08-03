@@ -8,7 +8,8 @@ export const HeaderNav: FC<HeaderNavProps> = ({ isMenuOpen, children }) => {
   return (
     <nav
       className={cn(
-        "md:flex md:bg-transparent md:static  md:items-center md:border-0 border-4 text-3xl md:text-xl flex-wrap lg:text-2xl absolute left-2 top-16  bg-base-gradient md:bg-none  rounded-md",
+        "absolute left-2 top-16 bg-base-gradient border-4 text-3xl rounded-md",
+        "md:static md:bg-transparent md:flex flex-wrap md:items-center md:border-0 md:text-xl md:bg-none lg:text-2xl ",
         isMenuOpen ? "block" : "hidden"
       )}
     >

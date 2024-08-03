@@ -5,7 +5,7 @@ import { getRandomImage } from "../helpers";
 import { cn } from "@/lib/utils/styles";
 
 const imageClasses =
-  "max-w-[600px] object-contain md:object-cover top flex h-64 md:h-[480px] sm:max-h-max w-full text-center rounded-md";
+  "max-w-[600px] object-contain top flex h-64 w-full text-center rounded-md sm:max-h-max md:h-[480px] md:object-cover";
 
 export interface GameOverSectionProps {
   gameStatus: GameStatus;
@@ -18,7 +18,7 @@ export const GameOverSection: FC<GameOverSectionProps> = ({
 }) => {
   const [isImgLoaded, setImgLoaded] = useState(false);
   return (
-    <section className="w-full flex flex-col items-center bg-neutral-200/80 dark:bg-neutral-900/80  rounded-lg py-2 md:py-4">
+    <section className="bg-neutral-200/80 dark:bg-neutral-900/80 flex flex-col items-center w-full rounded-lg py-2 md:py-4">
       <h2 className="invisible h-0">Балы за всю игру и картинка</h2>
       <PrimaryText className="text-center font-bold text-2xl md:text-3xl">
         {gameStatus === "ENDED" && "Игра окончена"}

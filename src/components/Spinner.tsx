@@ -58,19 +58,19 @@ export const Spinner: FC<SpinnerProps> = ({ size, variant }) => {
     <div className={cn("relative", wrapper)}>
       <SpinnerEl
         className={cn(
-          "animate-spin w-full absolute will-change-transform delay-200",
+          "absolute w-full animate-spin  will-change-transform delay-75",
           inner
         )}
       />
       <SpinnerEl
         className={cn(
-          "animate-spin-back w-full absolute will-change-transform rotate-180 opacity-85 delay-100",
+          "absolute w-full animate-spin-back will-change-transform rotate-180 opacity-85 delay-100",
           middle
         )}
       />
       <SpinnerEl
         className={
-          "animate-spin w-full absolute will-change-transform opacity-70"
+          "absolute w-full animate-spin will-change-transform opacity-70"
         }
       />
     </div>

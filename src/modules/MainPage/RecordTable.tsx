@@ -13,11 +13,11 @@ export const TableRecords: FC<TableResultsProps> = ({ result }) => {
   const { bestResult, params } = result;
   const { category, duration } = params;
   return (
-    <div className="w-full flex flex-col items-center  ">
+    <div className="w-full flex flex-col items-center">
       <ItemHeader className="my-2">
         {TextData.duration[duration]} игра / {TextData.category[category]}
       </ItemHeader>
-      <div className="px-2 sm:px-4 w-full  max-h-[520px] sm:max-h-[720px] overflow-auto">
+      <div className="px-2 w-full max-h-[520px] overflow-auto sm:max-h-[720px] sm:px-4">
         <Table className="w-full ">
           <thead>
             <TableRow type="header">
@@ -34,7 +34,7 @@ export const TableRecords: FC<TableResultsProps> = ({ result }) => {
                   <TableD>
                     <div
                       className={cn(
-                        "font-bold rounded-full flex items-center justify-center w-6 h-6",
+                        "flex items-center justify-center  w-6 h-6 font-bold rounded-full",
                         classPosition[String(i + 1) as "1" | "2" | "3"]
                       )}
                     >

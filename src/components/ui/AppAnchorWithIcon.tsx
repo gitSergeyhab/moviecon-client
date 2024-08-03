@@ -15,7 +15,8 @@ export const AppAnchorWithIcon: FC<AppLinkProps> = ({
 }) => (
   <a
     className={cn(
-      "hover:text-orange-500 flex w-min  transition-colors duration-300",
+      "flex w-min",
+      "hover:text-orange-500 transition-colors duration-300",
       className
     )}
     href={href}

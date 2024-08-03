@@ -24,10 +24,10 @@ export const SwitchLoadingImages = () => {
     <div className="flex items-center">
       <Switch
         checked={isChecked}
-        className="border-2 border-neutral-800 dark:border-neutral-200"
+        className="border-neutral-800 dark:border-neutral-200 border-2"
         onCheckedChange={handleChangeMode}
       />
-      <SecondaryText className="text-xs md:text-sm max-w-64 p-2">
+      <SecondaryText className="text-xs max-w-64 p-2 md:text-sm">
         Включить предзагрузку всех картинок перед началом уровня
       </SecondaryText>
     </div>

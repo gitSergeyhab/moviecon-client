@@ -17,17 +17,14 @@ export const ProfilePage: FC = () => {
     return (
       <ContentLoader
         size="2xl"
-        className="max-w-[1200px] mx-auto min-h-96 bg-neutral-500/50"
+        className="bg-neutral-500/50 max-w-[1200px] mx-auto min-h-96 "
       />
     );
   }
   if (!user) return null;
   return (
-    <div
-      className="max-w-[1600px] mx-auto mt-8 px-0 sm:px-8 pb-12 pt-4 rounded-lg bg-neutral-200/50 dark:bg-neutral-800/50  
-    flex flex-wrap gap-4"
-    >
-      <div className="col-span-2 sm:p-4 p-2 rounded-lg w-full">
+    <div className=" bg-neutral-200/50 dark:bg-neutral-800/50 flex flex-wrap gap-4 max-w-[1600px] mx-auto mt-8 px-0 pb-12 pt-4 rounded-lg sm:px-8">
+      <div className="col-span-2 w-full p-2 rounded-lg sm:p-4">
         <PrimaryHeader className="text-center">
           Страница профиля пользователя
         </PrimaryHeader>

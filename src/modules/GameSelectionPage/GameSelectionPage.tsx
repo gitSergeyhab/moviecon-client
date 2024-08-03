@@ -39,12 +39,12 @@ const GameSelectionPage: FC = () => {
   };
 
   return (
-    <div className="m-auto max-w-[1200px] flex flex-col items-center">
+    <div className="flex flex-col items-center m-auto max-w-[1200px]">
       <h1 className="invisible h-0">{title}</h1>
       <Form
         form={form}
         onSubmit={onSubmit}
-        className=" bg-background-opacity w-[480px] max-w-full p-4 rounded-md flex flex-col items-center"
+        className="bg-background-opacity flex flex-col items-center w-[480px] max-w-full p-4 rounded-md"
         submitTitle="Начать Игру"
         name="Выберите игру"
       >

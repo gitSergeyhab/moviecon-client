@@ -21,7 +21,7 @@ export const Tabs = <T extends string>({
   return (
     <ul
       className={cn(
-        "flex justify-center border-y-4 md:border-4 border-transparent flex-wrap text-sm md:text-base",
+        "flex flex-wrap justify-center border-y-4 border-transparent md:border-4 text-sm md:text-base",
         className
       )}
     >
@@ -30,7 +30,8 @@ export const Tabs = <T extends string>({
           <button
             onClick={() => onClick(value)}
             className={cn(
-              "cursor-pointer  font-bold bg-neutral-600 opacity-80 px-2 md:px-8 py-2 hover:text-orange-500 transition-colors duration-300",
+              "bg-neutral-600 opacity-80 cursor-pointer font-bold py-2 px-2 md:px-8",
+              "hover:text-orange-500 transition-colors duration-300",
               value === selectedValue &&
                 "bg-neutral-200/70 dark:bg-neutral-900/70 "
             )}

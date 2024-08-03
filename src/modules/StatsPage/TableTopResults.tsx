@@ -16,8 +16,8 @@ export const TableTopResults: FC<TableTopResultsProps> = ({ result }) => {
   const { bestResult } = result;
   const user = useSelector(getUser);
   return (
-    <div className="w-full flex flex-col items-center  ">
-      <div className="px-2 sm:px-4 w-full  max-h-[520px] sm:max-h-[720px] overflow-auto">
+    <div className="flex flex-col items-center w-full">
+      <div className="w-full max-h-[520px] overflow-auto px-2 sm:px-4 sm:max-h-[720px]">
         <Table className="w-full ">
           <thead>
             <TableRow type="header">

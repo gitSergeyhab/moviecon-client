@@ -25,7 +25,7 @@ export const LevelInfoSection: FC<LevelInfoSectionProps> = ({ level }) => {
   return (
     <section>
       <SecondaryHeader>Следующий уровень</SecondaryHeader>
-      <div className="container mx-auto p-4 flex justify-center">
+      <div className="container flex justify-center mx-auto p-4 ">
         <Table className="min-w-48">
           <tbody>
             {tableData.map(({ title, value }) => (

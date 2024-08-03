@@ -8,7 +8,7 @@ export interface TableProps extends PropsWithChildren {
 export const Table: FC<TableProps> = ({ children, className }) => (
   <table
     className={cn(
-      "border-collapse sm:border-4 border-0 border-neutral-200 lg:text-base sm:text-sm text-xs",
+      "border-collapse border-0 border-neutral-200 text-xs lg:text-base sm:text-sm sm:border-4",
       className
     )}
   >
@@ -24,7 +24,7 @@ export const TableRow: FC<TableRowProps> = ({ children, type, className }) => {
   const baseClassName =
     type === "body"
       ? "even:bg-neutral-100 dark:even:bg-neutral-800 odd:bg-white dark:odd:bg-neutral-900"
-      : "bg-neutral-200  dark:bg-neutral-700 text-left uppercase";
+      : "bg-neutral-200 dark:bg-neutral-700 text-left uppercase";
 
   return <tr className={cn(baseClassName, className)}>{children}</tr>;
 };
@@ -35,7 +35,7 @@ export interface TableHProps extends PropsWithChildren {
 export const TableH: FC<TableHProps> = ({ children, className }) => (
   <th
     className={cn(
-      "py-[6px] px-4 border-b-2 border-neutral-300 dark:border-neutral-600 ",
+      "border-neutral-300 dark:border-neutral-600 py-[6px] px-4 border-b-2",
       className
     )}
   >
@@ -50,7 +50,7 @@ export interface TableDProps extends PropsWithChildren {
 export const TableD: FC<TableDProps> = ({ children, className }) => (
   <td
     className={cn(
-      "py-1 px-4 border-b border-neutral-300 dark:border-neutral-600",
+      "border-neutral-300 dark:border-neutral-600 py-1 px-4 border-b",
       className
     )}
   >

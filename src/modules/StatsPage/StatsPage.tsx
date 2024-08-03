@@ -29,7 +29,7 @@ const StatsPage: FC = () => {
 
   return (
     <div className="rounded-lg max-w-[1200px] m-auto mb-16 ">
-      <div className=" bg-neutral-200/90 dark:bg-neutral-900/90 py-2 md:py-16 rounded-lg md:p-6 xl:p-24 min-h-[600px] md:min-h-[880px] flex flex-col gap-2">
+      <div className="bg-neutral-200/90 dark:bg-neutral-900/90 flex flex-col gap-2 py-2 min-h-[600px] md:min-h-[880px] rounded-lg md:py-16 md:p-6 xl:p-24 ">
         <PrimaryHeader className="text-center">{title}</PrimaryHeader>
         <div className="w-full  rounded-lg">
           <Tabs

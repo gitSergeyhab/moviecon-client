@@ -35,13 +35,13 @@ export const UserResultsSection: FC = () => {
     status === "loading" ? <Spinner size="2xs" /> : "Загрузить еще";
 
   return (
-    <div className="mx-auto max-w-full min-h-96 bg-neutral-200/80 dark:bg-neutral-900/80  rounded-lg py-4 flex flex-col justify-between">
+    <div className="bg-neutral-200/80 dark:bg-neutral-900/80 flex flex-col justify-between mx-auto max-w-full min-h-96 rounded-lg py-4">
       <div>
         <SecondaryHeader className="text-center">
           Ваши результаты
         </SecondaryHeader>
 
-        <div className="p-4 mt-2 flex flex-wrap justify-center gap-2 bg-neutral-500 ">
+        <div className="bg-neutral-500 flex flex-wrap justify-center gap-2 p-4 mt-2 ">
           <FilterSelect
             onValueChange={handleCategoryChange}
             options={categoryOptions}

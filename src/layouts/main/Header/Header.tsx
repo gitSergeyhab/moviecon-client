@@ -29,13 +29,13 @@ const Header = () => {
   const navMenuItems = getNavMenuItems(user?.role);
 
   return (
-    <header className="bg-base-gradient  fixed w-full z-20 top-0    shadow-xl min-w-80 ">
-      <div className="flex items-center min-h-16 justify-between font-bold max-w-[1400px] m-auto px-4">
+    <header className="fixed top-0 bg-base-gradient w-full min-w-80 z-20 shadow-xl">
+      <div className="flex items-center min-h-16 justify-between m-auto max-w-[1400px] font-bold px-4">
         <button
           data-no-close={"nav-menu"}
           className={cn(
-            " hover:text-orange-500 transition-colors duration-300",
-            "md:hidden mr-4"
+            "mr-4 md:hidden",
+            "hover:text-orange-500 transition-colors duration-300"
           )}
           onClick={closeNavMenu}
         >
@@ -43,7 +43,7 @@ const Header = () => {
         </button>
         <Link
           to={"/"}
-          className={" hover:text-orange-500 transition-colors duration-300"}
+          className={"hover:text-orange-500 transition-colors duration-300"}
         >
           <PopcornIcon width={32} />
         </Link>

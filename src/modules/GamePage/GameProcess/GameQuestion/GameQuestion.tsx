@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { QuestionBlocksByTestType } from "@/lib/configs/game/config";
 import { TestType, Variant } from "@/type/game";
-import { PrimaryBlock } from "../../_ui/PrimaryBlock";
+import { PrimaryBlock } from "../../PrimaryBlock";
 import { getContents, getQuestionClasses } from "../../helpers";
 import { ControlsSection } from "./ControlsSection";
 import { PaleText, SecondaryHeader } from "@/components/ui/text";

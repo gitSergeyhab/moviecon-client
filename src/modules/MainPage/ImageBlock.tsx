@@ -29,7 +29,8 @@ export const ImageBlock: FC<IImageBlockProps> = ({ image, title, id }) => {
         loading="lazy"
         alt={title}
         className={cn(
-          "text-center m-auto  w-full md:w-[90%] rounded-lg overflow-hidden transition-opacity opacity-0 duration-1000 transform-gpu shadow-2xl",
+          "m-auto w-full text-center overflow-hidden rounded-lg shadow-2xl md:w-[90%]",
+          "transition-opacity opacity-0 duration-1000 transform-gpu",
           inView ? "opacity-100 scale-100" : ""
         )}
       />

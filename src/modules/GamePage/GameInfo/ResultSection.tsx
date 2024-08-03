@@ -30,7 +30,7 @@ export const ResultSection: FC<PrevLevelSectionProps> = ({
   return (
     <section>
       <SecondaryHeader>Результаты уровня</SecondaryHeader>
-      <div className="container mx-auto p-4 flex justify-center">
+      <div className="container flex justify-center mx-auto p-4 ">
         <Table className="min-w-48">
           <thead>
             <TableRow type="header">

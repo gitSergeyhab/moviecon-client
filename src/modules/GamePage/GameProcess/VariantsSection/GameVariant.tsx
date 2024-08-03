@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useSelector } from "react-redux";
 import { VariantBlocksByTestType } from "@/lib/configs/game/config";
 import { TestType, Variant } from "@/type/game";
-import { PrimaryBlock } from "../../_ui/PrimaryBlock";
+import { PrimaryBlock } from "../../PrimaryBlock";
 import { getAnswerColorClasses, getContents } from "../../helpers";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils/styles";

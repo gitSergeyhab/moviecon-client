@@ -18,9 +18,7 @@ import { cn } from "@/lib/utils/styles";
 import { GameButtonBlock } from "./GameButtonBlock";
 import { ContentLoader } from "@/components/ContentLoader";
 
-const wrapperClasses = `bg-neutral-300/70 dark:bg-neutral-800/80 
- p-8 sm:px-16 px-2 rounded-lg
-    flex flex-wrap`;
+const wrapperClasses = `bg-neutral-300/70 dark:bg-neutral-800/80 flex flex-wrap p-8 rounded-lg px-2 sm:px-16`;
 
 export const GameInfo = () => {
   const dispatch = useAppDispatch();
@@ -46,14 +44,11 @@ export const GameInfo = () => {
   }
 
   return (
-    <div
-      className="m-auto 
-    max-w-[1200px] rounded-lg mt-10 "
-    >
+    <div className="m-auto mt-10 max-w-[1200px] rounded-lg">
       <div
         className={cn(
           wrapperClasses,
-          "justify-around gap-y-2 sm:gap-y-4 text-sm sm:text-lg text-center",
+          "justify-around gap-y-2 text-center text-sm sm:text-lg sm:gap-y-4",
           isTransition && "opacity-0"
         )}
       >

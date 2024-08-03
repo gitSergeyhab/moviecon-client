@@ -6,6 +6,7 @@ import ProfileIcon from "@/components/icons/profile";
 import { getUser } from "@/store/user/selectors";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useCloseOnOutClick } from "@/hooks/useCloseOnOutClick";
+import { cn } from "@/lib/utils/styles";
 
 export const UserMenu: FC = () => {
   const user = useSelector(getUser);
@@ -32,7 +33,10 @@ export const UserMenu: FC = () => {
         onClick={closeNavMenu}
         data-no-close={"user-menu"}
         type="button"
-        className="w-10 h-10  hover:text-orange-600 transition-colors duration-300"
+        className={cn(
+          "w-10 h-10",
+          "hover:text-orange-600 transition-colors duration-300"
+        )}
       >
         {src ? (
           <Avatar>
@@ -44,7 +48,11 @@ export const UserMenu: FC = () => {
         )}
       </button>
       {isMenuOpen && (
-        <div className="absolute  right-0 bg-base-gradient flex flex-col gap-1 p-1 py-2 border-4">
+        <div
+          className={cn(
+            "absolute right-0 bg-base-gradient flex flex-col gap-1 p-1 py-2 border-4"
+          )}
+        >
           <div className="text-center">
             {user ? user.name : "вход не выполнен"}
           </div>
@@ -52,12 +60,14 @@ export const UserMenu: FC = () => {
           {menuItems.map(({ href, icon, title, onClick }) => (
             <button
               type="button"
-              className="flex justify-between border-0 items-center h-10 rounded-none min-w-40 bg-neutral-500/10 px-2 transition-colors hover:bg-neutral-500/70"
+              className={cn(
+                "bg-neutral-500/10 flex justify-between border-0 items-center h-10 min-w-40 px-2 rounded-none",
+                "transition-colors hover:bg-neutral-500/70"
+              )}
               onClick={onClick || (() => navigate(href))}
               key={title}
             >
               {title}
-
               {icon}
             </button>
           ))}

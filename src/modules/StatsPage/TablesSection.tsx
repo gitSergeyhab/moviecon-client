@@ -31,7 +31,7 @@ export const TablesSection: FC<TablesSectionProps> = ({
   }
   return (
     <section className="bg-transparent rounded-lg">
-      <div className=" bg-neutral-200/20 dark:bg-neutral-900/20 py-4 sm:py-8 rounded-lg">
+      <div className=" bg-neutral-200/20 dark:bg-neutral-900/20 rounded-lg py-4 sm:py-8">
         <SecondaryHeader className="text-center ">
           Наши рекордсмены
         </SecondaryHeader>

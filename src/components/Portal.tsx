@@ -5,6 +5,5 @@ export interface PortalProps extends PropsWithChildren {
   containerId: string;
 }
 
-export const Portal: FC<PortalProps> = ({ containerId, children }) => {
-  return createPortal(children, document.querySelector(containerId)!);
-};
+export const Portal: FC<PortalProps> = ({ containerId, children }) =>
+  createPortal(children, document.querySelector(containerId)!);

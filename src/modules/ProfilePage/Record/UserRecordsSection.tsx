@@ -30,12 +30,12 @@ export const UserRecordsSection: FC = () => {
 
   if (!COMMON && !LONG && !QUICK)
     return (
-      <PrimaryText className="text-center  font-bold m-auto mt-8">
+      <PrimaryText className="text-center font-bold m-auto mt-8">
         У вас нет пока рекордов
       </PrimaryText>
     );
   return (
-    <div className="mx-auto bg-neutral-200/80 dark:bg-neutral-900/80 h-min rounded-lg py-4 ">
+    <div className="bg-neutral-200/80 dark:bg-neutral-900/80 mx-auto h-min py-4 rounded-lg  ">
       <SecondaryHeader className="text-center ">Ваши рекорды</SecondaryHeader>
       <div className="grid grid-cols-1 gap-4">
         {Boolean(LONG) && <TableRecords results={LONG} duration={"LONG"} />}

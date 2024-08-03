@@ -21,7 +21,7 @@ export const TableResultsBlock: FC<TableResultsBlockProps> = ({
 
   if (!count || !results.length) {
     return (
-      <PrimaryText className="text-center font-bold mt-8">
+      <PrimaryText className="mt-8 text-center font-bold">
         У вас пока нет игр в выбранных категориях
       </PrimaryText>
     );
