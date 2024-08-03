@@ -1,21 +1,23 @@
 import { FC } from "react";
 import { MainTableSection } from "./MainTablesSection";
-import { StartGameSection } from "./StartGameSection";
 import {
   PrimaryHeader,
   PrimaryText,
   SecondaryText,
 } from "@/components/ui/text";
 import { features } from "./const";
-import { FeatureListItem } from "./FeatureListItem";
 import { useTitle } from "@/hooks/useTitle";
 import { MAIN_TITLE } from "@/const/title";
+import ImagesSection from "./ImagesSection";
+import { FeatureListItem } from "./FeatureListItem";
+
+import { StartLink } from "./StartLink";
 
 const MainPage: FC = () => {
   useTitle(MAIN_TITLE, false);
   return (
     <div
-      className="max-w-[1600px] mx-auto  p-4 sm:p-8 sm:pb-16 pb-12  px-0  rounded-lg bg-neutral-200/70 dark:bg-neutral-800/70  
+      className="max-w-[1400px] mx-auto  p-8 md:p-16 sm:pb-16 pb-12  px-2  rounded-lg bg-neutral-200/30 dark:bg-neutral-800/30  
   flex flex-wrap gap-4"
     >
       <div className="col-span-2 rounded-lg w-full ">
@@ -34,19 +36,23 @@ const MainPage: FC = () => {
             </PrimaryHeader>
           </div>
         </div>
+
+        <PrimaryText className="mt-8  md:mt-16 font-bold text-center text-3xl md:text-5xl">
+          Добро пожаловать в мир кино!{" "}
+        </PrimaryText>
         <section className="mt-8  p-4 sm:p-8 rounded-md bg-neutral-200/50 dark:bg-neutral-800/50 ">
           <h2 className="hidden">описание игры</h2>
-          <PrimaryText className=" font-bold">
-            Добро пожаловать в мир кино!{" "}
-          </PrimaryText>
-          <SecondaryText className="mt-2 font-bold">
-            Испытайте свои знания кино в нашей увлекательной игре! Здесь вы
-            сможете проверить, насколько хорошо вы знаете актеров и фильмы
+
+          <SecondaryText className="indent-8 text-justify mt-2">
+            Испытайте свои знания кино в нашей увлекательной игре. Здесь вы
+            сможете проверить, насколько хорошо вы знаете актеров и фильмы,
+            вспомнить любимые сцены и испытать свою память на прочность.
+            Соревнуйтесь с друзьями или играйте в одиночку, чтобы узнать новое и
+            получить удовольствие. Вас ждет множество интересных вопросов и
+            неожиданных поворотов сюжета.
           </SecondaryText>
 
-          <PrimaryText className="font-bold mt-2"> Что вас ждет: </PrimaryText>
-
-          <ul className="">
+          <ul className="mt-2">
             {features.map((feature) => (
               <FeatureListItem key={feature.feature} {...feature} />
             ))}
@@ -55,8 +61,13 @@ const MainPage: FC = () => {
             Начните прямо сейчас и проверьте свои знания. Удачи!
           </PrimaryText>
         </section>
+        <StartLink />
+        <ImagesSection />
         <MainTableSection />
-        <StartGameSection />
+        <PrimaryText className="text-center mt-8 md:mt-12 font-bold">
+          Начни игру, чтоб оказаться в их числе
+        </PrimaryText>
+        <StartLink />
       </div>
     </div>
   );

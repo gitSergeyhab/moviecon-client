@@ -12,7 +12,7 @@ export interface TableResultsProps {
 export const TableResults: FC<TableResultsProps> = ({ results }) => {
   return (
     <section className="w-full flex flex-col items-center bg-neutral-200/80 dark:bg-neutral-900/80  rounded-b-lg py-4 ">
-      <div className="px-0 sm:px-4 w-full  max-h-[320px] sm:max-h-[720px] overflow-auto hide-scrollbar">
+      <div className="px-2 sm:px-4 w-full  max-h-[320px] sm:max-h-[720px] overflow-auto hide-scrollbar">
         <Table className="w-full">
           <thead>
             <TableRow type="header">

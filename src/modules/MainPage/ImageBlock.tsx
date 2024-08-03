@@ -1,0 +1,38 @@
+import { TitleText } from "@/components/ui/text";
+import { cn } from "@/lib/utils/styles";
+import { FC } from "react";
+import { useInView } from "react-intersection-observer";
+interface IImageBlockProps {
+  image: string;
+  title: string;
+  id: number;
+}
+export const ImageBlock: FC<IImageBlockProps> = ({ image, title, id }) => {
+  const { ref, inView } = useInView({
+    threshold: 0.25,
+    triggerOnce: true,
+  });
+  return (
+    <div className="w-full " ref={ref}>
+      <TitleText
+        className={cn(
+          "text-center py-4 md:py-6",
+          "transition-all duration-1000 scale-0",
+          id % 2 ? "translate-x-[-100%]" : "translate-x-[100%]",
+          inView ? "translate-x-0 scale-100" : ""
+        )}
+      >
+        {title}
+      </TitleText>
+      <img
+        src={image}
+        loading="lazy"
+        alt={title}
+        className={cn(
+          "text-center m-auto  w-full md:w-[90%] rounded-lg overflow-hidden transition-opacity opacity-0 duration-1000 transform-gpu shadow-2xl",
+          inView ? "opacity-100 scale-100" : ""
+        )}
+      />
+    </div>
+  );
+};

@@ -4,6 +4,25 @@ export const classPosition: Record<"1" | "2" | "3", string> = {
   3: "bg-orange-500",
 };
 
+// Испытайте свои знания кино в нашей увлекательной игре!
+// </p>
+// <p>
+//   Здесь вы сможете проверить, насколько хорошо вы знаете актеров и
+//   фильмы, вспомнить любимые сцены и испытать свою память на прочность.
+// </p>
+// <p>
+//   Соревнуйтесь с друзьями или играйте в одиночку, чтобы узнать новое и
+//   получить удовольствие.
+// </p>
+// <p> Начните прямо сейчас и проверьте свои знания.</p>
+// <p>Удачи!</p>
+// export const features= [
+// 'Испытайте свои знания кино в нашей увлекательной игре!',
+// 'Здесь вы сможете проверить, насколько хорошо вы знаете актеров и фильмы, вспомнить любимые сцены и испытать свою память на прочность.',
+// 'Соревнуйтесь с друзьями или играйте в одиночку, чтобы узнать новое и получить удовольствие.',
+// 'Начните прямо сейчас и проверьте свои знания.','Удачи!'
+// ];
+
 export const features: { feature: string; description: string }[] = [
   {
     feature: "Угадайте актеров по фильмам:",
@@ -23,5 +42,62 @@ export const features: { feature: string; description: string }[] = [
     description: " ",
   },
 ];
+// export const features: { feature: string; description: string }[] = [
+//   {
+//     feature: "Угадайте актеров по фильмам:",
+//     description:
+//       "Вспомните любимые фильмы и попробуйте назвать актеров, которые в них снимались.",
+//   },
+//   {
+//     feature: "Угадайте фильмы по актерам:",
+//     description: "Увидев актера, попробуйте угадать, в каком фильме он играл.",
+//   },
+//   {
+//     feature: "Угадайте актеров по фото:",
+//     description: "Посмотрите на фото и попробуйте вспомнить, кто этот актер.",
+//   },
+//   {
+//     feature: "И многое другое...",
+//     description: " ",
+//   },
+// ];
 
 export const recordsTableCount = 3;
+
+interface GameImage {
+  id: number;
+  image: string;
+  title: string;
+}
+export const gameImages: GameImage[] = [
+  {
+    id: 1,
+    image: "/img/screens/dark-movie-by-frame.webp",
+    title: "фильмы по кадрам...",
+  },
+  {
+    id: 2,
+    image: "/img/screens/frame-by-movie-ussr.webp",
+    title: "... и кадры по фильмам",
+  },
+  {
+    id: 3,
+    image: "/img/screens/dark-movie-by-person.webp",
+    title: "фильмы по актерам...",
+  },
+  {
+    id: 4,
+    image: "/img/screens/person-by-movie-for.webp",
+    title: "... и актеров по фильмам",
+  },
+  {
+    id: 5,
+    image: "/img/screens/dark-person-by-photo.webp",
+    title: "актеров по фото...",
+  },
+  {
+    id: 6,
+    image: "/img/screens/three.webp",
+    title: "... и многое другое!",
+  },
+];

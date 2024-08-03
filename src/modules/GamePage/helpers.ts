@@ -55,6 +55,7 @@ const flatGrigTypes: TestType[] = [
   "PhotoByPerson",
   "MovieBySlogan",
   "MovieByYear",
+  "MovieByBudget",
 ];
 
 export const getGrigWrapperClasses = (testType: TestType): string =>

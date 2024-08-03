@@ -15,9 +15,9 @@ export const MainTableSection: FC = () => {
   if (!records || records.length === 0) return null;
 
   return (
-    <section className="rounded-lg">
+    <section className="rounded-lg mt-8 md:mt-16">
       <div className=" bg-neutral-200/70 dark:bg-neutral-900/70 py-4 sm:py-8 rounded-lg">
-        <SecondaryHeader className="text-center ">
+        <SecondaryHeader className="text-center text-3xl md:text-5xl">
           Наши рекордсмены
         </SecondaryHeader>
         <div className="grid xl:grid-cols-3 mt-4 lg:grid-cols-2 grid-cols-1 gap-4">

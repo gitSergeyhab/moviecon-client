@@ -79,7 +79,7 @@ export const questionClasses: Record<QuestVar, Record<Block, string>> = {
     wrapperClasses:
       "bg-neutral-300/70 dark:bg-neutral-800/90 border-4 border-neutral-400",
     imageClasses:
-      "object-contain m-auto cursor-pointer w-full max-h-52 max-w-96 rounded-lg",
+      "object-contain m-auto cursor-pointer w-full max-h-64 md:max-h-96 max-w-96 rounded-lg",
     imgWrapperClasses: "",
   },
   usual: {

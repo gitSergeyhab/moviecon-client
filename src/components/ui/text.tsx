@@ -27,6 +27,12 @@ export const PrimaryText: FC<TextProps> = ({ children, className }) => (
   </Text>
 );
 
+export const TitleText: FC<TextProps> = ({ children, className }) => (
+  <Text tag="p" className={cn("text-3xl md:text-5xl font-bold", className)}>
+    {children}
+  </Text>
+);
+
 export const SecondaryText: FC<TextProps> = ({ children, className }) => (
   <Text tag="p" className={cn("text-lg md:text-xl", className)} color="primary">
     {children}
@@ -42,6 +48,7 @@ export const PrimaryHeader: FC<TextProps> = ({ children, className }) => (
     {children}
   </Text>
 );
+
 export const SecondaryHeader: FC<TextProps> = ({ children, className }) => (
   <Text
     tag="h2"
