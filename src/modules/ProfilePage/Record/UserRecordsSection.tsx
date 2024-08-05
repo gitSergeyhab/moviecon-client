@@ -10,9 +10,9 @@ import {
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchUserRecords } from "@/store/records/thunks";
 import { ContentLoader } from "@/components/ContentLoader";
+import { ErrorBlock } from "../../../components/ErrorBlock";
 
 export const UserRecordsSection: FC = () => {
-  // const { records, status } = useFetchUserRecords();
   const records = useSelector(getUserRecords);
   const loadingStatus = useSelector(getUserRecordsStatus);
 
@@ -24,7 +24,10 @@ export const UserRecordsSection: FC = () => {
     }
   }, [records, dispatch]);
 
-  if (loadingStatus === "loading" || records === null) return <ContentLoader />;
+  if (loadingStatus === "loading")
+    return <ContentLoader className="w-auto min-w-80" />;
+  if (loadingStatus === "failed" || records === null)
+    return <ErrorBlock text="Не удалось загрузить рекорды" />;
 
   const { COMMON, LONG, QUICK } = getResultSplitByDuration(records);
 

@@ -4,6 +4,7 @@ import { GameCategory, GameDuration } from "@/type/game";
 import { PrimaryText, SecondaryHeader } from "@/components/ui/text";
 import { TableTopResults } from "./TableTopResults";
 import { ContentLoader } from "@/components/ContentLoader";
+import { ErrorBlock } from "@/components/ErrorBlock";
 
 export interface TablesSectionProps {
   duration: GameDuration;
@@ -17,6 +18,10 @@ export const TablesSection: FC<TablesSectionProps> = ({
 
   if (status === "loading") {
     return <ContentLoader />;
+  }
+
+  if (status === "failed") {
+    return <ErrorBlock text="Не удалось загрузить данные таблицы рекордов" />;
   }
   const filteredRecords = records.find(
     ({ params }) => params.category === category && params.duration === duration

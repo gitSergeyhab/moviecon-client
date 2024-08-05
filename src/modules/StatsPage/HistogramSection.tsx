@@ -9,6 +9,7 @@ import { getTopUserRecord } from "@/store/records/selectors";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchUserRecords } from "@/store/records/thunks";
 import { ContentLoader } from "@/components/ContentLoader";
+import { ErrorBlock } from "../../components/ErrorBlock";
 
 // TODO когда будет больше данных фильтровать по категориям и длительности
 const getTemporaryData = (data: GameAggregateScores[]): number[] =>
@@ -28,8 +29,11 @@ export const HistogramSection: FC = () => {
     }
   }, [userRecord, dispatch]);
 
-  if (status === "loading" || userRecord === null) {
+  if (status === "loading") {
     return <ContentLoader />;
+  }
+  if (status === "failed" || userRecord === null) {
+    return <ErrorBlock text="Не удалось загрузить данные графика" />;
   }
 
   const data = getTemporaryData(scores);

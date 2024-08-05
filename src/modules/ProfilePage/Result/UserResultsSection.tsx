@@ -11,6 +11,7 @@ import { Spinner } from "@/components/Spinner";
 import { FilterSelect } from "./FilterSelect";
 import { SecondaryHeader } from "@/components/ui/text";
 import { TableResultsBlock } from "./TableResultsBlock";
+import { ErrorBlock } from "../../../components/ErrorBlock";
 
 export const UserResultsSection: FC = () => {
   const { query, setQuery, results, status, count } = useFetchUserResults();
@@ -34,8 +35,11 @@ export const UserResultsSection: FC = () => {
   const loadMoreBtnContent =
     status === "loading" ? <Spinner size="2xs" /> : "Загрузить еще";
 
+  if (status === "failed")
+    return <ErrorBlock text="Не удалось загрузить результаты" />;
+
   return (
-    <div className="bg-neutral-200/80 dark:bg-neutral-900/80 flex flex-col justify-between mx-auto max-w-full min-h-96 rounded-lg py-4">
+    <div className="bg-neutral-200/80 dark:bg-neutral-900/80  min-h-96 rounded-lg py-4">
       <div>
         <SecondaryHeader className="text-center">
           Ваши результаты

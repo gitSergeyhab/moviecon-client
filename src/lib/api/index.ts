@@ -1,8 +1,9 @@
 import axios, { AxiosError } from "axios";
-import { ApiError, ApiErrorField, AppApi } from "@type/api";
+import { ApiError, ApiResponse, AppApi } from "@type/api";
 import { ENV } from "@/lib/configs/environment";
 import TokenService from "@/lib/utils/storage-services/tokenService";
 import { toast } from "sonner";
+import { getErrorMessage } from "../utils/errors";
 
 const defaultHeaders = {
   "Content-type": "application/json",
@@ -24,14 +25,12 @@ const createRequestInstance = (addAuthHeader: boolean): AppApi => {
     (response) => response.data,
     (error: AxiosError) => {
       console.error({ error }, "interceptors");
-      const { response } = error;
-      const { data, status } = response as {
-        data?: { errors: ApiErrorField[]; message: string };
-        status: number;
-      };
+      const { response } = error as { response: ApiResponse };
+      const { data, status } = response;
       const errors = data?.errors || [];
-      const message = data?.message || "Что-то пошло не так, попробуйте позже";
-      toast(message, {
+
+      const errorMessage = getErrorMessage(response);
+      toast(errorMessage, {
         closeButton: true,
         position: "top-right",
       });
@@ -44,7 +43,7 @@ const createRequestInstance = (addAuthHeader: boolean): AppApi => {
 
       // TODO: 403
 
-      const apiError: ApiError = { message, status, errors };
+      const apiError: ApiError = { message: errorMessage, status, errors };
       throw apiError;
     }
   );

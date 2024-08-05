@@ -6,9 +6,6 @@ export const MainImage: FC = () => {
       <img
         src="/img/sd/moviecon.webp"
         alt="main moviecon image"
-        // width={768}
-        // height={512}
-        // className="mt-8 md:mt-16 w-full h-auto max-w-[768px] max-h-[512px] m-auto rounded-lg object-cover"
         className="w-full h-auto m-auto rounded-lg object-cover"
       />
     </div>

@@ -24,6 +24,10 @@ export interface ApiErrorField {
   name: string;
   message: string;
 }
+export interface ApiResponse {
+  data?: { errors: ApiErrorField[]; message: string };
+  status: number;
+}
 export interface ApiError {
   errors: ApiErrorField[];
   status: number;
