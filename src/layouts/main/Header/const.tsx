@@ -1,8 +1,5 @@
 import { ReactNode } from "react";
-import ProfileIcon from "@/components/icons/profile";
-import LogoutIcon from "@/components/icons/logout";
-import RegisterIcon from "@/components/icons/register";
-import LoginIcon from "@/components/icons/login";
+import { LogInIcon, LogOutIcon, UserIcon, UserPlus } from "lucide-react";
 import appRoutes from "@/lib/configs/routes/routes";
 import { logout } from "@/lib/utils/user";
 
@@ -24,12 +21,12 @@ export interface UserMenuItem extends MenuItem {
 export const userMenuItems: UserMenuItem[] = [
   {
     href: profile,
-    icon: <ProfileIcon className={itemMenuClass} />,
+    icon: <UserIcon className={itemMenuClass} />,
     title: "Профиль",
   },
   {
     href: "#",
-    icon: <LogoutIcon className={itemMenuClass} />,
+    icon: <LogOutIcon className={itemMenuClass} />,
     title: "Выйти",
     onClick: logout,
   },
@@ -38,12 +35,12 @@ export const userMenuItems: UserMenuItem[] = [
 export const noAuthUserMenuItems: UserMenuItem[] = [
   {
     href: auth.register,
-    icon: <RegisterIcon className={itemMenuClass} />,
+    icon: <UserPlus className={itemMenuClass} />,
     title: "Регистрация",
   },
   {
     href: auth.login,
-    icon: <LoginIcon className={itemMenuClass} />,
+    icon: <LogInIcon className={itemMenuClass} />,
     title: "Вход",
   },
 ];

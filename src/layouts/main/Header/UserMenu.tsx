@@ -2,11 +2,11 @@ import { FC, MouseEventHandler, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { noAuthUserMenuItems, userMenuItems } from "./const";
-import ProfileIcon from "@/components/icons/profile";
 import { getUser } from "@/store/user/selectors";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useCloseOnOutClick } from "@/hooks/useCloseOnOutClick";
 import { cn } from "@/lib/utils/styles";
+import { UserIcon } from "lucide-react";
 
 export const UserMenu: FC = () => {
   const user = useSelector(getUser);
@@ -34,7 +34,7 @@ export const UserMenu: FC = () => {
         data-no-close={"user-menu"}
         type="button"
         className={cn(
-          "w-10 h-10",
+          "border-neutral-800 dark:border-neutral-200  h-10 border-4 rounded-md px-3",
           "hover:text-orange-600 transition-colors duration-300"
         )}
       >
@@ -44,7 +44,7 @@ export const UserMenu: FC = () => {
             <AvatarFallback>Вы</AvatarFallback>
           </Avatar>
         ) : (
-          <ProfileIcon />
+          <UserIcon />
         )}
       </button>
       {isMenuOpen && (

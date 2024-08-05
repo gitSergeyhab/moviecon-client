@@ -8,11 +8,12 @@ import {
 import { features } from "./const";
 import { useTitle } from "@/hooks/useTitle";
 import { MAIN_TITLE } from "@/const/title";
-import ImagesSection from "./ImagesSection";
+import { ImagesSection } from "./ImagesSection";
 import { FeatureListItem } from "./FeatureListItem";
 
 import { StartLink } from "./StartLink";
 import { cn } from "@/lib/utils/styles";
+import { MainImage } from "./MainImage";
 
 const MainPage: FC = () => {
   useTitle(MAIN_TITLE, false);
@@ -30,7 +31,7 @@ const MainPage: FC = () => {
             <PrimaryHeader
               className="
               dark:drop-shadow-[0_1px_4px_rgb(0,0,0)] drop-shadow-[0_4px_4px_rgb(250,250,250)]
-              text-center uppercase text-4xl font-bold md:text-6xl"
+              text-center uppercase text-4xl sm:text-6xl font-bold md:text-8xl"
             >
               MovieCon
             </PrimaryHeader>
@@ -38,8 +39,10 @@ const MainPage: FC = () => {
         </div>
 
         <PrimaryText className="mt-8 font-bold text-center text-3xl md:mt-16 md:text-5xl">
-          Добро пожаловать в мир кино!{" "}
+          Добро пожаловать в мир кино!
         </PrimaryText>
+        <MainImage />
+
         <section className="bg-neutral-200/50 dark:bg-neutral-800/50 mt-8 p-4 sm:p-8 rounded-md ">
           <h2 className="hidden">описание игры</h2>
 

@@ -3,7 +3,7 @@ import { FC } from "react";
 import { gameImages } from "./const";
 import { ImageBlock } from "./ImageBlock";
 
-const ImagesSection: FC = () => {
+export const ImagesSection: FC = () => {
   return (
     <section className="flex flex-col w-full gap-10 rounded-lg">
       <h2 className="invisible h-0">Примеры вопросов, скриншоты</h2>
@@ -16,5 +16,3 @@ const ImagesSection: FC = () => {
     </section>
   );
 };
-
-export default ImagesSection;

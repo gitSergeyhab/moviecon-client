@@ -25,6 +25,8 @@ export const ToggleTheme: FC = () => {
     setIsDark((prev) => !prev);
   };
   return (
-    <Button onClick={handleButtonClick}>{isDark ? <Sun /> : <Moon />}</Button>
+    <Button className="h-10 hover:text-orange-500" onClick={handleButtonClick}>
+      {isDark ? <Sun /> : <Moon />}
+    </Button>
   );
 };

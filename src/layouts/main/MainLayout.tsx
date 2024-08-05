@@ -7,7 +7,7 @@ const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div
       className={
-        "bg-neutral-400 bg-[url('/img/sd/big1.webp')] bg-no-repeat bg-cover bg-[center_top_-12rem] overflow-y-auto min-w-80 h-dvh hide-scrollbar"
+        "bg-neutral-400 bg-[url('/img/sd/big1.webp')] bg-no-repeat bg-cover  overflow-y-auto min-w-80 h-dvh hide-scrollbar"
       }
     >
       <Header />

@@ -1,5 +1,6 @@
 import { MouseEventHandler, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { HeaderNav } from "./HeaderNav";
 import { NavMenuLink } from "./NavMenuLink";
 import { UserMenu } from "./UserMenu";
@@ -8,9 +9,9 @@ import PopcornIcon from "@/components/icons/popcorn";
 import { useCloseOnOutClick } from "@/hooks/useCloseOnOutClick";
 import { cn } from "@/lib/utils/styles";
 import { ToggleTheme } from "@/components/ToggleTheme";
-import { useSelector } from "react-redux";
 import { getUser } from "@/store/user/selectors";
 import { getNavMenuItems } from "./helpers";
+import appRoutes from "@/lib/configs/routes/routes";
 
 const Header = () => {
   const user = useSelector(getUser);
@@ -42,18 +43,19 @@ const Header = () => {
           <MenuIcon className="w-8 h-8" />
         </button>
         <Link
-          to={"/"}
+          to={appRoutes.main}
           className={"hover:text-orange-500 transition-colors duration-300"}
         >
           <PopcornIcon width={32} />
         </Link>
-        <ToggleTheme />
         <div className="flex items-center gap-8">
           <HeaderNav isMenuOpen={isMenuOpen}>
             {navMenuItems.map((item) => (
               <NavMenuLink item={item} key={item.href} />
             ))}
           </HeaderNav>
+          <ToggleTheme />
+
           <UserMenu />
         </div>
       </div>
