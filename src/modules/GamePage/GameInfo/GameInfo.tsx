@@ -47,7 +47,7 @@ export const GameInfo = () => {
     );
   }
 
-  if (!levelInfo || infoLoadingStatus === "failed")
+  if (infoLoadingStatus === "failed")
     return (
       <ErrorBlock text="Не удалось загрузить данные уровня">
         <Button onClick={() => navigate(appRoutes.main)}>На главную</Button>

@@ -38,7 +38,7 @@ export const UserRecordsSection: FC = () => {
       </PrimaryText>
     );
   return (
-    <div className="bg-neutral-200/80 dark:bg-neutral-900/80 mx-auto h-min py-4 rounded-lg  ">
+    <div className="bg-neutral-200/80 dark:bg-neutral-900/80 w-full mx-auto h-min py-4 rounded-lg  ">
       <SecondaryHeader className="text-center ">Ваши рекорды</SecondaryHeader>
       <div className="grid grid-cols-1 gap-4">
         {Boolean(LONG) && <TableRecords results={LONG} duration={"LONG"} />}

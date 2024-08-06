@@ -13,7 +13,6 @@ import { FeatureListItem } from "./FeatureListItem";
 
 import { StartLink } from "./StartLink";
 import { cn } from "@/lib/utils/styles";
-import { MainImage } from "./MainImage";
 
 const MainPage: FC = () => {
   useTitle(MAIN_TITLE, false);
@@ -41,7 +40,13 @@ const MainPage: FC = () => {
         <PrimaryText className="mt-8 font-bold text-center text-3xl md:mt-16 md:text-5xl">
           Добро пожаловать в мир кино!
         </PrimaryText>
-        <MainImage />
+        <div
+          className={cn(
+            "border-neutral-800  dark:border-neutral-200 border-8  aspect-[3/2] w-full mt-8 md:mt-16  rounded-xl",
+            "bg-[url('/img/sd/main-pic.webp')] bg-cover bg-no-repeat bg-center",
+            "animate-gettingDark"
+          )}
+        ></div>
 
         <section className="bg-neutral-200/50 dark:bg-neutral-800/50 mt-8 p-4 sm:p-8 rounded-md ">
           <h2 className="hidden">описание игры</h2>

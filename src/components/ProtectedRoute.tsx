@@ -5,6 +5,7 @@ import { UserRole } from "@/type/user";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchUser } from "@/store/user/thunks";
 import { getUser, getUserStatus } from "@/store/user/selectors";
+import { ContentLoader } from "./ContentLoader";
 
 export interface ProtectedRouteProps extends PropsWithChildren {
   roles?: UserRole[] | UserRole;
@@ -24,7 +25,7 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({
   }, []);
 
   if (status === "loading") {
-    return <h1>Loading...</h1>;
+    return <ContentLoader size="2xl" className="h-[720px]" />;
   }
 
   return (

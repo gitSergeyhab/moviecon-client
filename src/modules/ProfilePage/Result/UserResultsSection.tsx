@@ -39,7 +39,7 @@ export const UserResultsSection: FC = () => {
     return <ErrorBlock text="Не удалось загрузить результаты" />;
 
   return (
-    <div className="bg-neutral-200/80 dark:bg-neutral-900/80  min-h-96 rounded-lg py-4">
+    <div className="bg-neutral-200/80 dark:bg-neutral-900/80  min-h-96 rounded-lg py-4 px-2 sm:px-4">
       <div>
         <SecondaryHeader className="text-center">
           Ваши результаты

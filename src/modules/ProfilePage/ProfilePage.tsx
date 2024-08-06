@@ -31,8 +31,10 @@ export const ProfilePage: FC = () => {
         <PrimaryText className="text-center font-bold">{user.name}</PrimaryText>
         {/* // TODO add user avatar */}
       </div>
-      <UserRecordsSection />
-      <UserResultsSection />
+      <div className="grid grid-cols-1 w-full gap-8 lg:grid-cols-2 ">
+        <UserRecordsSection />
+        <UserResultsSection />
+      </div>
     </div>
   );
 };

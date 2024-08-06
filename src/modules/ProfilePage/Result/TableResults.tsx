@@ -11,8 +11,8 @@ export interface TableResultsProps {
 }
 export const TableResults: FC<TableResultsProps> = ({ results }) => {
   return (
-    <section className="bg-neutral-200/80 dark:bg-neutral-900/80  flex flex-col items-center w-full  py-4 rounded-b-lg">
-      <div className="px-2 sm:px-4 w-full  max-h-[320px] sm:max-h-[720px] overflow-auto hide-scrollbar">
+    <section className="bg-neutral-200/80 dark:bg-neutral-900/80  w-full flex flex-col items-center  py-4 rounded-b-lg">
+      <div className=" w-full  max-h-[320px] sm:max-h-[720px] overflow-auto hide-scrollbar">
         <Table className="w-full">
           <thead>
             <TableRow type="header">
@@ -21,7 +21,7 @@ export const TableResults: FC<TableResultsProps> = ({ results }) => {
                   <TableH
                     className={cn(
                       tdClasses,
-                      i === arr.length - 1 && "hidden sm:block"
+                      i === arr.length - 1 && "hidden xl:table-cell"
                     )}
                     key={item}
                   >
@@ -45,7 +45,7 @@ export const TableResults: FC<TableResultsProps> = ({ results }) => {
                   <TableD className={tdClasses}>
                     {TextData.duration[duration] || duration}
                   </TableD>
-                  <TableD className={cn(tdClasses, "hidden sm:block")}>
+                  <TableD className={cn(tdClasses, "hidden xl:table-cell")}>
                     {TextData.status[status] || status}
                   </TableD>
                 </TableRow>

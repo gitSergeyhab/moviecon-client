@@ -81,6 +81,12 @@ const conf  = {
           '0%': { opacity: 0, transform: 'translateY(20px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
         },
+        gettingDark: {
+          '0%': { backgroundColor: '#DDD'},
+          '50%': { backgroundColor: '#222' },
+          '100%': { backgroundColor: '#DDD' },
+
+        },
         blink: {
           '0%': { backgroundColor: '#222'},
           '29.2%': { backgroundColor: '#DDD'},
@@ -110,6 +116,7 @@ const conf  = {
         "spin-back": "rotate-back 0.8s linear infinite",
         fadeIn: 'fadeIn 0.5s ease-out forwards',
         blink: 'blink 20s infinite',
+        gettingDark: 'gettingDark 4s ease-in-out infinite',
       },
       backgroundImage: {
         "basic-gradient": "linear-gradient(to bottom left, #696363, #202120)",
