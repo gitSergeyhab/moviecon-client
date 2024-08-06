@@ -30,7 +30,7 @@ export const requestInfoLevel$ = (
   prevLvlResult: LevelResult;
   totalScore: number;
   levelsCount: number;
-}> => request.get(getUrl(`-info-level/${gameId}/`));
+}> => request.get(getUrl(`info-level/${gameId}/`));
 
 export interface RequestAnswerQuestion {
   gameId: string;
