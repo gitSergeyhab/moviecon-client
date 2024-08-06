@@ -8,13 +8,13 @@ import { requestLogin } from "@/lib/api/auth";
 import { setFormErrors } from "@/lib/utils/errors";
 import TokenService from "@/lib/utils/storage-services/tokenService";
 import { LoginSchema, LoginSchemaType } from "@/schemas/login";
-import { setUser } from "@/store/user/store";
 import { ApiError } from "@/type/api";
 import { AnyDict } from "@/type/dict";
 import appRoutes from "@/lib/configs/routes/routes";
 import { AuthFormLayout } from "../AuthFormLayout";
 import { AppLink } from "@/components/ui/AppLink";
 import { redirectQueryKey } from "@/const/redirectQueryKey";
+import { userActions } from "@/store/user";
 
 const LoginPage: FC = () => {
   const form = useAppForm(LoginSchema);
@@ -29,7 +29,7 @@ const LoginPage: FC = () => {
         : appRoutes.main;
       const response = await requestLogin(data as LoginSchemaType);
       const { tokens, ...user } = response;
-      dispatch(setUser(user));
+      dispatch(userActions.setUser(user));
       TokenService.accessToken = tokens.access;
       TokenService.refreshToken = tokens.refresh;
       navigate(redirectPath);

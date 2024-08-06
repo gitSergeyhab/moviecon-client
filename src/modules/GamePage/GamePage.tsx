@@ -1,16 +1,16 @@
 import { FC, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getGameId, getGameStatus } from "@/store/game/selectors";
 import appRoutes from "@/lib/configs/routes/routes";
 import { GameProcess } from "./GameProcess/GameProcess";
 import { GameInfo } from "./GameInfo/GameInfo";
 import { useTitle } from "@/hooks/useTitle";
 import { title } from "./const";
+import { gameSelectors } from "@/store/game";
 
 const GamePage: FC = () => {
-  const gameStatus = useSelector(getGameStatus);
-  const gameId = useSelector(getGameId);
+  const gameStatus = useSelector(gameSelectors.getGameStatus);
+  const gameId = useSelector(gameSelectors.getGameId);
   const [isInfo, setIsInfo] = useState(true);
 
   useTitle(title);

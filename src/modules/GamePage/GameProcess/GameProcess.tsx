@@ -2,12 +2,6 @@ import { useState, FC, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { GameQuestion } from "@/modules/GamePage/GameProcess/GameQuestion/GameQuestion";
-import {
-  getCurrentTest,
-  getIsLoadingImages,
-  getIsTransition,
-  getNextQuestionImages,
-} from "@/store/game/selectors";
 import appRoutes from "@/lib/configs/routes/routes";
 import { Portal } from "@/components/Portal";
 import Modal from "@/components/Modal";
@@ -15,17 +9,17 @@ import { VariantsSection } from "./VariantsSection/VariantsSection";
 import { ProgressBar } from "./GameQuestion/ProgressBar/ProgressBar";
 import { cn } from "@/lib/utils/styles";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { setNextQuestion, setTransition } from "@/store/game/store";
 import { InfoBar } from "./GameQuestion/InfoBar/InfoBar";
 import { title } from "../const";
 import { useImagePreload } from "@/hooks/useImagePreload";
+import { gameActions, gameSelectors } from "@/store/game";
 
 export const GameProcess: FC = () => {
-  const test = useSelector(getCurrentTest);
+  const test = useSelector(gameSelectors.getCurrentTest);
   const [modalOpen, setModalOpen] = useState(false);
-  const isTransition = useSelector(getIsTransition);
-  const nextQuestionImages = useSelector(getNextQuestionImages);
-  const isPreLoadingImages = useSelector(getIsLoadingImages);
+  const isTransition = useSelector(gameSelectors.getIsTransition);
+  const nextQuestionImages = useSelector(gameSelectors.getNextQuestionImages);
+  const isPreLoadingImages = useSelector(gameSelectors.getIsLoadingImages);
   useImagePreload(nextQuestionImages, !isPreLoadingImages);
 
   const dispatch = useAppDispatch();
@@ -35,8 +29,8 @@ export const GameProcess: FC = () => {
 
     if (isTransition) {
       timer = setTimeout(() => {
-        dispatch(setTransition(false));
-        dispatch(setNextQuestion());
+        dispatch(gameActions.setTransition(false));
+        dispatch(gameActions.setNextQuestion());
       }, 500);
     }
 

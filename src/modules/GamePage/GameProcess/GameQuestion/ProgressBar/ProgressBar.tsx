@@ -1,10 +1,10 @@
-import { getAnswerStatuses, getCurrentTestIndex } from "@/store/game/selectors";
 import { useSelector } from "react-redux";
 import { ProgressBarItem } from "./ProgressBarItem";
+import { gameSelectors } from "@/store/game";
 
 export const ProgressBar = () => {
-  const statuses = useSelector(getAnswerStatuses);
-  const testIndex = useSelector(getCurrentTestIndex);
+  const statuses = useSelector(gameSelectors.getAnswerStatuses);
+  const testIndex = useSelector(gameSelectors.getCurrentTestIndex);
   if (!statuses) return null;
 
   return (

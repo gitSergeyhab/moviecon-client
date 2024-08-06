@@ -1,18 +1,18 @@
 import { FC } from "react";
-import { UserResultsSection } from "./Result/UserResultsSection";
-import { getUser, getUserStatus } from "@/store/user/selectors";
 import { useSelector } from "react-redux";
+import { UserResultsSection } from "./Result/UserResultsSection";
 import { PrimaryHeader, PrimaryText } from "@/components/ui/text";
 import { UserRecordsSection } from "./Record/UserRecordsSection";
 import { ContentLoader } from "@/components/ContentLoader";
 import { useTitle } from "@/hooks/useTitle";
+import { userSelectors } from "@/store/user";
 
 export const ProfilePage: FC = () => {
-  const user = useSelector(getUser);
+  const user = useSelector(userSelectors.getUser);
+  const loading = useSelector(userSelectors.getUserStatus) === "loading";
 
   useTitle(user?.name || "Профиль");
 
-  const loading = useSelector(getUserStatus) === "loading";
   if (loading) {
     return (
       <ContentLoader

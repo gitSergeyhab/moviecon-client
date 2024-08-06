@@ -1,15 +1,15 @@
 import { FC, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { SecondaryHeader } from "@/components/ui/text";
 import { Histogram } from "./Histogram";
 import { generateHistogramData } from "./helpers";
 import { useFetchScores } from "./useFetchScores";
 import { GameAggregateScores } from "@/type/game-results";
-import { useSelector } from "react-redux";
-import { getTopUserRecord } from "@/store/records/selectors";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchUserRecords } from "@/store/records/thunks";
 import { ContentLoader } from "@/components/ContentLoader";
 import { ErrorBlock } from "../../components/ErrorBlock";
+import { recordsSelectors } from "@/store/records";
 
 // TODO когда будет больше данных фильтровать по категориям и длительности
 const getTemporaryData = (data: GameAggregateScores[]): number[] =>
@@ -20,7 +20,7 @@ const getTemporaryData = (data: GameAggregateScores[]): number[] =>
 export const HistogramSection: FC = () => {
   const { scores, status } = useFetchScores();
   // TODO когда будет больше  - данных фильтровать по категориям и длительности
-  const userRecord = useSelector(getTopUserRecord);
+  const userRecord = useSelector(recordsSelectors.getTopUserRecord);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

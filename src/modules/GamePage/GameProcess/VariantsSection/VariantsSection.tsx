@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { TestType, Variant } from "@/type/game";
 import { Button } from "@/components/ui/button";
 import { checkValueExist } from "@/lib/utils/common";
-import { getCorrectAnswerId } from "@/store/game/selectors";
 import { Portal } from "@/components/Portal";
 import Modal from "@/components/Modal";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
@@ -11,6 +10,7 @@ import { fetchAnswerQuestion } from "@/store/game/thunks";
 import { cn } from "@/lib/utils/styles";
 import { getGrigWrapperClasses, getUniqueVariants } from "../../helpers";
 import { GameVariant } from "./GameVariant";
+import { gameSelectors } from "@/store/game";
 
 export interface VariantsSectionProps {
   testType: TestType;
@@ -23,7 +23,7 @@ export const VariantsSection: FC<VariantsSectionProps> = ({
   testType,
   testId,
 }) => {
-  const correctId = useSelector(getCorrectAnswerId);
+  const correctId = useSelector(gameSelectors.getCorrectAnswerId);
   const dispatch = useAppDispatch();
   const [selectedId, setSelectedId] = useState<string | number | null>(null);
   const [modalOpen, setModalOpen] = useState(false);

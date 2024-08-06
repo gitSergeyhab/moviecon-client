@@ -1,15 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import {
-  getLevelInfo,
-  getGameStatus,
-  getPrevLevelResult,
-  getTotalScore,
-  getInfoLoadingStatus,
-  getIsTransition,
-  getIsGameOver,
-} from "@/store/game/selectors";
 import { fetchLevelInfo } from "@/store/game/thunks";
 import { ResultSection } from "./ResultSection";
 import { LevelInfoSection } from "./LevelInfoSection";
@@ -19,20 +11,20 @@ import { GameButtonBlock } from "./GameButtonBlock";
 import { ContentLoader } from "@/components/ContentLoader";
 import { ErrorBlock } from "@/components/ErrorBlock";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import appRoutes from "@/lib/configs/routes/routes";
+import { gameSelectors } from "@/store/game";
 
 const wrapperClasses = `bg-neutral-300/70 dark:bg-neutral-800/80 flex flex-wrap p-8 rounded-lg px-2 sm:px-16`;
 
 export const GameInfo = () => {
   const dispatch = useAppDispatch();
-  const totalScore = useSelector(getTotalScore);
-  const prevLevelResult = useSelector(getPrevLevelResult);
-  const levelInfo = useSelector(getLevelInfo);
-  const gameStatus = useSelector(getGameStatus);
-  const isGameOver = useSelector(getIsGameOver);
-  const infoLoadingStatus = useSelector(getInfoLoadingStatus);
-  const isTransition = useSelector(getIsTransition);
+  const totalScore = useSelector(gameSelectors.getTotalScore);
+  const prevLevelResult = useSelector(gameSelectors.getPrevLevelResult);
+  const levelInfo = useSelector(gameSelectors.getLevelInfo);
+  const gameStatus = useSelector(gameSelectors.getGameStatus);
+  const isGameOver = useSelector(gameSelectors.getIsGameOver);
+  const infoLoadingStatus = useSelector(gameSelectors.getInfoLoadingStatus);
+  const isTransition = useSelector(gameSelectors.getIsTransition);
 
   const navigate = useNavigate();
   useEffect(() => {

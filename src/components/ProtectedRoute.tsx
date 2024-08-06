@@ -4,7 +4,7 @@ import { ProtectedRolesRoute } from "./ProtectedRoleRoute";
 import { UserRole } from "@/type/user";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchUser } from "@/store/user/thunks";
-import { getUser, getUserStatus } from "@/store/user/selectors";
+import { userSelectors } from "@/store/user";
 import { ContentLoader } from "./ContentLoader";
 
 export interface ProtectedRouteProps extends PropsWithChildren {
@@ -15,8 +15,8 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({
   children,
   roles,
 }) => {
-  const user = useSelector(getUser);
-  const status = useSelector(getUserStatus);
+  const user = useSelector(userSelectors.getUser);
+  const status = useSelector(userSelectors.getUserStatus);
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (!user) {

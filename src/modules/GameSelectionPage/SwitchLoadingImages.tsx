@@ -2,22 +2,21 @@ import { Switch } from "@/components/ui/switch";
 import { SecondaryText } from "@/components/ui/text";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import LoadingImagesService from "@/lib/utils/storage-services/LoadingImagesService";
-import { getIsLoadingImages } from "@/store/game/selectors";
-import { setImgPreloading } from "@/store/game/store";
+import { gameActions, gameSelectors } from "@/store/game";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export const SwitchLoadingImages = () => {
   const dispatch = useAppDispatch();
-  const isChecked = useSelector(getIsLoadingImages);
+  const isChecked = useSelector(gameSelectors.getIsLoadingImages);
 
   useEffect(() => {
-    dispatch(setImgPreloading(LoadingImagesService.mode));
+    dispatch(gameActions.setImgPreloading(LoadingImagesService.mode));
   }, [dispatch]);
 
   const handleChangeMode = () => {
     LoadingImagesService.mode = !isChecked;
-    dispatch(setImgPreloading(!isChecked));
+    dispatch(gameActions.setImgPreloading(!isChecked));
   };
 
   return (

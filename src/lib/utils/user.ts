@@ -1,16 +1,15 @@
 import { store } from "@/store";
-import { clearUser } from "@/store/user/store";
 import { UserRole } from "@/type/user";
 import TokenService from "./storage-services/tokenService";
-import { getUser } from "@/store/user/selectors";
+import { userActions, userSelectors } from "@/store/user";
 
 export const logout = () => {
-  store.dispatch(clearUser());
+  store.dispatch(userActions.clearUser());
   TokenService.logout();
 };
 
 export const checkAccess = (allowedRoles?: UserRole[] | UserRole): boolean => {
-  const user = getUser(store.getState());
+  const user = userSelectors.getUser(store.getState());
   if (!allowedRoles || !allowedRoles.length) return true;
   if (typeof allowedRoles === "string") return user?.role === allowedRoles;
   return !!user?.role && (!allowedRoles || allowedRoles.includes(user?.role));

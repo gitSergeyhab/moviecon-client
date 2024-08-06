@@ -1,18 +1,13 @@
+import { FC, ReactNode } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Spinner } from "@/components/Spinner";
 import { Button } from "@/components/ui/button";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useImagePreload } from "@/hooks/useImagePreload";
 import appRoutes from "@/lib/configs/routes/routes";
-import {
-  getFirstQuestionImages,
-  getImages,
-  getIsLoadingImages,
-  getLoadingStatus,
-} from "@/store/game/selectors";
+import { gameSelectors } from "@/store/game";
 import { fetchStartLevel } from "@/store/game/thunks";
-import { FC, ReactNode } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 
 const getGameButtonTitle = (
   isGameOver: boolean,
@@ -37,11 +32,11 @@ interface GameButtonBlockProps {
 export const GameButtonBlock: FC<GameButtonBlockProps> = ({ isGameOver }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const loadingStatus = useSelector(getLoadingStatus);
-  const isPreLoadingImages = useSelector(getIsLoadingImages);
+  const loadingStatus = useSelector(gameSelectors.getLoadingStatus);
+  const isPreLoadingImages = useSelector(gameSelectors.getIsLoadingImages);
   const isLoading = loadingStatus === "loading";
-  const images = useSelector(getImages);
-  const firstQuestionImages = useSelector(getFirstQuestionImages);
+  const images = useSelector(gameSelectors.getImages);
+  const firstQuestionImages = useSelector(gameSelectors.getFirstQuestionImages);
 
   const { areImagesLoaded } = useImagePreload(
     isPreLoadingImages ? images : firstQuestionImages,

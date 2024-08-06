@@ -6,8 +6,8 @@ import { PrimaryBlock } from "../../PrimaryBlock";
 import { getAnswerColorClasses, getContents } from "../../helpers";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils/styles";
-import { getIsAnswerDone, getLoadingStatus } from "@/store/game/selectors";
 import { PaleText } from "@/components/ui/text";
+import { gameSelectors } from "@/store/game";
 
 export interface GameQuestionProps {
   variant: Variant;
@@ -25,8 +25,8 @@ export const GameVariant: FC<GameQuestionProps> = ({
   onImageClick,
   onButtonClick,
 }) => {
-  const isAnswerDone = useSelector(getIsAnswerDone);
-  const loadingStatus = useSelector(getLoadingStatus);
+  const isAnswerDone = useSelector(gameSelectors.getIsAnswerDone);
+  const loadingStatus = useSelector(gameSelectors.getLoadingStatus);
   const { enName, image, primary, secondary } = getContents(
     VariantBlocksByTestType,
     testType,

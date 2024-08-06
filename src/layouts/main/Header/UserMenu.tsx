@@ -1,15 +1,15 @@
 import { FC, MouseEventHandler, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { UserIcon } from "lucide-react";
 import { noAuthUserMenuItems, userMenuItems } from "./const";
-import { getUser } from "@/store/user/selectors";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useCloseOnOutClick } from "@/hooks/useCloseOnOutClick";
 import { cn } from "@/lib/utils/styles";
-import { UserIcon } from "lucide-react";
+import { userSelectors } from "@/store/user";
 
 export const UserMenu: FC = () => {
-  const user = useSelector(getUser);
+  const user = useSelector(userSelectors.getUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigate = useNavigate();

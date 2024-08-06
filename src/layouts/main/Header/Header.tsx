@@ -9,12 +9,12 @@ import PopcornIcon from "@/components/icons/popcorn";
 import { useCloseOnOutClick } from "@/hooks/useCloseOnOutClick";
 import { cn } from "@/lib/utils/styles";
 import { ToggleTheme } from "@/components/ToggleTheme";
-import { getUser } from "@/store/user/selectors";
 import { getNavMenuItems } from "./helpers";
 import appRoutes from "@/lib/configs/routes/routes";
+import { userSelectors } from "@/store/user";
 
 const Header = () => {
-  const user = useSelector(getUser);
+  const user = useSelector(userSelectors.getUser);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useCloseOnOutClick({

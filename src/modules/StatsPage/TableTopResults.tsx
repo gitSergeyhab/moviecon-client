@@ -4,8 +4,8 @@ import { Table, TableD, TableH, TableRow } from "@/components/ui/table";
 import { TextData } from "@/const/textCategories";
 import { toDayMonthYear } from "@/lib/utils/date";
 import { useSelector } from "react-redux";
-import { getUser } from "@/store/user/selectors";
 import { cn } from "@/lib/utils/styles";
+import { userSelectors } from "@/store/user";
 
 const classesTableD = "py-0 px-1 sm:px-4";
 
@@ -14,7 +14,7 @@ export interface TableTopResultsProps {
 }
 export const TableTopResults: FC<TableTopResultsProps> = ({ result }) => {
   const { bestResult } = result;
-  const user = useSelector(getUser);
+  const user = useSelector(userSelectors.getUser);
   return (
     <div className="flex flex-col items-center w-full">
       <div className="w-full max-h-[520px] overflow-auto px-2 sm:px-4 sm:max-h-[720px]">

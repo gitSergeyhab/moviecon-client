@@ -1,28 +1,22 @@
 import { FC, useState } from "react";
 import { useSelector } from "react-redux";
+import { SkipForwardIcon, DoorOpenIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  getIsAnswerDone,
-  getNexGameAction,
-  getRemainingOptions,
-  getLoadingStatus,
-} from "@/store/game/selectors";
 import { Spinner } from "@/components/Spinner";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchExitGame, fetchSkipQuestion } from "@/store/game/thunks";
 import { Portal } from "@/components/Portal";
 import Modal from "@/components/Modal";
 import { ConfirmExitGame } from "./ConfirmExitGame";
-import { SkipForwardIcon, DoorOpenIcon } from "lucide-react";
 import { getNextActionText } from "../../helpers";
+import { gameSelectors } from "@/store/game";
 
 export const ControlsSection: FC = () => {
-  const options = useSelector(getRemainingOptions);
-  const isAnswerDone = useSelector(getIsAnswerDone);
+  const options = useSelector(gameSelectors.getRemainingOptions);
+  const isAnswerDone = useSelector(gameSelectors.getIsAnswerDone);
   const [isModalShown, setIsModalShown] = useState(false);
-  const isLoading = useSelector(getLoadingStatus) === "loading";
-
-  const nexGameAction = useSelector(getNexGameAction);
+  const isLoading = useSelector(gameSelectors.getLoadingStatus) === "loading";
+  const nexGameAction = useSelector(gameSelectors.getNexGameAction);
   const dispatch = useAppDispatch();
 
   if (isAnswerDone === null) {

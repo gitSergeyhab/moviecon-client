@@ -1,3 +1,5 @@
+import { FC, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Form } from "@/components/ui/form/form";
 import { useAppForm } from "@/hooks/useAppForm";
 import { requestStartGame$ } from "@/lib/api/game";
@@ -8,15 +10,13 @@ import {
 } from "@/schemas/gameSelection";
 import { ApiError } from "@/type/api";
 import { AnyDict } from "@/type/dict";
-import { FC, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { categoryOptions, durationOptions, title } from "./const";
 import { FormRadioGroup } from "@/components/ui/form/form-radio-group";
 import { Fieldset } from "@/components/ui/fieldset";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { resetGame, startGame } from "@/store/game/store";
 import { useTitle } from "@/hooks/useTitle";
 import { SwitchLoadingImages } from "./SwitchLoadingImages";
+import { gameActions } from "@/store/game";
 
 const GameSelectionPage: FC = () => {
   const form = useAppForm(GameSelectionSchema);
@@ -25,13 +25,13 @@ const GameSelectionPage: FC = () => {
   useTitle(title);
 
   useEffect(() => {
-    dispatch(resetGame());
+    dispatch(gameActions.resetGame());
   }, [dispatch]);
 
   const onSubmit = async (data: AnyDict) => {
     try {
       const response = await requestStartGame$(data as GameSelectionSchemaType);
-      dispatch(startGame(response));
+      dispatch(gameActions.startGame(response));
       navigate(response.gameId);
     } catch (e) {
       setFormErrors(e as ApiError, form.setError);

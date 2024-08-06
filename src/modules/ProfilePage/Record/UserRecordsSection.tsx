@@ -1,20 +1,17 @@
 import { FC, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { getResultSplitByDuration } from "../utils";
 import { TableRecords } from "./TableRecords";
 import { PrimaryText, SecondaryHeader } from "@/components/ui/text";
-import { useSelector } from "react-redux";
-import {
-  getUserRecords,
-  getUserRecordsStatus,
-} from "@/store/records/selectors";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchUserRecords } from "@/store/records/thunks";
 import { ContentLoader } from "@/components/ContentLoader";
-import { ErrorBlock } from "../../../components/ErrorBlock";
+import { ErrorBlock } from "@/components/ErrorBlock";
+import { recordsSelectors } from "@/store/records";
 
 export const UserRecordsSection: FC = () => {
-  const records = useSelector(getUserRecords);
-  const loadingStatus = useSelector(getUserRecordsStatus);
+  const records = useSelector(recordsSelectors.getUserRecords);
+  const loadingStatus = useSelector(recordsSelectors.getUserRecordsStatus);
 
   const dispatch = useAppDispatch();
 

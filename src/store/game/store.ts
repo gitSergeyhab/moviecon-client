@@ -142,11 +142,4 @@ const gameSlice = createSlice({
   },
 });
 
-export const {
-  startGame,
-  setNextQuestion,
-  setImgPreloading,
-  resetGame,
-  setTransition,
-} = gameSlice.actions;
-export default gameSlice;
+export const { actions, reducer, name } = gameSlice;

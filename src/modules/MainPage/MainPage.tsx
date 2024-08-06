@@ -10,7 +10,6 @@ import { useTitle } from "@/hooks/useTitle";
 import { MAIN_TITLE } from "@/const/title";
 import { ImagesSection } from "./ImagesSection";
 import { FeatureListItem } from "./FeatureListItem";
-
 import { StartLink } from "./StartLink";
 import { cn } from "@/lib/utils/styles";
 
@@ -36,7 +35,6 @@ const MainPage: FC = () => {
             </PrimaryHeader>
           </div>
         </div>
-
         <PrimaryText className="mt-8 font-bold text-center text-3xl md:mt-16 md:text-5xl">
           Добро пожаловать в мир кино!
         </PrimaryText>
@@ -46,11 +44,9 @@ const MainPage: FC = () => {
             "bg-[url('/img/sd/main-pic.webp')] bg-cover bg-no-repeat bg-center",
             "animate-gettingDark"
           )}
-        ></div>
-
+        />
         <section className="bg-neutral-200/50 dark:bg-neutral-800/50 mt-8 p-4 sm:p-8 rounded-md ">
           <h2 className="hidden">описание игры</h2>
-
           <SecondaryText className="indent-8 text-justify mt-2">
             Испытайте свои знания кино в нашей увлекательной игре. Здесь вы
             сможете проверить, насколько хорошо вы знаете актеров и фильмы,
@@ -59,7 +55,6 @@ const MainPage: FC = () => {
             получить удовольствие. Вас ждет множество интересных вопросов и
             неожиданных поворотов сюжета.
           </SecondaryText>
-
           <ul className="mt-2">
             {features.map((feature) => (
               <FeatureListItem key={feature.feature} {...feature} />

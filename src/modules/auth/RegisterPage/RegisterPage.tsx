@@ -8,12 +8,12 @@ import { requestRegister } from "@/lib/api/auth";
 import { setFormErrors } from "@/lib/utils/errors";
 import TokenService from "@/lib/utils/storage-services/tokenService";
 import { RegisterSchema, RegisterSchemaType } from "@/schemas/register";
-import { setUser } from "@/store/user/store";
 import { ApiError } from "@/type/api";
 import { AnyDict } from "@/type/dict";
 import { AuthFormLayout } from "../AuthFormLayout";
 import appRoutes from "@/lib/configs/routes/routes";
 import { AppLink } from "@/components/ui/AppLink";
+import { userActions } from "@/store/user";
 
 const RegisterPage: FC = () => {
   const form = useAppForm(RegisterSchema);
@@ -25,7 +25,7 @@ const RegisterPage: FC = () => {
     try {
       const response = await requestRegister(data as RegisterSchemaType);
       const { tokens, ...user } = response;
-      dispatch(setUser(user));
+      dispatch(userActions.setUser(user));
       TokenService.accessToken = tokens.access;
       TokenService.refreshToken = tokens.refresh;
       navigate("/");

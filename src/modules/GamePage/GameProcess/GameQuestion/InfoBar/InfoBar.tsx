@@ -1,23 +1,17 @@
 import { useSelector } from "react-redux";
-import {
-  getLevelInfo,
-  getCurrentTestIndex,
-  getMadeErrors,
-  getMadeSkips,
-  getLevelsCount,
-} from "@/store/game/selectors";
 import { FC } from "react";
 import { ShieldQuestionIcon } from "lucide-react";
 import { InfoBarIconsWrapper } from "./InfoBarIconsWrapper";
 import { InfoBarIcons } from "./InfoBarIcon";
+import { gameSelectors } from "@/store/game";
 
 export const InfoBar: FC = () => {
-  const levelInfo = useSelector(getLevelInfo);
-  const testIndex = useSelector(getCurrentTestIndex);
+  const levelInfo = useSelector(gameSelectors.getLevelInfo);
+  const testIndex = useSelector(gameSelectors.getCurrentTestIndex);
 
-  const madeErrors = useSelector(getMadeErrors);
-  const madeSkips = useSelector(getMadeSkips);
-  const levelsCount = useSelector(getLevelsCount);
+  const madeErrors = useSelector(gameSelectors.getMadeErrors);
+  const madeSkips = useSelector(gameSelectors.getMadeSkips);
+  const levelsCount = useSelector(gameSelectors.getLevelsCount);
 
   if (levelInfo === null) {
     console.error("невозможно получить статус вопроса");
