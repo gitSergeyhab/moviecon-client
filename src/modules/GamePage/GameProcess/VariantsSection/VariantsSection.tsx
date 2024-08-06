@@ -75,7 +75,7 @@ export const VariantsSection: FC<VariantsSectionProps> = ({
       ))}
       {modalOpen && (
         <Portal containerId="#modal">
-          <Modal onClose={onClose}>
+          <Modal onClose={onClose} hasCrossBtn>
             <img
               src={modalImage}
               alt=""

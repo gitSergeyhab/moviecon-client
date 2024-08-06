@@ -84,7 +84,7 @@ export const GameProcess: FC = () => {
       />
       {modalOpen && (
         <Portal containerId="#modal">
-          <Modal onClose={onClose}>
+          <Modal onClose={onClose} hasCrossBtn>
             <img src={imageUrl} alt="" className="w-full h-auto duration-300" />
           </Modal>
         </Portal>

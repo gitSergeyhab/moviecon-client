@@ -37,7 +37,7 @@ const Modal: FC<ModalProps> = ({ onClose, children, hasCrossBtn }) => {
             onClick={onClose}
             type="button"
             className={cn(
-              "absolute right-[-16px] top-[-16px] bg-slate-200 dark:bg-slate-800 rotate-45 rounded-full",
+              "absolute right-2 top-2 bg-slate-200 dark:bg-slate-800 rotate-45 rounded-full",
               "hover:text-neutral-500 duration-300"
             )}
           >
