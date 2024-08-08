@@ -1,30 +1,72 @@
-# React + TypeScript + Vite
+# MovieCon - Клиентская Часть
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Добро пожаловать в MovieCon - увлекательную игру для любителей кино! Испытайте свои знания в области кинематографа, угадывайте актеров и фильмы, вспоминайте любимые сцены и соревнуйтесь с друзьями или играйте в одиночку.
 
-Currently, two official plugins are available:
+## Описание игры
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+MovieCon предлагает вам несколько интересных режимов:
 
-## Expanding the ESLint configuration
+- **Угадайте актеров по фильмам**: вспомните любимые фильмы и попробуйте назвать актеров, которые в них снимались.
+- **Угадайте фильмы по актерам**: увидев актера, попробуйте угадать, в каком фильме он играл.
+- **Угадайте актеров по фото**: посмотрите на фото и попробуйте вспомнить, кто этот актер.
+  -...
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Погружайтесь в мир кино и проверьте свою память на прочность!
 
-- Configure the top-level `parserOptions` property like this:
+## Технологии
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Клиентская часть игры построена с использованием следующих технологий и библиотек:
+
+- **React**: для создания пользовательского интерфейса.
+- **Vite**: для сборки и разработки проекта.
+- **Redux Toolkit**: для управления состоянием приложения.
+- **Tailwind CSS**: для стилизации интерфейса.
+- **TypeScript**: для типизации кода и повышения его надежности.
+- **ESLint**: для анализа кода и поддержания его качества.
+
+## Установка и запуск
+
+### 1. Клонирование репозитория
+
+```bash
+git clone https://github.com/your-username/moviecon-client.git
+cd moviecon-client
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 2. Установка зависимостей
+
+```bash
+npm install
+```
+
+### 3. Запуск в режиме разработки
+
+```bash
+npm run dev
+```
+
+### 4. Сборка проекта
+
+Для сборки проекта выполните команду:
+
+```bash
+npm run build
+```
+
+Собранные файлы будут находиться в директории dist.
+
+### 5. Просмотр собранного проекта
+
+После сборки проекта, чтобы просмотреть его, используйте команду:
+
+```bash
+npm run preview
+```
+
+### 6. Линтинг кода
+
+Для проверки кода на соответствие стандартам выполните:
+
+```bash
+npm run lint
+```
