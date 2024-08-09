@@ -4,7 +4,7 @@ import { Form } from "@/components/ui/form/form";
 import { FormInput } from "@/components/ui/form/form-input";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useAppForm } from "@/hooks/useAppForm";
-import { requestRegister } from "@/lib/api/auth";
+import { requestRegister$ } from "@/lib/api/auth";
 import { setFormErrors } from "@/lib/utils/errors";
 import TokenService from "@/lib/utils/storage-services/tokenService";
 import { RegisterSchema, RegisterSchemaType } from "@/schemas/register";
@@ -23,7 +23,7 @@ const RegisterPage: FC = () => {
 
   const onSubmit = async (data: AnyDict) => {
     try {
-      const response = await requestRegister(data as RegisterSchemaType);
+      const response = await requestRegister$(data as RegisterSchemaType);
       const { tokens, ...user } = response;
       dispatch(userActions.setUser(user));
       TokenService.accessToken = tokens.access;

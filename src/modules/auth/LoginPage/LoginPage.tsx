@@ -4,7 +4,7 @@ import { Form } from "@/components/ui/form/form";
 import { FormInput } from "@/components/ui/form/form-input";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useAppForm } from "@/hooks/useAppForm";
-import { requestLogin } from "@/lib/api/auth";
+import { requestLogin$ } from "@/lib/api/auth";
 import { setFormErrors } from "@/lib/utils/errors";
 import TokenService from "@/lib/utils/storage-services/tokenService";
 import { LoginSchema, LoginSchemaType } from "@/schemas/login";
@@ -27,7 +27,7 @@ const LoginPage: FC = () => {
       const redirectPath = searchParams.get(redirectQueryKey)
         ? `${appRoutes.main}${searchParams.get(redirectQueryKey)}`
         : appRoutes.main;
-      const response = await requestLogin(data as LoginSchemaType);
+      const response = await requestLogin$(data as LoginSchemaType);
       const { tokens, ...user } = response;
       dispatch(userActions.setUser(user));
       TokenService.accessToken = tokens.access;

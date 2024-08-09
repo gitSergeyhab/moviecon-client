@@ -1,5 +1,6 @@
 import { UseFormSetError, Path } from "react-hook-form";
 import { ApiError, ApiResponse } from "@/type/api";
+import { toastError } from "./toast";
 
 type StringDict = Record<string, string>;
 
@@ -16,7 +17,7 @@ export const setFormErrors = <T extends StringDict>(
   });
 };
 
-export const getErrorMessage = (response: ApiResponse): string => {
+export const getErrorMessage = (response: ApiResponse): string | null => {
   const { data, status } = response;
   if (data?.message) return data.message;
   const errors = data?.errors;
@@ -25,5 +26,19 @@ export const getErrorMessage = (response: ApiResponse): string => {
   if (status === 401) return "Ошибка авторизации";
   if (status === 403) return "Доступ запрещен";
   if (status === 500) return "Внутренняя ошибка сервера";
-  return "Что-то пошло не так, попробуйте позже";
+  return null;
 };
+
+export const handledRequest =
+  <T, ARGS>(
+    requestFn: (...args: ARGS[]) => Promise<T>,
+    title: string,
+    returnValue: T
+  ) =>
+  async (...args: Parameters<typeof requestFn>) => {
+    return requestFn(...args).catch((e) => {
+      const errors = getErrorMessage(e as ApiError);
+      toastError(errors || title);
+      return returnValue;
+    });
+  };

@@ -1,10 +1,14 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 import { ApiError, ApiResponse, AppApi } from "@type/api";
 import { ENV } from "@/lib/configs/environment";
 import TokenService from "@/lib/utils/storage-services/tokenService";
-import { toast } from "sonner";
 import { getErrorMessage } from "../utils/errors";
+import { refreshToken } from "./refreshToken";
+import appRoutes from "../configs/routes/routes";
 
+interface ErrorConfig extends InternalAxiosRequestConfig {
+  is401: boolean;
+}
 const defaultHeaders = {
   "Content-type": "application/json",
 };
@@ -23,27 +27,38 @@ const createRequestInstance = (addAuthHeader: boolean): AppApi => {
   }
   instance.interceptors.response.use(
     (response) => response.data,
-    (error: AxiosError) => {
-      console.error({ error }, "interceptors");
-      const { response } = error as { response: ApiResponse };
+    async (error: AxiosError) => {
+      const { response, config } = error as {
+        response: ApiResponse;
+        config: InternalAxiosRequestConfig;
+      };
       const { data, status } = response;
       const errors = data?.errors || [];
 
       const errorMessage = getErrorMessage(response);
-      toast(errorMessage, {
-        closeButton: true,
-        position: "top-right",
-      });
 
       if (status === 401) {
-        TokenService.logout();
-        window.location.pathname = "/login";
-        return;
+        const tokens = await refreshToken();
+        const requestParams = config as ErrorConfig;
+
+        if (!tokens || requestParams.is401) {
+          TokenService.logout();
+          window.location.pathname = appRoutes.auth.login;
+          return;
+        }
+
+        requestParams.is401 = true;
+        if (tokens) {
+          TokenService.login(tokens);
+        }
+        return await instance.request(requestParams);
       }
 
-      // TODO: 403
-
-      const apiError: ApiError = { message: errorMessage, status, errors };
+      const apiError: ApiError = {
+        message: errorMessage || "",
+        status,
+        errors,
+      };
       throw apiError;
     }
   );
