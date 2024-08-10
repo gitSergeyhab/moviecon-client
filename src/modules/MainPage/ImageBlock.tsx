@@ -25,7 +25,8 @@ export const ImageBlock: FC<IImageBlockProps> = ({ image, title, id }) => {
         {title}
       </TitleText>
       <img
-        src={image}
+        src={`${image}.webp`}
+        srcSet={`${image}-tablet.webp 768w, ${image}.webp 1024w`}
         loading="lazy"
         alt={title}
         className={cn(

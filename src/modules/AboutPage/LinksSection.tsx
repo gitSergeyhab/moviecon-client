@@ -23,9 +23,9 @@ export const LinksSection: FC = () => {
       <div className="flex gap-4 items-center">
         <PrimaryText className="font-bold text-sm">Ресурсы</PrimaryText>
         <ul className="flex gap-2 items-center">
-          {sourceLinks.map(({ href, icon }) => (
+          {sourceLinks.map(({ href, icon, ariaLabel }) => (
             <li key={href}>
-              <AppAnchorWithIcon href={href} blank>
+              <AppAnchorWithIcon href={href} blank aria-label={ariaLabel}>
                 {icon}
               </AppAnchorWithIcon>
             </li>

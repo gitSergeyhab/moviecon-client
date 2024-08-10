@@ -8,4 +8,5 @@ export interface Description {
 export interface LinkData {
   href: string;
   icon: ReactNode;
+  ariaLabel?: string;
 }

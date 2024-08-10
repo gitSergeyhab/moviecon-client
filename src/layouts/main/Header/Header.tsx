@@ -39,12 +39,14 @@ const Header = () => {
             "hover:text-orange-500 transition-colors duration-300"
           )}
           onClick={closeNavMenu}
+          aria-label="Меню навигации"
         >
           <MenuIcon className="w-8 h-8" />
         </button>
         <Link
           to={appRoutes.main}
           className={"hover:text-orange-500 transition-colors duration-300"}
+          aria-label="На главную"
         >
           <PopcornIcon width={32} />
         </Link>

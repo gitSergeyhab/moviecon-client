@@ -34,6 +34,7 @@ const Modal: FC<ModalProps> = ({ onClose, children, hasCrossBtn }) => {
       >
         {hasCrossBtn && (
           <button
+            aria-label="закрыть модальное окно"
             onClick={onClose}
             type="button"
             className={cn(

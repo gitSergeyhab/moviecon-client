@@ -102,10 +102,12 @@ export const myLinks: LinkData[] = [
   {
     href: "https://t.me/redmoloch",
     icon: <TelegramIcon className={classes} />,
+    ariaLabel: "Telegram",
   },
   {
     href: "https://github.com/gitSergeyhab",
     icon: <GitHubIcon className={classes} />,
+    ariaLabel: "GitHub",
   },
 ];
 
@@ -113,14 +115,17 @@ export const sourceLinks: LinkData[] = [
   {
     href: "https://kinopoisk.dev/",
     icon: <KinopoiskApiIcon className={classes} />,
+    ariaLabel: "Kinopoisk API",
   },
   {
     href: "https://cloud.mongodb.com/",
     icon: <AtlasMongoIcon className={classes} />,
+    ariaLabel: "Atlas MongoDB",
   },
   {
     href: "https://chatgpt.com/",
     icon: <ChatGPTIcon className={classes} />,
+    ariaLabel: "ChatGPT",
   },
   {
     href: "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
@@ -132,6 +137,7 @@ export const sourceLinks: LinkData[] = [
         <div>SD</div>
       </div>
     ),
+    ariaLabel: "Stable Diffusion",
   },
 ];
 

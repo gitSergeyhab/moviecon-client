@@ -41,7 +41,7 @@ const MainPage: FC = () => {
         <div
           className={cn(
             "border-neutral-800  dark:border-neutral-200 border-8  aspect-[3/2] w-full mt-8 md:mt-16  rounded-xl",
-            "bg-[url('/img/sd/main-pic.webp')] bg-cover bg-no-repeat bg-center",
+            "bg-[url('/img/sd/main-pic-tablet.webp')] md:bg-[url('/img/sd/main-pic.webp')] bg-cover bg-no-repeat bg-center",
             "animate-gettingDark"
           )}
         />

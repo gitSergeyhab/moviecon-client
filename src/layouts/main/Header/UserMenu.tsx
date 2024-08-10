@@ -33,6 +33,7 @@ export const UserMenu: FC = () => {
         onClick={closeNavMenu}
         data-no-close={"user-menu"}
         type="button"
+        aria-label="Меню пользователя"
         className={cn(
           "border-neutral-800 dark:border-neutral-200  h-10 border-4 rounded-md px-3",
           "hover:text-orange-600 transition-colors duration-300"
