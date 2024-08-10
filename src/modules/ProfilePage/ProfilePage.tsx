@@ -7,7 +7,7 @@ import { ContentLoader } from "@/components/ContentLoader";
 import { useTitle } from "@/hooks/useTitle";
 import { userSelectors } from "@/store/user";
 
-export const ProfilePage: FC = () => {
+const ProfilePage: FC = () => {
   const user = useSelector(userSelectors.getUser);
   const loading = useSelector(userSelectors.getUserStatus) === "loading";
 
@@ -38,3 +38,5 @@ export const ProfilePage: FC = () => {
     </div>
   );
 };
+
+export default ProfilePage;

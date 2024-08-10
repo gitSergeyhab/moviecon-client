@@ -1,9 +1,14 @@
 import { RouteObject } from "react-router-dom";
+import { lazy } from "react";
 import appRoutes from "./routes";
-import AdminPage from "@/modules/AdminPage/AdminPage";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import MainLayout from "@/layouts/main/MainLayout";
 import { ErrorElement } from "@/components/ErrorElement";
+import { withSuspense } from "@/hocs/withSuspense";
+
+const AdminPage = withSuspense(
+  lazy(() => import("@/modules/AdminPage/AdminPage"))
+);
 
 const adminRoutes: RouteObject[] = [
   {

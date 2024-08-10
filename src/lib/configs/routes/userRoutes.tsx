@@ -1,12 +1,23 @@
 import { RouteObject } from "react-router-dom";
+import { lazy } from "react";
 import appRoutes from "./routes";
-import StatsPage from "@/modules/StatsPage/StatsPage";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { ErrorElement } from "@/components/ErrorElement";
 import MainLayout from "@/layouts/main/MainLayout";
-import GamePage from "@/modules/GamePage/GamePage";
-import GameSelectionPage from "@/modules/GameSelectionPage/GameSelectionPage";
-import { ProfilePage } from "@/modules/ProfilePage/ProfilePage";
+import { withSuspense } from "@/hocs/withSuspense";
+
+const ProfilePage = withSuspense(
+  lazy(() => import("@/modules/ProfilePage/ProfilePage"))
+);
+const GamePage = withSuspense(
+  lazy(() => import("@/modules/GamePage/GamePage"))
+);
+const GameSelectionPage = withSuspense(
+  lazy(() => import("@/modules/GameSelectionPage/GameSelectionPage"))
+);
+const StatsPage = withSuspense(
+  lazy(() => import("@/modules/StatsPage/StatsPage"))
+);
 
 const userRoutes: RouteObject[] = [
   {

@@ -1,12 +1,23 @@
 import { RouteObject } from "react-router-dom";
+import { lazy } from "react";
 import appRoutes from "./routes";
-import LoginPage from "@/modules/auth/LoginPage/LoginPage";
-import RegisterPage from "@/modules/auth/RegisterPage/RegisterPage";
-import AboutPage from "@/modules/AboutPage/AboutPage";
 import MainLayout from "@/layouts/main/MainLayout";
 import { ErrorElement } from "@/components/ErrorElement";
-import MainPage from "@/modules/MainPage/MainPage";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { withSuspense } from "@/hocs/withSuspense";
+
+const LoginPage = withSuspense(
+  lazy(() => import("@/modules/auth/LoginPage/LoginPage"))
+);
+const RegisterPage = withSuspense(
+  lazy(() => import("@/modules/auth/RegisterPage/RegisterPage"))
+);
+const AboutPage = withSuspense(
+  lazy(() => import("@/modules/AboutPage/AboutPage"))
+);
+const MainPage = withSuspense(
+  lazy(() => import("@/modules/MainPage/MainPage"))
+);
 
 const publicRoutes: RouteObject[] = [
   {
