@@ -49,6 +49,8 @@ export interface Test {
   id: string;
 }
 
+export type VariantId = string | number | undefined | null;
+
 export interface LevelResult {
   answersScore: number;
   errorBonus: number;

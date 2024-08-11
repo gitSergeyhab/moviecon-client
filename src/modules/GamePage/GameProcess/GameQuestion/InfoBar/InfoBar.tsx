@@ -21,7 +21,7 @@ export const InfoBar: FC = () => {
   const { errors, number, questions, skips } = levelInfo;
 
   return (
-    <div className="flex flex-wrap w-full mb-1 justify-between gap-1 p-0 bg-neutral-400 dark:bg-neutral-900 rounded-full shadow-xl sm:text-l text-xs">
+    <div className="flex flex-wrap w-full mb-1 justify-between gap-1 p-0 bg-neutral-400 dark:bg-neutral-900 text-neutral-800 rounded-full shadow-xl sm:text-l text-xs">
       <InfoBarIconsWrapper className="grow">
         <InfoBarIcons count={madeErrors} type="star" />
         <InfoBarIcons

@@ -1,6 +1,12 @@
 import { BlockField, BlockType } from "@/lib/configs/game/config";
 import { checkValueExist, getRandomItem } from "@/lib/utils/common";
-import { GameStatus, NexGameAction, TestType, Variant } from "@/type/game";
+import {
+  GameStatus,
+  NexGameAction,
+  TestType,
+  Variant,
+  VariantId,
+} from "@/type/game";
 import { gameStatusImages, questionClasses, testTypeQuesVar } from "./const";
 
 export const getContent = (
@@ -27,9 +33,9 @@ export const getContents = (
 };
 
 interface GetBorderColor {
-  variantId: string | number | undefined;
-  correctId: string | number | null | undefined;
-  selectedId: string | number | null | undefined;
+  variantId: VariantId;
+  correctId: VariantId;
+  selectedId: VariantId;
 }
 
 export const getAnswerColorClasses = ({

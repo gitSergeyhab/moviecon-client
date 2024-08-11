@@ -11,7 +11,7 @@ const MainLayout: FC<PropsWithChildren> = ({ children }) => {
       }
     >
       <Header />
-      <main className="mt-24">{children || <Outlet />}</main>
+      <main className="mt-12 md:mt-24">{children || <Outlet />}</main>
       <Footer />
     </div>
   );

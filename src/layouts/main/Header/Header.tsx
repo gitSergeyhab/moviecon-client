@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 bg-base-gradient w-full min-w-80 z-20 shadow-xl">
-      <div className="flex items-center min-h-16 justify-between m-auto max-w-[1400px] font-bold px-4">
+      <div className="flex items-center  justify-between m-auto max-w-[1400px] font-bold px-4 min-h-12 md:min-h-16">
         <button
           data-no-close={"nav-menu"}
           className={cn(

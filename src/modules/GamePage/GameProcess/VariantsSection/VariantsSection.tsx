@@ -60,7 +60,10 @@ export const VariantsSection: FC<VariantsSectionProps> = ({
 
   return (
     <section
-      className={cn("gap-4 py-1 md:py-4 ", getGrigWrapperClasses(testType))}
+      className={cn(
+        "gap-1 py-1 md:py-4 md:gap-4 ",
+        getGrigWrapperClasses(testType)
+      )}
     >
       {filteredVariants.map((variant) => (
         <GameVariant

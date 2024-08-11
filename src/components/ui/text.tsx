@@ -67,11 +67,7 @@ export const ItemHeader: FC<TextProps> = ({ children, className }) => (
 export const PaleText: FC<TextProps> = ({ children, className }) => (
   <Text
     tag="p"
-    className={cn(
-      "text-xs  md:text-lg opacity-90 font-semibold italic",
-      className
-    )}
-    color="primary"
+    className={cn("text-xs  md:text-lg opacity-70 font-semibold", className)}
   >
     {children}
   </Text>
