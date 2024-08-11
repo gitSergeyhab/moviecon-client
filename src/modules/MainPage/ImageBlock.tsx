@@ -28,6 +28,8 @@ export const ImageBlock: FC<IImageBlockProps> = ({ image, title, id }) => {
         src={`${image}.webp`}
         srcSet={`${image}-tablet.webp 768w, ${image}.webp 1024w`}
         loading="lazy"
+        width={1145}
+        height={700}
         alt={title}
         className={cn(
           "m-auto w-full text-center overflow-hidden rounded-lg shadow-2xl md:w-[90%]",
