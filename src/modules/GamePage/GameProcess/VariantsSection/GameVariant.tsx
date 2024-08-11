@@ -49,12 +49,13 @@ export const GameVariant: FC<GameQuestionProps> = ({
         <img
           src={image as string}
           alt=""
-          className="w-full h-40 md:h-48 lg:h-72 object-contain m-auto cursor-pointer mb-1"
+          className="w-full h-36 md:h-48 lg:h-72 object-contain m-auto cursor-pointer mb-1"
           onClick={onImageClick}
         />
       )}
 
       <Button
+        aria-label="выбрать вариант"
         variant={"outline"}
         className={cn(
           "w-full flex flex-col  border-2 border-neutral-400 min-h-10 py-[2px] px-1  h-auto ",

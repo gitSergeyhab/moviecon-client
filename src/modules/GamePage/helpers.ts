@@ -67,7 +67,7 @@ const flatGrigTypes: TestType[] = [
 export const getGrigWrapperClasses = (testType: TestType): string =>
   flatGrigTypes.includes(testType)
     ? "grid grid-cols-2  lg:grid-cols-4 "
-    : "grid sm:grid-cols-2 gap-2 sm:gap-4 grid-cols-1";
+    : "grid grid-cols-1 gap-1 sm:gap-2 md:gap-4 sm:grid-cols-2 ";
 
 const getPath = (imgName: string): string => {
   const pathToImg = "/img/sd/";

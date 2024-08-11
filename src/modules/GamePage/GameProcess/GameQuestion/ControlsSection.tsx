@@ -36,10 +36,8 @@ export const ControlsSection: FC = () => {
   const handleClickExitGameBtn = () =>
     dispatch(fetchExitGame(handleCloseModal));
 
-  // TODO: обработка 404, когда сервер перезагрузился и айди с такой игрой уже нет
-
   return (
-    <section className="flex gap-1 lg:gap-8 flex-wrap justify-center items-center sm:p-4 p-2 relative">
+    <section className="flex flex-wrap justify-between items-center m-auto max-w-[640px] gap-1   relative p-1 sm:p-3 md:p-6 lg:gap-8 ">
       {isLoading && (
         <div className="absolute top-0 right-0 bottom-0 left-0 z-10 flex items-center justify-center">
           <Spinner size="xs" />
@@ -47,9 +45,22 @@ export const ControlsSection: FC = () => {
       )}
       <Button
         type="button"
+        onClick={() => setIsModalShown(true)}
+        size={"sm"}
+        className="min-w-20 max-w-72 scale-100 hover:scale-105 transition-all disabled:opacity-20"
+        variant={"destructive"}
+        disabled={isLoading || isAnswerDone}
+      >
+        <span className="sm:inline hidden">Завершить игру</span>
+        <span className="sm:hidden inline">
+          <DoorOpenIcon size={20} />
+        </span>
+      </Button>
+      <Button
+        type="button"
         onClick={handleClickSkipBtn}
         size={"sm"}
-        className="w-full   max-w-72  hover:scale-105 transition-all disabled:opacity-20"
+        className="min-w-20 max-w-72  hover:scale-105 transition-all disabled:opacity-20"
         variant={"outline"}
         disabled={isLoading || !isSkipQuestionBtnShow}
       >
@@ -60,19 +71,7 @@ export const ControlsSection: FC = () => {
           <SkipForwardIcon size={20} />
         </span>
       </Button>
-      <Button
-        type="button"
-        onClick={() => setIsModalShown(true)}
-        size={"sm"}
-        className="w-full max-w-72 scale-100 hover:scale-105 transition-all disabled:opacity-20"
-        variant={"destructive"}
-        disabled={isLoading || isAnswerDone}
-      >
-        <span className="sm:inline hidden">Завершить игру</span>
-        <span className="sm:hidden inline">
-          <DoorOpenIcon size={20} />
-        </span>
-      </Button>
+
       {isModalShown && (
         <Portal containerId="#modal">
           <Modal onClose={handleCloseModal} hasCrossBtn>

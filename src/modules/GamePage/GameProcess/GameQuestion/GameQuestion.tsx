@@ -4,7 +4,7 @@ import { TestType, Variant } from "@/type/game";
 import { PrimaryBlock } from "../../PrimaryBlock";
 import { getContents, getQuestionClasses } from "../../helpers";
 import { ControlsSection } from "./ControlsSection";
-import { PaleText, SecondaryHeader } from "@/components/ui/text";
+import { PaleText } from "@/components/ui/text";
 
 export interface GameQuestionProps {
   variant: Variant;
@@ -29,10 +29,10 @@ export const GameQuestion: FC<GameQuestionProps> = ({
 
   return (
     <div className={wrapperClasses}>
-      <div>
-        <SecondaryHeader className="text-center italic">
+      <div className="px-[2px]">
+        <PaleText className="text-center italic underline text-sm sm:text-lg md:text-xl">
           {questionText}
-        </SecondaryHeader>
+        </PaleText>
         {!!primary && <PrimaryBlock text={primary} enText={enName} />}
         {!!secondary && (
           <PaleText className="italic text-center">{secondary}</PaleText>
@@ -42,7 +42,7 @@ export const GameQuestion: FC<GameQuestionProps> = ({
         {!!image && (
           <img
             src={image as string}
-            alt=""
+            alt="картинка вопроса"
             className={imageClasses}
             onClick={onImageClick}
           />
