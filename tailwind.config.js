@@ -109,6 +109,13 @@ const conf  = {
           '72.8%': { backgroundColor: '#DDD'},
           '100%': { backgroundColor: '#222'},
         },
+        shadowsUp: {
+          '0%': { filter: 'drop-shadow(0px 30px 20px #000)', opacity: 0.5, },
+          '5%': { filter: 'drop-shadow(0px 30px 20px #dba903)', opacity: 1 },
+          '10%': { filter: 'drop-shadow(0px 10px 20px #dba903)', opacity: 1 },
+          '20%': { filter: 'drop-shadow(0 4px 4px #dba903)', opacity: 1},
+          '100%': { filter: 'drop-shadow(0 2px 2px #dba903)',opacity: 1},
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -116,6 +123,7 @@ const conf  = {
         "spin-back": "rotate-back 0.8s linear infinite",
         fadeIn: 'fadeIn 0.5s ease-out forwards',
         blink: 'blink 20s infinite',
+        shadowsUp: 'shadowsUp 3s ease-out forwards',
         gettingDark: 'gettingDark 4s ease-in-out infinite',
       },
       backgroundImage: {

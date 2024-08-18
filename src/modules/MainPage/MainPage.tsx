@@ -45,9 +45,9 @@ const MainPage: FC = () => {
             "animate-gettingDark"
           )}
         />
-        <section className="bg-neutral-200/50 dark:bg-neutral-800/50 mt-8 p-4 sm:p-8 rounded-md ">
+        <section className="bg-neutral-200/80 dark:bg-neutral-800/80 mt-8 p-4 sm:p-8 rounded-md ">
           <h2 className="hidden">описание игры</h2>
-          <SecondaryText className="indent-8 text-justify mt-2">
+          <SecondaryText className="indent-8 text-justify mt-2 text-lg md:text-xl lg:text-2xl">
             Испытайте свои знания кино в нашей увлекательной игре. Здесь вы
             сможете проверить, насколько хорошо вы знаете актеров и фильмы,
             вспомнить любимые сцены и испытать свою память на прочность.
@@ -67,9 +67,6 @@ const MainPage: FC = () => {
         <StartLink />
         <ImagesSection />
         <MainTableSection />
-        <PrimaryText className="text-center font-bold mt-8 md:mt-12">
-          Начни игру, чтоб оказаться в их числе
-        </PrimaryText>
         <StartLink />
       </div>
     </div>

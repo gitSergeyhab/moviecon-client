@@ -7,7 +7,7 @@ interface IImageBlockProps {
   title: string;
   id: number;
 }
-export const ImageBlock: FC<IImageBlockProps> = ({ image, title, id }) => {
+export const ImageBlock: FC<IImageBlockProps> = ({ image, title }) => {
   const { ref, inView } = useInView({
     threshold: 0.25,
     triggerOnce: true,
@@ -16,10 +16,8 @@ export const ImageBlock: FC<IImageBlockProps> = ({ image, title, id }) => {
     <div className="w-full " ref={ref}>
       <TitleText
         className={cn(
-          "text-center py-4 md:py-6",
-          "transition-all duration-1000 scale-0",
-          id % 2 ? "translate-x-[-100%]" : "translate-x-[100%]",
-          inView ? "translate-x-0 scale-100" : ""
+          "text-center py-4 md:py-6 opacity-50",
+          inView ? "animate-shadowsUp" : ""
         )}
       >
         {title}

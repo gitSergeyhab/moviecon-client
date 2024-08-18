@@ -1,4 +1,4 @@
-import { SecondaryHeader } from "@/components/ui/text";
+import { PrimaryText, SecondaryHeader } from "@/components/ui/text";
 import { FC } from "react";
 import { useFetchRecords } from "../../hooks/useFetchRecords";
 import { TableRecords } from "./RecordTable";
@@ -29,6 +29,9 @@ export const MainTableSection: FC = () => {
           ))}
         </div>
       </div>
+      <PrimaryText className="text-center font-bold mt-8 md:mt-12">
+        Начни игру, чтоб оказаться в их числе
+      </PrimaryText>
     </section>
   );
 };
