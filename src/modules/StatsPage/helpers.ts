@@ -9,8 +9,8 @@ export const generateHistogramData = (data: number[], userRecord: number) => {
     return null;
   }
   data.sort((a, b) => a - b);
-  const minValue = data[0];
-  const maxValue = data[data.length - 1];
+  const minValue = 0;
+  const maxValue = Math.ceil((data[data.length - 1] + 1) / 10) * 10;
 
   const size = (maxValue - minValue) / 10;
   let start = minValue;

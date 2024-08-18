@@ -46,11 +46,11 @@ const StatsPage: FC = () => {
         <PrimaryText className="font-bold text-center my-2">
           {TextData.duration[duration]} игра / {TextData.category[category]}
         </PrimaryText>
+        <TablesSection duration={duration} category={category} />
         <SecondaryText className="font-bold text-center my-2 text-red-500">
           График с разбивкой по категориям появится, когда будет больше данных
         </SecondaryText>
         <HistogramSection />
-        <TablesSection duration={duration} category={category} />
       </div>
     </div>
   );
