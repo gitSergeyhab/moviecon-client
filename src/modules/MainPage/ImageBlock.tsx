@@ -16,7 +16,7 @@ export const ImageBlock: FC<IImageBlockProps> = ({ image, title }) => {
     <div className="w-full " ref={ref}>
       <TitleText
         className={cn(
-          "text-center py-4 md:py-6 opacity-50",
+          "text-center py-4 md:py-6 opacity-50 scale-50",
           inView ? "animate-shadowsUp" : ""
         )}
       >

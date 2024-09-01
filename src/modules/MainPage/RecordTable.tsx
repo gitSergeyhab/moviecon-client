@@ -17,8 +17,8 @@ export const TableRecords: FC<TableResultsProps> = ({ result }) => {
       <ItemHeader className="my-2">
         {TextData.duration[duration]} игра / {TextData.category[category]}
       </ItemHeader>
-      <div className="px-2 w-full max-h-[520px] overflow-auto sm:max-h-[720px] sm:px-4">
-        <Table className="w-full ">
+      <div className="px-2 w-full max-h-[520px] overflow-auto sm:max-h-[720px] sm:px-4 hide-scrollbar">
+        <Table className="w-full">
           <thead>
             <TableRow type="header">
               {["место", "игрок", "счет"].map((item) => (
