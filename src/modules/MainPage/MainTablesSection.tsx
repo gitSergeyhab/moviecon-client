@@ -20,7 +20,7 @@ export const MainTableSection: FC = () => {
         <SecondaryHeader className="text-center text-3xl md:text-5xl">
           Наши рекордсмены
         </SecondaryHeader>
-        <div className="grid mt-4 lg:grid-cols-2 grid-cols-1 gap-4 xl:grid-cols-3 ">
+        <div className="grid mt-4 lg:grid-cols-2 grid-cols-1 gap-4">
           {records.map((record) => (
             <TableRecords
               key={`${record.params.category}-${record.params.duration} `}
